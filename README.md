@@ -1,4 +1,3 @@
-
 Sofresh Theme
 ================
 
@@ -10,6 +9,6 @@ It uses LESS, is totally responsive when used right (converted a theme from stat
 Please note
 -----------
 
-I have released this theme by taking my latest release and stripping out anything site specific. This means it will probably not work 100% straight out of the box. You can either let me know using issues or wait until I use this theme in my next project.
+I have created this theme by taking my latest job and stripping out anything site specific. This means it will probably not work 100% straight out of the box. You can either let me know using issues or wait until I use this theme in my next project.
 
 http://joeswann.co.nz/
