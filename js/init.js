@@ -1,8 +1,30 @@
 var js = js || {
 	_browser : false,
-	_opts : js_opts,
+	_opts : false,
 	setup : function() {
+		js._opts = js_opts;
 		js.utilBrowserTest();
+	},
+	utilEnableSliderKeyboard : function($slider) {
+		$(document.documentElement).keyup(function (event) {
+			if (event.keyCode == 37) {
+				$slider.goToNextSlide();
+			} else if (event.keyCode == 39) {
+				$slider.goToPrevSlide();
+			}
+		});
+	},
+	utilScrollTo : function($selector, callback) {
+		var duration = 3000;
+		var easing = 'swing';
+		var dist_top = $selector.offset().top;
+
+
+		$("html, body").animate({
+			scrollTop: dist_top
+		}, function() {
+			if(typeof(callback) == 'function') callback();
+		});
 	},
 	utilObjectSize : function(obj) {
 	    var size = 0, key;
@@ -40,6 +62,34 @@ var js = js || {
 	    M= M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
 
 	    js._browser = M;
+	},
+	utilHashManager : function(callback) {
+		//lets assume control of all # links for now
+		$('a[href^=#]').click(function(e){
+			//e.preventDefault();
+		});
+
+		if (window.location.hash) js.utilHashChange(callback);
+		
+		$(window).bind('hashchange', function () {
+			if (window.location.hash) js.utilHashChange(callback);
+		});
+		
+	},
+	utilHashChange : function(callback) {
+		var hash = window.location.hash.replace('#', '');
+		
+		if(typeof(callback) == 'function') callback(hash);
+	},
+	utilDeviceTest : function() {
+		var device = false;
+		var is_ipad    = ( navigator.userAgent.match(/(iPad)/g) ? true : false );
+		var is_iphone = ( navigator.userAgent.match(/(iPhone)/g) ? true : false );
+
+		if(is_ipad) device = 'ipad';
+		if(is_iphone) device = 'iphone';
+
+	    jc._device = device;
 	},
 	utilCreateLightbox : function(new_options) {
 		options = {
@@ -105,6 +155,15 @@ var js = js || {
 	        });
 	      }
 	    });
+
+		$('body').keyup(function(e){
+		    if(e.which == 27){
+		        $lightbox_wrap.fadeOut(1000, function() {
+					$lightbox_wrap.remove();
+				});
+		    }
+		});
+
 	    if(typeof(options.callback == 'function')) options.callback($lightbox_wrap);
 	  }
 }
