@@ -17,9 +17,9 @@ Includes among other things:
 Todo
 ---
 
-Find nice small replacement for bootstrap
-Compilation library for getting scripts and libs
-Lib w/ pipeline for LESS	
+- Find nice small replacement for bootstrap
+- Compilation library for getting scripts and libs
+- Lib w/ pipeline for LESS	
 
 	
 17-09-13
