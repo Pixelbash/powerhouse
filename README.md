@@ -15,7 +15,7 @@ Includes among other things:
 - Post view count functions (optional)
 
 Todo
-================
+---
 
 Find nice small replacement for bootstrap
 Compilation library for getting scripts and libs
@@ -23,7 +23,7 @@ Lib w/ pipeline for LESS
 
 	
 17-09-13
-================
+---
 
 - Added: Theme now uses less.js for simpler development
 - Added: Nice pagination function
