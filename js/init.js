@@ -4,27 +4,39 @@ var js = js || {
 	setup : function() {
 		js._opts = js_opts;
 		js.utilBrowserTest();
+		if($('body').hasClass('home')) {
+			js.initHome();
+		}
 	},
-	utilEnableSliderKeyboard : function($slider) {
-		$(document.documentElement).keyup(function (event) {
-			if (event.keyCode == 37) {
-				$slider.goToNextSlide();
-			} else if (event.keyCode == 39) {
-				$slider.goToPrevSlide();
-			}
-		});
+	initHome : function() {
+		//Home page stuff here
 	},
-	utilScrollTo : function($selector, callback) {
-		var duration = 3000;
-		var easing = 'swing';
-		var dist_top = $selector.offset().top;
+	utilPreloadImages : function(images, callback) {
+		var image = js._preload_images.shift();
+		if(typeof(image) != 'undefined') {
+			image = image[0];
+			js.utilPreloadImage(image.src, function(){
+				js.utilPreloadImages(js._preload_images);
+				$image = $('img[data-src="' + image.src + '"]');
+				$image.removeAttr('data-src').attr('src', image.src).animate({opacity : 1},1000);
+			});
+		} else {
+			js.utilPreloadClear();
+			if(typeof(callback) != 'undefined') callback();
+		}
+	},
+	utilPreloadImage : function(src, callback) {
+		$preload = $('#preload');
+		if($('#preload').size() < 1) {
+			$preload = $('<div id="preload" />').prependTo('body');
+		}
 
+	    $preload.append('<img src="' + src + '"  style="display:none" />');
+	    
+	    $preload.find(' img[src="' + src + '"]').load(function(e){
+	        if(typeof(callback) == 'function') callback();
+	    });
 
-		$("html, body").animate({
-			scrollTop: dist_top
-		}, function() {
-			if(typeof(callback) == 'function') callback();
-		});
 	},
 	utilObjectSize : function(obj) {
 	    var size = 0, key;
@@ -32,12 +44,6 @@ var js = js || {
 	        if (obj.hasOwnProperty(key)) size++;
 	    }
 	    return size;
-	},
-	utilSetCookie : function(c_name, value, exdays) {
-		var exdate = new Date();
-		exdate.setDate(exdate.getDate() + exdays);
-		var c_value = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toUTCString());
-		document.cookie = c_name + "=" + c_value;
 	},
 	utilGetCookie : function(c_name) {
 		var i,x,y,ARRcookies=document.cookie.split(";");
@@ -51,45 +57,11 @@ var js = js || {
 		}
 		return false;
 	},
-	utilIsEmail : function(email) {
-	  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	  return regex.test(email);
-	},
-	utilBrowserTest : function() {
-		var N= navigator.appName, ua= navigator.userAgent, tem;
-	    var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-	    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-	    M= M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
-
-	    js._browser = M;
-	},
-	utilHashManager : function(callback) {
-		//lets assume control of all # links for now
-		$('a[href^=#]').click(function(e){
-			//e.preventDefault();
-		});
-
-		if (window.location.hash) js.utilHashChange(callback);
-		
-		$(window).bind('hashchange', function () {
-			if (window.location.hash) js.utilHashChange(callback);
-		});
-		
-	},
-	utilHashChange : function(callback) {
-		var hash = window.location.hash.replace('#', '');
-		
-		if(typeof(callback) == 'function') callback(hash);
-	},
-	utilDeviceTest : function() {
-		var device = false;
-		var is_ipad    = ( navigator.userAgent.match(/(iPad)/g) ? true : false );
-		var is_iphone = ( navigator.userAgent.match(/(iPhone)/g) ? true : false );
-
-		if(is_ipad) device = 'ipad';
-		if(is_iphone) device = 'iphone';
-
-	    jc._device = device;
+	utilSetCookie : function(c_name, value, exdays) {
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toUTCString());
+		document.cookie = c_name + "=" + c_value;
 	},
 	utilCreateLightbox : function(new_options) {
 		options = {
