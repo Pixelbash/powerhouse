@@ -1,8 +1,4 @@
-<?php
-
-$options = get_option('argomento_options');
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -11,16 +7,15 @@ $options = get_option('argomento_options');
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <title><?php bloginfo('name'); ?> <?php wp_title(' - '); ?></title>
-    <meta name="viewport" content="initial-scale=0.6"> 
-    
-    <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+    <meta name="viewport" content="initial-scale=0.7"> 
 
-    <script type="text/javascript">
-    /* <![CDATA[ */
-        var js_opts = <?php echo getOptions() ?>;
-    /* ]]> */   
-    </script>
-    <script src="<?php bloginfo('template_url') ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <?php /* make theme options available to javascript */ ?>
+    <script type="text/javascript">/* <![CDATA[ */var js_opts = <?php echo getOptions() ?>;/* ]]> */</script>
+    
+    <?php /* clean header */ ?>
+    <link rel="stylesheet/less"  href='<?php bloginfo('template_url') ?>/less/style.less?ver=1.0a' type='text/css' media='all' />
+    <script src="<?php bloginfo('template_url') ?>/js/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

@@ -5,40 +5,15 @@ The master CSS file
 */
 
 
-/* Variables */
 
 @wrap: 1170px; 
 @gutter: 10px;
-@bg_colour:#fff;//#ecedea;
+@bg_colour: #fff;
   
 
-/* Border box */
+
+/* Basic setup */
 * {	-moz-box-sizing: border-box;-webkit-box-sizing: border-box;	box-sizing: border-box;}
-
-/* base classes */
-html {height:100%}
-body {font-size:14px;line-height:18px;font-family:"Berthold Akzidenz Grotesk", "Helvetica", "Arial", sans-serif;font-weight:300;background:@bg_colour;color:#231f20;max-height:100%;overflow:hidden;}
-h1,h2,h3,h4,h5,h6 {margin:0 0 1em 0;} 
-
-//FF fix
-a {
-	&:focus { 
-		outline: none; 
-	}
-}
-
-
-/* function classes + CSS3 helpers */
-/*
-.pv(@p,@v) {
-	@p:@v; 
-}*/
-
-.pv(@p,@v)
-{
-    -:~`";@{p}:@{v}".replace(/'/g,"")`;
-}
-
 .wrapper(@width:@wrap) { width:@width; margin: 0 auto;}
 .hList {
 	list-style:none;
@@ -54,12 +29,28 @@ a {
 
 .clearfix {
   *zoom: 1;
+	&:before,
+	&:after {
+	  display: table;
+	  content: "";
+	  line-height: 0;
+	}
 }
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
+//FF fix
+a:focus {outline: none}
+
+
+/* dynamic properties
+
+.pv(@p,@v) {
+	@p:@v; 
+}
+
+*/
+
+.pv(@p,@v)
+{
+    -:~`";@{p}:@{v}".replace(/'/g,"")`;
 }
 
 
@@ -72,6 +63,71 @@ a {
 	}
 }
 
+.absPos(@dSide: 0px, @dVert: 0px, @width:10px, @height: 10px, @side: left, @vert: top, @zIndex: 10) {
+	position:absolute;
+	.pv(@side, @dSide);
+	.pv(@vert, @dVert);
+	width:@width;
+	height:@height;
+	z-index:@zIndex;
+}
+
+.borderRadius(@radius: 3px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.transition(@property: all,@duration: 0.2s, @function: linear) {
+	-webkit-transition: @property @duration @function;
+	-moz-transition: @property @duration @function;
+	-ms-transition: @property @duration @function;
+	-o-transition: @property @duration @function;
+	transition: @property @duration @function;
+} 
+
+/* Bootstrap override */
+
+textarea:focus, select:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+	border-color: fadein(#ccc, 20%);
+	outline: 0;
+	outline: thin dotted 9; 
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border:none;
+	border:1px solid #999;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+	padding:5px 6px;
+	line-height:20px;
+	min-height:30px;
+	.borderRadius(0);
+	border:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none; 
+	box-shadow: none;
+
+	border:1px solid #ccc;
+	-webkit-appearance:none;
+	font-size:11px;
+	color:#444;
+	letter-spacing:1px;
+}
+
+
+.btn {border:0;box-shadow:0;background:#fff;color:#999;text-shadow:none;padding:5px 15px;
+	border:1px solid #ddd;
+	font-size:11px;
+	line-height:20px;
+	.borderRadius(0);
+	text-transform:uppercase;
+	letter-spacing:1px;
+}
+.btn:hover {background:#ddd;color:#444;border:1px solid #ccc;}
+.btn:active {background:#333;color:#fff;}
+
+/* Grid system */
 .columnConstructor(@percentage, @gutter) {
 	@calcPercentage: (@percentage/12) * 100;
 	float:left;
@@ -110,104 +166,21 @@ a {
 	.span12 {.columnConstructor(12, @gutter)}
 }
 
-.absPos(@dSide: 0px, @dVert: 0px, @width:10px, @height: 10px, @side: left, @vert: top, @zIndex: 10) {
-	position:absolute;
-	.pv(@side, @dSide);
-	.pv(@vert, @dVert);
-	width:@width;
-	height:@height;
-	z-index:@zIndex;
-}
-
-.absImg(@dSide: 0px, @dVert: 0px, @width:10px, @height: 10px, @src: '../img/logo.png', @side: left, @vert: top, @zIndex: 10, @repeat: no-repeat) {
-	.absPos(@dSide, @dVert, @width, @height, @side, @vert, @zIndex);
-	background:url(@src) center @repeat;
-}
-
-.bgAlpha(@color: #fff, @alpha: 0.5) {background: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);}
-
-.borderRadius(@radius: 3px) {
-  border-radius: @radius;
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-}
-.textShadow(@color: #fff) {
-	text-shadow: 1px 1px 1px @color;
-	filter: dropshadow(color=@color, offx=1, offy=1);
-}
-
-.dropShadow(@x-axis: 0, @y-axis: 1px, @blur: 10px, @alpha: 0.1) {
-  -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-  -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-  box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
-}
-
-.innerShadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
-  -webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
-  -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
-  box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
-}
-
-.transition(@property: all,@duration: 0.2s, @function: linear) {
-	-webkit-transition: @property @duration @function;
-	-moz-transition: @property @duration @function;
-	-ms-transition: @property @duration @function;
-	-o-transition: @property @duration @function;
-	transition: @property @duration @function;
-} 
-
-/* Bootstrap mods */
-
-textarea:focus, select:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
-	border-color: fadein(#ccc, 20%);
-	outline: 0;
-	outline: thin dotted 9; 
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border:none;
-	border:1px solid #999;
-}
-select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-	padding:5px 6px;
-	line-height:20px;
-	min-height:30px;
-	.borderRadius(0);
-	border:none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none; 
-	box-shadow: none;
-
-	border:1px solid #ccc;
-	-webkit-appearance:none;
-	font-size:11px;
-	color:#444;
-	font-family: 'Inconsolata';letter-spacing:1px;
-}
-
-
-.btn {border:0;box-shadow:0;background:#fff;color:#999;text-shadow:none;padding:5px 15px;
-	border:1px solid #ddd;
-	font-size:11px;
-	line-height:20px;
-	.borderRadius(0);
-	font-family:'Inconsolata';
-	text-transform:uppercase;
-	letter-spacing:1px;
-}
-.btn:hover {background:#ddd;color:#444;border:1px solid #ccc;}
-.btn:active {background:#333;color:#fff;}
-
 /* main styles */ 
 .gridMake;
-html,body{margin:0;padding:0;}
+
+html {height:100%}
+body {font-size:14px;line-height:18px;}
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1240px) {
+
 } 
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
+
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
+
 }

@@ -1,8 +1,8 @@
  <?php 
 
-$options = get_option('freshconcept_options');
+$options = get_option('js_options');
 
-$title = get_the_title();
+$title   = get_the_title();
 $content = apply_filters('the_content', get_the_content());
 
 get_header() ?>
