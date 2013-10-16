@@ -50,67 +50,9 @@ $meta_boxes[] = array(
 );
 
 
-$meta_boxes[] = array(
-	'id' => 'project',
-	'title' => 'Project details',
-	'pages' => array('project'),	
-	'context' => 'normal',		
-	'priority' => 'high',			
-
-	'fields' => array(	
-		array(
-			'name'		=> 'Images',
-			'id'		=> $prefix . 'images',
-			'desc'		=> 'Image attachments',
-			'type'		=> 'image_advanced',
-			'max_file_uploads' => 24,
-		),
-	)
-);
-
-$meta_boxes[] = array(
-	'id' => 'Profile',
-	'title' => 'Profile details',
-	'pages' => array('profile'),	
-	'context' => 'normal',		
-	'priority' => 'high',			
-
-	'fields' => array(	
-		array(
-			'name'		=> 'Images',
-			'id'		=> $prefix . 'images',
-			'desc'		=> 'Image attachments',
-			'type'		=> 'image_advanced',
-			'max_file_uploads' => 24,
-		),
-	)
-);
-
-
-$meta_boxes[] = array(
-	'id' => 'Publication',
-	'title' => 'Publication details',
-	'pages' => array('publication'),	
-	'context' => 'normal',		
-	'priority' => 'high',			
-
-	'fields' => array(	
-		array(
-			'name'		=> 'PDF',
-			'id'		=> $prefix . 'pdf',
-			'desc'		=> 'PDF Attachment',
-			'type'		=> 'file_advanced',
-			'multiple'	=> false,
-			'max_file_uploads' => 1,
-		),
-	)
-);
-
-
-
 /********************* META BOX REGISTERING ***********************/
 
-function ARG_register_meta_boxes()
+function JS_register_meta_boxes()
 {
 	global $meta_boxes;
 
@@ -122,4 +64,4 @@ function ARG_register_meta_boxes()
 		}
 	}
 }
-add_action( 'admin_init', 'ARG_register_meta_boxes' );
+add_action( 'admin_init', 'JS_register_meta_boxes' );

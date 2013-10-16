@@ -1,42 +1,37 @@
 <?php
 
-//Metabox plugin by Rilwis
+/*
+Included classes and plugins
+	- Metabox plugin by Rilwis 4.2.4
+	- Multiple featured images 1.0
+	- SimpleImage framework 2.3
+	- Devin Price theme options 1.6
+	- WP-LESS 1.6
+*/
+
 require_once TEMPLATEPATH . '/lib/meta-box/meta-box.php';
-
-//Multiple featured images
 require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
-
-//Theme options
+require_once TEMPLATEPATH . '/lib/abeautifulsite/simpleImage.php';
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/devinsays-options/' );
 require_once TEMPLATEPATH . '/lib/devinsays-options/options-framework.php';
+require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
 
+/*
+Custom functionality
+	- Image resizer
+	- Custom post types
+	- Custom metaboxes
+	- JS scripts
+	- Shortcodes
+	- Wordpress filter / action tweaks
+	- Header JS variables
+*/
 require_once TEMPLATEPATH . '/php/image_resizer.php';
 require_once TEMPLATEPATH . '/php/post_types.php';
 require_once TEMPLATEPATH . '/php/metaboxes.php';
-require_once TEMPLATEPATH . '/php/scripts.php';
 require_once TEMPLATEPATH . '/php/shortcodes.php';
 require_once TEMPLATEPATH . '/php/wordpress.php';
 require_once TEMPLATEPATH . '/php/header.php';
+require_once TEMPLATEPATH . '/php/utils.php';
 
-///////////////////////////////////////////////////////////////////////////////
-//////////////////////////// EXTRA FUNCTIONS //////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-// utility does it exist function
-function exists($var = null) {
-	return (isset($var) && $var) ? true : false;
-}
-
-//function that gets attachment meta
-function get_attachment( $attachment_id ) {
-
-	$attachment = get_post( $attachment_id );
-	return array(
-		'alt'         => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
-		'caption'     => $attachment->post_excerpt,
-		'description' => $attachment->post_content,
-		'href'        => get_permalink( $attachment->ID ),
-		'src'         => $attachment->guid,
-		'title'       => $attachment->post_title
-	);
-}
+// One off functions

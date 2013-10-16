@@ -10,8 +10,6 @@
  * - Joe Swann
  */
 
-require_once TEMPLATEPATH . '/lib/abeautifulsite/simpleImage.php';
-
 function jsImageResize($new_args = array()) {
 	$default_args = array(
 		'id'          => false,

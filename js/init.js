@@ -3,7 +3,8 @@ var js = js || {
 	_opts : false,
 	setup : function() {
 		js._opts = js_opts;
-		js.utilBrowserTest();
+		js._browser = js.utilBrowserTest();
+		
 		if($('body').hasClass('home')) {
 			js.initHome();
 		}
@@ -14,11 +15,10 @@ var js = js || {
 	utilPreloadImages : function(images, callback) {
 		var image = js._preload_images.shift();
 		if(typeof(image) != 'undefined') {
-			image = image[0];
-			js.utilPreloadImage(image.src, function(){
+			js.utilPreloadImage(image, function(){
 				js.utilPreloadImages(js._preload_images);
-				$image = $('img[data-src="' + image.src + '"]');
-				$image.removeAttr('data-src').attr('src', image.src).animate({opacity : 1},1000);
+				$image = $('img[data-src="' + image + '"]');
+				$image.removeAttr('data-src').attr('src', image).animate({opacity : 1},1000);
 			});
 		} else {
 			js.utilPreloadClear();
@@ -62,6 +62,24 @@ var js = js || {
 		exdate.setDate(exdate.getDate() + exdays);
 		var c_value = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toUTCString());
 		document.cookie = c_name + "=" + c_value;
+	},
+	utilBrowserTest : function() {
+		var N= navigator.appName, ua= navigator.userAgent, tem;
+		var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+		if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+		M= M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+
+		return M;
+	},
+	utilDeviceTest : function() {
+		var device = false;
+		var is_ipad	= ( navigator.userAgent.match(/(iPad)/g) ? true : false );
+		var is_iphone = ( navigator.userAgent.match(/(iPhone)/g) ? true : false );
+
+		if(is_ipad) device = 'ipad';
+		if(is_iphone) device = 'iphone';
+
+		return device;
 	},
 	utilCreateLightbox : function(new_options) {
 		options = {
