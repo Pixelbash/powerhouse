@@ -1,186 +1,32 @@
-/*
+/* MASTER */
 
-The master CSS file
-
-*/
-
-
-
-@wrap: 1170px; 
+@wrap: 980px; 
 @gutter: 10px;
-@bg_colour: #fff;
+@accent: #eee;
   
+@import 'reset.less';
+@import '../fnt/fonts.less';
+@import 'grid.less';
+@import 'helpers.less';
+@import 'css3.less';
+@import 'normalise.less';
 
-
-/* Basic setup */
-* {	-moz-box-sizing: border-box;-webkit-box-sizing: border-box;	box-sizing: border-box;}
-.wrapper(@width:@wrap) { width:@width; margin: 0 auto;}
-.hList {
-	list-style:none;
-	margin:0;
-	padding:0;
-	li {
-		margin:0;
-		padding:0;
-		display:inline-block;
-		*display:inline; 
-	}
-}
-
-.clearfix {
-  *zoom: 1;
-	&:before,
-	&:after {
-	  display: table;
-	  content: "";
-	  line-height: 0;
-	}
-}
-//FF fix
-a:focus {outline: none}
-
-
-/* dynamic properties
-
-.pv(@p,@v) {
-	@p:@v; 
-}
-
-*/
-
-.pv(@p,@v)
-{
-    -:~`";@{p}:@{v}".replace(/'/g,"")`;
-}
-
-
-.fontFace(@font-name: arial) {
-	@font-face {
-		font-family: '@{font-name}';
-		src: url('../fnt/@{font-name}.eot?') format('eot'),
-		url('../fnt/@{font-name}.woff') format('woff'),
-		url('../fnt/@{font-name}.ttf') format('truetype');
-	}
-}
-
-.absPos(@dSide: 0px, @dVert: 0px, @width:10px, @height: 10px, @side: left, @vert: top, @zIndex: 10) {
-	position:absolute;
-	.pv(@side, @dSide);
-	.pv(@vert, @dVert);
-	width:@width;
-	height:@height;
-	z-index:@zIndex;
-}
-
-.borderRadius(@radius: 3px) {
-  border-radius: @radius;
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-}
-
-.transition(@property: all,@duration: 0.2s, @function: linear) {
-	-webkit-transition: @property @duration @function;
-	-moz-transition: @property @duration @function;
-	-ms-transition: @property @duration @function;
-	-o-transition: @property @duration @function;
-	transition: @property @duration @function;
-} 
-
-/* Bootstrap override */
-
-textarea:focus, select:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
-	border-color: fadein(#ccc, 20%);
-	outline: 0;
-	outline: thin dotted 9; 
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border:none;
-	border:1px solid #999;
-}
-select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-	padding:5px 6px;
-	line-height:20px;
-	min-height:30px;
-	.borderRadius(0);
-	border:none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none; 
-	box-shadow: none;
-
-	border:1px solid #ccc;
-	-webkit-appearance:none;
-	font-size:11px;
-	color:#444;
-	letter-spacing:1px;
-}
-
-
-.btn {border:0;box-shadow:0;background:#fff;color:#999;text-shadow:none;padding:5px 15px;
-	border:1px solid #ddd;
-	font-size:11px;
-	line-height:20px;
-	.borderRadius(0);
-	text-transform:uppercase;
-	letter-spacing:1px;
-}
-.btn:hover {background:#ddd;color:#444;border:1px solid #ccc;}
-.btn:active {background:#333;color:#fff;}
-
-/* Grid system */
-.columnConstructor(@percentage, @gutter) {
-	@calcPercentage: (@percentage/12) * 100;
-	float:left;
-	padding:0 @gutter;
-	width:~"@{calcPercentage}%";	
-	&.compact {padding:0}
-}
-
-.gridMake(@gutter : @gutter) {
-	.span1 {.columnConstructor(1,   @gutter)}
-	.span2 {.columnConstructor(2,   @gutter)}
-	.span3 {.columnConstructor(3,   @gutter)}
-	.span4 {.columnConstructor(4,   @gutter)}
-	.span5 {.columnConstructor(5,   @gutter)}
-	.span6 {.columnConstructor(6,   @gutter)}
-	.span7 {.columnConstructor(7,   @gutter)}
-	.span8 {.columnConstructor(8,   @gutter)}
-	.span9 {.columnConstructor(9,   @gutter)}
-	.span10 {.columnConstructor(10, @gutter)}
-	.span11 {.columnConstructor(11, @gutter)}
-	.span12 {.columnConstructor(12, @gutter)}
-}
-
-.gridMax(@gutter : @gutter) {
-	.span1 {.columnConstructor(11,   @gutter)}
-	.span2 {.columnConstructor(12,   @gutter)}
-	.span3 {.columnConstructor(12,   @gutter)}
-	.span4 {.columnConstructor(12,   @gutter)}
-	.span5 {.columnConstructor(12,   @gutter)}
-	.span6 {.columnConstructor(12,   @gutter)}
-	.span7 {.columnConstructor(12,   @gutter)}
-	.span8 {.columnConstructor(12,   @gutter)}
-	.span9 {.columnConstructor(12,   @gutter)}
-	.span10 {.columnConstructor(12, @gutter)}
-	.span11 {.columnConstructor(12, @gutter)}
-	.span12 {.columnConstructor(12, @gutter)}
-}
-
-/* main styles */ 
+/* Main */ 
 .gridMake;
-
-html {height:100%}
-body {font-size:14px;line-height:18px;}
-
-
-@media (max-width: 1240px) {
-
-} 
-
-@media (max-width: 960px) {
-
-}
-
-@media (max-width: 400px) {
-
+html,body{margin:0;padding:0;}
+html {height:100%;}
+body {
+	font-size:12px;
+	line-height:18px;
+	font-family:"Helvetica", "Arial", sans-serif;
+	.apex_newbook;
+	background:#fff;
+	color:#000;
+	max-height:100%;
+	background:url('/img/bg.jpg') center no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+	&.home {
+		background:url('/img/home/bg.jpg') center no-repeat;
+	}
 }

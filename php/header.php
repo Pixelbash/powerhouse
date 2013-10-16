@@ -25,7 +25,6 @@ function js_scripts_method() {
 
 	//enqueue scripts
 	wp_enqueue_script('init', get_bloginfo( 'template_url' ) . '/js/init.js',array(
-		'less',
 		'jquery'
 	));
 } 
