@@ -29,7 +29,7 @@ Custom functionality
 require_once TEMPLATEPATH . '/php/image_resizer.php';
 require_once TEMPLATEPATH . '/php/post_types.php';
 require_once TEMPLATEPATH . '/php/metaboxes.php';
-require_once TEMPLATEPATH . '/php/shortcodes.php';
+require_once TEMPLATEPATH . '/php/optional/shortcodes.php';
 require_once TEMPLATEPATH . '/php/wordpress.php';
 require_once TEMPLATEPATH . '/php/header.php';
 require_once TEMPLATEPATH . '/php/utils.php';
