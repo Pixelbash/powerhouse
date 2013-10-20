@@ -11,7 +11,7 @@ Included classes and plugins
 
 require_once TEMPLATEPATH . '/lib/meta-box/meta-box.php';
 require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
-require_once TEMPLATEPATH . '/lib/abeautifulsite/simpleImage.php';
+require_once TEMPLATEPATH . '/lib/abeautifulsite/SimpleImage.php';
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/devinsays-options/' );
 require_once TEMPLATEPATH . '/lib/devinsays-options/options-framework.php';
 require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
