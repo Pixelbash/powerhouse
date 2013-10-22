@@ -1,11 +1,5 @@
-/*
 .pv(@p,@v) {
-	@p:@v; 
-}*/
-
-.pv(@p,@v)
-{
-    -:~`";@{p}:@{v}".replace(/'/g,"")`;
+	visibility:~"visible;@{p}:@{v}";
 }
 
 .wrapper(@width:@wrap) { width:@width; margin: 0 auto;}
