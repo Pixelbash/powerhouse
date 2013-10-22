@@ -15,7 +15,7 @@ function getOptions() {
 function js_scripts_method() {
 	//jquery switch
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.9/jquery.js');
+    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
     wp_enqueue_script( 'jquery' );
 	//this is for ajax functions
 	wp_localize_script('init', 'ajax_var', array(  
