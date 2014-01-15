@@ -23,7 +23,6 @@ global $meta_boxes;
 
 $meta_boxes = array();
 
-
 $meta_boxes[] = array(
 	'id' => 'attachment',
 	'title' => 'Attachment details',

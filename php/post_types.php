@@ -1,6 +1,5 @@
 <?php
 
-
 add_action( 'init', 'post_types' );
 
 function post_types() {

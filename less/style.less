@@ -3,6 +3,8 @@
 @wrap: 980px; 
 @gutter: 10px;
 @accent: #eee;
+
+@d : @stylesheet_directory_uri;
   
 @import 'reset.less';
 @import '../fnt/fonts.less';
@@ -10,16 +12,5 @@
 @import 'helpers.less';
 @import 'css3.less';
 @import 'normalise.less';
-
-/* Main */ 
-.gridMake;
-html,body{margin:0;padding:0;}
-html {height:100%;}
-body {
-	font-size:12px;
-	line-height:18px;
-	font-family:"Helvetica", "Arial", sans-serif;
-	background:#fff;
-	color:#000;
-	max-height:100%;
-}
+@import 'main.less';
+@import 'responsive.less';

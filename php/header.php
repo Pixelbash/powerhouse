@@ -17,16 +17,19 @@ function js_scripts_method() {
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
     wp_enqueue_script( 'jquery' );
+    
 	//this is for ajax functions
 	wp_localize_script('init', 'ajax_var', array(  
         'url' => admin_url('admin-ajax.php'),  
         'nonce' => wp_create_nonce('ajax-nonce')  
-    )); 
+	),1,true);
 
 	//enqueue scripts
+	wp_enqueue_script('onscreen', get_bloginfo( 'template_url' ) . '/js/onscreen/jquery.onscreen.min.js',array(),1,true);
 	wp_enqueue_script('init', get_bloginfo( 'template_url' ) . '/js/init.js',array(
+		'onscreen',
 		'jquery'
-	));
+	),1,true);
 
 	//enqueue styles
 	wp_enqueue_style( 'main', get_bloginfo( 'template_url' ) . '/less/style.less' );
