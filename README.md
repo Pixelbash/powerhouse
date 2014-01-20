@@ -26,11 +26,12 @@ Then you might want to check this out.
 
 ### Installation
 ----
-1. Download into wp-content/themes folder
-2. Install Timber plugin (the one with 5 stars)
-3. Run bower install to include the latest javascript libraries
-4. Set as your theme in wordpress
-5. Get to it
+1. Install Timber plugin (the one with 5 stars)
+2. cd /wp-content/themes;
+3. git clone --recursive https://github.com/Pixelbash/powerhouse.git;
+4. cd /wp-content/themes/powerhouse;bower install; to include the latest javascript libraries
+5. Set powerhouse as your theme
+6. Get to it!
 
 
 ### Requirements
