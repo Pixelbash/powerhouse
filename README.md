@@ -20,15 +20,22 @@ Some standout features:
 
 ### Todo
 ----
-- Automatically pull bower scripts with RequireJS
-- Hooks to fix submodule plugin scripted paths
+- Automatically include bower scripts with RequireJS
+
+
+### Installation
+----
+1. Download into wp-content/themes folder
+2. Run bower install to include the latest javascript libraries
+3. Set as your theme in wordpress
+4. Get to it
 
 
 ### Requirements
 ----
 - Timber Wordpress Plugin (theming)
+- Bower (installing js libraries)
 - Git   (optional)
-- Bower (optional)
 
 
 ### Recommended Wordpress plugins
