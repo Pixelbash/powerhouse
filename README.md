@@ -27,9 +27,10 @@ Then you might want to check this out.
 ### Installation
 ----
 1. Download into wp-content/themes folder
-2. Run bower install to include the latest javascript libraries
-3. Set as your theme in wordpress
-4. Get to it
+2. Install Timber plugin (the one with 5 stars)
+3. Run bower install to include the latest javascript libraries
+4. Set as your theme in wordpress
+5. Get to it
 
 
 ### Requirements
