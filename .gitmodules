@@ -1,0 +1,15 @@
+[submodule "lib/meta-box"]
+	path = lib/meta-box
+	url = https://github.com/rilwis/meta-box.git
+[submodule "lib/multi-post-thumbnails"]
+	path = lib/multi-post-thumbnails
+	url = https://github.com/voceconnect/multi-post-thumbnails.git
+[submodule "lib/options-framework-theme"]
+	path = lib/options-framework-theme
+	url = https://github.com/devinsays/options-framework-theme.git
+[submodule "lib/SimpleImage"]
+	path = lib/SimpleImage
+	url = https://github.com/claviska/SimpleImage.git
+[submodule "lib/wp-less"]
+	path = lib/wp-less
+	url = https://github.com/oncletom/wp-less.git

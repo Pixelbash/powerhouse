@@ -1,25 +1,51 @@
-Sofresh Theme
-================
+Powerhouse Theme for Wordpress
+===
+Powerhouse is a killer theme for creating websites like a demon with a minimum of fuss.
 
-Sofresh is a highly tuned and constantly updated starting point for getting wordpress themes from fresh start to launch in as short a time as possible. 
+Some standout features:
+- TWIG: Templating courtesy of Timber
+- PHP: SimpleImage (GD) based image resizer with image caching
+- PHP: Automagic php library management using git submodules
+- BOWER: Automagic Javascript library management
+- JS: RequireJS scripting framework
+- JS: All theme options as json in header (for use with scripts)
+- LESS: Powerful framework with a fully customisable grid system
+- LESS: Automatic css compilation and caching
+- WP: Powerful custom post type generator
+- WP: Powerful custom metabox generator
+- WP: Custom pagination generator (optional)
+- WP: Grid system shortcodes (optional)
+- WP: Post view count functions (optional)
 
-Includes among other things:
-- Powerful LESS framework with a fully customisable grid system
-- SimpleImage (GD) based image resizer with cache
-- Simple custom post type generator
-- Simple custom metabox generator
-- All theme options as json in header (for use with scripts)
-- Avoids 'console' errors in browsers that lack a console.
-- Custom pagination generator (optional)
-- Grid system shortcodes (optional)
-- Post view count functions (optional)
 
 Todo
 ---
+- Automatically pull bower scripts with RequireJS
+- Hooks to fix submodule plugin scripted paths
 
-- Find nice small replacement for bootstrap
-- Compilation library for getting scripts and libs
-- Lib w/ pipeline for LESS	
+
+Requirements
+---
+- Timber Wordpress Plugin (theming)
+- Git   (optional)
+- Bower (optional)
+
+
+Recommended Wordpress plugins
+---
+- SEO by Yoast
+- Total Cache
+- Better WP Security
+
+
+21-01-2014
+---
+- Use bower to manage javascript libraries
+- RequireJS for javascript modularity
+- Use Timber for Twig themes
+- Added sub-libraries as git submodules for easy version management
+- Uses wp-less framework
+- Changed name to powerhouse
 
 	
 17-09-13

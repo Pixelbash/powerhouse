@@ -1,0 +1,39 @@
+{% include 'html-header.twig' %}
+{% block head %}
+{% endblock %}
+</head>
+<body class="{{ body_class }} {% block body_classes %}{% endblock %}">
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header>
+        {% block header %}
+        {% endblock %}
+        <nav class="nav-menu main-menu" role="main-menu">
+            <ul>
+                {% for item in main_menu.get_items %}
+                    {% if loop.first == false %}<li>/</li>{% endif %}
+                    <li class="nav-main-item {{item.class}} {{item.current ? 'current-page'}}"><a class="nav-main-link" href="{{item.get_path}}">{{item.title}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content-wrap {% block content_wrap_classes %}{% endblock %}">
+        <div class="content-wrap-t">
+            <div class="content-wrap-r">
+                <div class="content-wrap-c">
+                    {% block content %}
+                        Sorry, no content
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.twig' %}
+    {{ function('wp_footer') }}
+</body>
+</html>
