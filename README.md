@@ -1,8 +1,9 @@
 ## Powerhouse Theme for Wordpress
 ===
-Powerhouse is a killer theme for creating websites like a demon with a minimum of fuss.
+Do you like Twig templating? Less? RequireJS? Bower? Making powerful wordpress websites really really quickly? Not having to have an ice cold shower when it's time to maintain an old site of yours?
 
-Some standout features:
+Then you might want to check this out.
+
 - Twig Templating courtesy of Timber
 - SimpleImage (GD) based image resizer with image caching
 - Automagic php library management using git submodules
