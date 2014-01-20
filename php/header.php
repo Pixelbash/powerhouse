@@ -5,7 +5,7 @@ function getOptions() {
 	$options = array(
 		'burl' => get_bloginfo('url'),
 		'turl' => get_bloginfo('template_url'),
-		'opts' => get_option('optionsframework_sofresh')
+		'opts' => get_option('optionsframework_powerhouse')
 	);
 
 	return stripslashes(json_encode($options));
@@ -25,9 +25,10 @@ function js_scripts_method() {
 	),1,true);
 
 	//enqueue scripts
-	wp_enqueue_script('onscreen', get_bloginfo( 'template_url' ) . '/js/onscreen/jquery.onscreen.min.js',array(),1,true);
+	//note: requireJS can look after this now
+	//wp_enqueue_script('onscreen', get_bloginfo( 'template_url' ) . '/js/onscreen/jquery.onscreen.min.js',array(),1,true);
 	wp_enqueue_script('init', get_bloginfo( 'template_url' ) . '/js/init.js',array(
-		'onscreen',
+		/*'onscreen',*/
 		'jquery'
 	),1,true);
 
