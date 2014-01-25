@@ -1,17 +1,23 @@
 var js = {};
+require.config({
+    paths: {
+        'jquery': '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min'
+    }
+});
+
 require([
     'include/main',
     'include/pages',
     'include/handlers',
     'include/update',
     'include/utils',
-    'modernizr/modernizr',
-    'jquery/jquery'
-], function(main, pages, handlers, update, utils, modernizr, jQuery) {
+    'modernizr/modernizr'
+], function(main, pages, handlers, update, utils, modernizr) {
 
     // much slick
     // very quick
     // wow
+
 
     $.extend(true, js, main);
     $.extend(true, js, pages);

@@ -13,25 +13,19 @@
         <nav class="nav-menu main-menu" role="main-menu">
             <ul>
                 {% for item in main_menu.get_items %}
-                    {% if loop.first == false %}<li>/</li>{% endif %}
-                    <li class="nav-main-item {{item.class}} {{item.current ? 'current-page'}}"><a class="nav-main-link" href="{{item.get_path}}">{{item.title}}</a>
+                    <li class="nav-main-item {{item.class}} {{item.current ? 'current-page'}}">
+                        <a class="nav-main-link" href="{{item.get_path}}">{{item.title}}</a>
                     </li>
                 {% endfor %}
             </ul>
         </nav>
     </header>
 
+    {% block content %}
     <section class="content-wrap {% block content_wrap_classes %}{% endblock %}">
-        <div class="content-wrap-t">
-            <div class="content-wrap-r">
-                <div class="content-wrap-c">
-                    {% block content %}
-                        Sorry, no content
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
+        Sorry, no content
     </section>
+    {% endblock %}
 
     {% include 'footer.twig' %}
     {{ function('wp_footer') }}

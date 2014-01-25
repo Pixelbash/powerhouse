@@ -106,7 +106,8 @@ define(function() {
                     border: 'none',
                     background: '#fff'
                 },
-                callback: false
+                callback: false,
+                close_callback: false
             };
 
             $.extend(true, options, new_options);
@@ -128,23 +129,23 @@ define(function() {
 
             $('.lightbox-cell').on('click', function(e) {
                 if (e.target == this) {
-                    js.utilRemoveLightbox();
+                    js.utilRemoveLightbox(close_callback);
                 }
             });
 
             $('body').keyup(function(e) {
                 if (e.which == 27) {
-                    js.utilRemoveLightbox();
+                    js.utilRemoveLightbox(close_callback);
                 }
             });
 
             if (typeof(options.callback) === 'function') options.callback($lightbox_wrap);
         },
-        utilRemoveLightbox: function() {
+        utilRemoveLightbox: function(callback) {
             $('.lightbox_wrap').fadeOut(1000, function() {
                 $('.lightbox_wrap').remove();
-                js._handle_lightbox_gallery_size = false;
             });
+            if (typeof(options.callback) === 'function') options.callback();
         }
     }
 

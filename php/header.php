@@ -24,14 +24,6 @@ function js_scripts_method() {
         'nonce' => wp_create_nonce('ajax-nonce')  
 	),1,true);
 
-	//enqueue scripts
-	//note: requireJS can look after this now
-	//wp_enqueue_script('onscreen', get_bloginfo( 'template_url' ) . '/js/onscreen/jquery.onscreen.min.js',array(),1,true);
-	wp_enqueue_script('init', get_bloginfo( 'template_url' ) . '/js/init.js',array(
-		/*'onscreen',*/
-		'jquery'
-	),1,true);
-
 	//enqueue styles
 	wp_enqueue_style( 'main', get_bloginfo( 'template_url' ) . '/less/style.less' );
 } 

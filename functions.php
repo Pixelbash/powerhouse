@@ -9,6 +9,11 @@ Included classes and plugins
 	- WP-LESS 1.6
 */
 
+//set paths for frameworks
+define( 'RWMB_URL', get_template_directory_uri() . '/lib/meta-box/' );
+define( 'RWMB_DIR', TEMPLATEPATH . '/lib/meta-box/' );
+define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/options-framework-theme/inc/' );
+
 require_once TEMPLATEPATH . '/lib/meta-box/meta-box.php';
 require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
 require_once TEMPLATEPATH . '/lib/SimpleImage/src/abeautifulsite/SimpleImage.php';
