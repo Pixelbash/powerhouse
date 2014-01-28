@@ -41,7 +41,7 @@ function post_types() {
 
     //support for categories
     if(isset($post_type['category']) && $post_type['category'] == true) {
-      register_taxonomy($single_lcase, $single_lcase, 
+      register_taxonomy($plural_lcase, $single_lcase, 
         array(
           'label' => $plural_ucase, 
           'public' => true,
