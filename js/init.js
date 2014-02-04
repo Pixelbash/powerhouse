@@ -11,8 +11,9 @@ require([
     'include/handlers',
     'include/update',
     'include/utils',
-    'modernizr/modernizr'
-], function(main, pages, handlers, update, utils, modernizr) {
+    'modernizr/modernizr',
+    'jquery'
+], function(main, pages, handlers, update, utils, modernizr, jQuery) {
 
     // much slick
     // very quick
