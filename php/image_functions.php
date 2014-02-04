@@ -1,5 +1,34 @@
 <?php
 
+function getImages($image_ids, $x_size, $y_size, $resize = 'adaptive_resize') {
+    $images = array();
+    $j = 0;
+    if(!empty($image_ids)) {
+        foreach ( $image_ids as $id ) {
+            $attmeta = get_attachment($id);
+            $image   = jsImageResize( array(
+                'id'     => $id,
+                'width'  => $x_size,
+                'height' => $y_size,
+                'resize' => $resize
+            ) ); 
+
+            $images[$j] = array(
+                'id'     => $j,
+                'href'   => $image['url'],
+                'width'  => $image['width'],
+                'height' => $image['height'],
+                'meta'   => $attmeta
+            );
+            $j++;
+        }
+    } else {
+        $images = false;
+    }
+
+    return $images;
+}
+
 function sepiafy( $attach_id = null, $img_url = null, $width, $height, $crop = false ) {
     $image_src = wp_get_attachment_image_src( $attach_id, 'full' );
     $file_path = get_attached_file( $attach_id );
