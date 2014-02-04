@@ -24,6 +24,7 @@ require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
 /*
 Custom functionality
 	- Image resizer
+	- Image functions
 	- Custom post types
 	- Custom metaboxes
 	- JS scripts
@@ -32,6 +33,7 @@ Custom functionality
 	- Header JS variables
 */
 require_once TEMPLATEPATH . '/php/image_resizer.php';
+require_once TEMPLATEPATH . '/php/image_functions.php';
 require_once TEMPLATEPATH . '/php/post_types.php';
 require_once TEMPLATEPATH . '/php/metaboxes.php';
 require_once TEMPLATEPATH . '/php/optional/shortcodes.php';
