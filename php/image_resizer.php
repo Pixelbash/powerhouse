@@ -16,7 +16,7 @@ function jsImageResize($new_args = array()) {
 		'url'         => false,
 		'width'       => false,
 		'height'      => false,
-		'resize'      => 'fit_to_width',
+		'resize'      => 'adaptive_resize',
 		'destination' => '/cache/'
 	);
 
