@@ -1,6 +1,16 @@
 <?php
 
-function getImages($image_ids, $x_size, $y_size, $resize = 'adaptive_resize') {
+function getImages($options = array()) {
+    $defaults = array(
+        'image_ids' => array(), 
+        'x_size' => 100, 
+        'y_size' => 100, 
+        'resize' => 'adaptive_resize'
+    );
+
+    $settings = array_merge($defaults, $options);
+    $image_ids = $settings['image_ids'];
+
     $images = array();
     $j = 0;
     if(!empty($image_ids)) {
@@ -8,9 +18,9 @@ function getImages($image_ids, $x_size, $y_size, $resize = 'adaptive_resize') {
             $attmeta = get_attachment($id);
             $image   = jsImageResize( array(
                 'id'     => $id,
-                'width'  => $x_size,
-                'height' => $y_size,
-                'resize' => $resize
+                'width'  => $settings['x_size'],
+                'height' => $settings['y_size'],
+                'resize' => $settings['resize']
             ) ); 
 
             $images[$j] = array(
