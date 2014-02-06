@@ -41,4 +41,14 @@ require_once TEMPLATEPATH . '/php/wordpress.php';
 require_once TEMPLATEPATH . '/php/header.php';
 require_once TEMPLATEPATH . '/php/utils.php';
 
+
+//Add to timber context
+add_filter('timber_context', 'add_to_context');
+function add_to_context($data){
+	$data['options'] = get_option('js_options');
+	$data['year'] = date('Y');
+	return $data;
+}
+
 // One off functions
+
