@@ -1,118 +1,135 @@
 <?php
+//include_once TEMPLATEPATH . 'lib/metabox/meta-box-3.2.2.class.php';
+//include TEMPLATEPATH . 'lib/metabox/meta-box-usage.php';
 
-function getPaginatedImages($options = array()) {
-    $results = false;
-    $defaults = array(
-        'ids' => array(),
-        'page' => 1,
-        'page_size' => 50,
-        'images' => array(
-            'x_size' => 100, 
-            'y_size' => 100, 
-            'resize' => 'adaptive_resize'
-        )
-    );
 
-    $settings = array_merge($defaults, $options);
+/**
+ * Registering meta boxes
+ *
+ * All the definitions of meta boxes are listed below with comments.
+ * Please read them CAREFULLY.
+ *
+ * You also should read the changelog to know what has been changed before updating.
+ *
+ * For more information, please visit:
+ * @link http://www.deluxeblogtips.com/meta-box/docs/define-meta-boxes
+ */
 
-    //process image_ids to get
-    $ids    = $settings['ids'];
-    $page   = $settings['page'] - 1;
-    $size   = $settings['page_size'];
-    $length = $settings['page_size'];
-    $offset = $page * $size;
+/********************* META BOX DEFINITIONS ***********************/
 
-    if(!empty($ids)) {
-      $image_ids = array_slice($ids, $offset, $length);
+$prefix = 'JS_';
 
-      $results = array(
-          'page'   => $page,
-          'offset' => $offset,
-          'size'   => $size,
-          'count'  => sizeof($image_ids),
-          'images' => getImages(array(
-              'image_ids' => $image_ids, 
-              'x_size' => $settings['images']['x_size'], 
-              'y_size' => $settings['images']['y_size'], 
-              'resize' => $settings['images']['resize'],
-          ))
-      );
-    }
+global $meta_boxes;
 
-    return $results;
-}
+$meta_boxes = array();
 
-function getImages($options = array()) {
-    $defaults = array(
-        'image_ids' => array(), 
-        'x_size' => 100, 
-        'y_size' => 100, 
-        'resize' => 'adaptive_resize'
-    );
+//about page
+$meta_boxes[] = array(
+    'title'  => __( 'About Details', 'rwmb' ),
+    'pages'  => array('page'),
+    'fields' => array(
+        array(
+            'name'      => 'CV PDF',
+            'id'        => $prefix . 'pdf',
+            'desc'      => 'PDF Attachment',
+            'type'      => 'file_advanced',
+            'multiple'  => false,
+            'max_file_uploads' => 1,
+        ),
+    ),
+    'only_on'    => array(
+        'template' => array( 'p-about.php' )
+    ),
+);
 
-    $settings = array_merge($defaults, $options);
-    $image_ids = $settings['image_ids'];
 
-    $images = array();
-    $j = 0;
-    if(!empty($image_ids)) {
-        foreach ( $image_ids as $id ) {
-            $attmeta = get_attachment($id);
-            $image   = jsImageResize( array(
-                'id'     => $id,
-                'width'  => $settings['x_size'],
-                'height' => $settings['y_size'],
-                'resize' => $settings['resize']
-            ) ); 
+/********************* META BOX REGISTERING ***********************/
 
-            $images[$j] = array(
-                'id'     => $j,
-                'href'   => $image['url'],
-                'width'  => $image['width'],
-                'height' => $image['height'],
-                'meta'   => $attmeta
-            );
-            $j++;
+/**
+ * Register meta boxes
+ *
+ * @return void
+ */
+function rw_register_meta_boxes()
+{
+        global $meta_boxes;
+
+        // Make sure there's no errors when the plugin is deactivated or during upgrade
+        if ( class_exists( 'RW_Meta_Box' ) ) {
+                foreach ( $meta_boxes as $meta_box ) {
+                        if ( isset( $meta_box['only_on'] ) && ! rw_maybe_include( $meta_box['only_on'] ) ) {
+                                continue;
+                        }
+
+                        new RW_Meta_Box( $meta_box );
+                }
         }
-    } else {
-        $images = false;
-    }
-
-    return $images;
 }
 
-function sepiafy( $attach_id = null, $img_url = null, $width, $height, $crop = false ) {
-    $image_src = wp_get_attachment_image_src( $attach_id, 'full' );
-    $file_path = get_attached_file( $attach_id );
-    $file_info = pathinfo( $file_path );
+add_action( 'admin_init', 'rw_register_meta_boxes' );
 
-    $ext = $file_info['extension'];
-    $extension = ".{$ext}";
+/**
+ * Check if meta boxes is included
+ *
+ * @return bool
+ */
+function rw_maybe_include( $conditions ) {
+        // Include in back-end only
+        if ( ! defined( 'WP_ADMIN' ) || ! WP_ADMIN ) {
+                return false;
+        }
 
-    $crop_path = "{$file_info['dirname']}/{$file_info['filename']}-{$width}x{$height}{$extension}";
-    $sepia_path = "{$file_info['dirname']}/sepia-{$file_info['filename']}-{$width}x{$height}{$extension}";
+        // Always include for ajax
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+                return true;
+        }
 
-    $crop_url = str_replace( basename( $image_src[0] ), basename( $crop_path ), $image_src[0] );
-    $sepia_url = str_replace( basename( $image_src[0] ), basename( $sepia_path ), $image_src[0] );
+        if ( isset( $_GET['post'] ) ) {
+                $post_id = $_GET['post'];
+        }
+        elseif ( isset( $_POST['post_ID'] ) ) {
+                $post_id = $_POST['post_ID'];
+        }
+        else {
+                $post_id = false;
+        }
 
-    if ( !file_exists( $sepia_path ) ) {
-        js_resize( $attach_id , '', $width, $height, $crop );
+        $post_id = (int) $post_id;
+        $post    = get_post( $post_id );
 
-        $img = imagecreatefromjpeg($crop_path);
-        imagefilter($img,IMG_FILTER_GRAYSCALE);
-        imagefilter($img,IMG_FILTER_COLORIZE,14,18,0);
-        imagefilter($img,IMG_FILTER_CONTRAST, 10);
-        imagefilter($img,IMG_FILTER_BRIGHTNESS, 20);
-        imagejpeg($img,$sepia_path);
-        imagedestroy($img); 
+        foreach ( $conditions as $cond => $v ) {
+                // Catch non-arrays too
+                if ( ! is_array( $v ) ) {
+                        $v = array( $v );
+                }
 
-    }
-    
-    $sepia_image = array (
-        'url' => $sepia_url,
-        'width' => $width,
-        'height' => $height
-    );
+                switch ( $cond ) {
+                        case 'id':
+                                if ( in_array( $post_id, $v ) ) {
+                                        return true;
+                                }
+                        break;
+                        case 'parent':
+                                $post_parent = $post->post_parent;
+                                if ( in_array( $post_parent, $v ) ) {
+                                        return true;
+                                }
+                        break;
+                        case 'slug':
+                                $post_slug = $post->post_name;
+                                if ( in_array( $post_slug, $v ) ) {
+                                        return true;
+                                }
+                        break;
+                        case 'template':
+                                $template = get_post_meta( $post_id, '_wp_page_template', true );
+                                if ( in_array( $template, $v ) ) {
+                                        return true;
+                                }
+                        break;
+                }
+        }
 
-    return $sepia_image;
+        // If no condition matched
+        return false;
 }
