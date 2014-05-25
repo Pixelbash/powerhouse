@@ -1,0 +1,36 @@
+
+.lightbox-wrap {
+    .lightbox-box {
+        .gallery-wrap {
+            .close {
+                position:fixed;
+                top:20px;
+                right:20px;
+                width:22px;
+                height:22px;
+                cursor:pointer;
+                background:url('@{d}/img/icons/close.png')center no-repeat;
+
+            }
+            .bx-next,
+            .bx-prev {
+                .absPos(auto,45%,32px,59px);
+                text-indent:-9999px;
+                cursor:pointer;
+                &:hover {
+                  border:none;
+                }
+            }
+            .bx-next {
+                left:auto;
+                right:-50px;
+                background:url('@{d}/img/icons/lightbox-arrows.png') center right no-repeat;
+            }
+            .bx-prev {
+                left:-50px;
+                right:auto;
+                background:url('@{d}/img/icons/lightbox-arrows.png') center left no-repeat;
+            }
+        }
+    }
+}
