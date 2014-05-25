@@ -49,6 +49,19 @@ Then you might want to check this out.
 - Better WP Security
 
 
+### 26-05-2014
+----
+- Replaced LESS structure with something more organised
+- Moved JS libraries into separate sub folder
+- Added social icons
+- Added a paginated image gallery function
+- Added an ajax example
+- Added an example of featured image validation
+- Added Page specific metaboxes
+- Tweaked requireJS framework
+- Tweaked default post settings
+
+
 ### 21-01-2014
 ----
 - Use bower to manage javascript libraries
