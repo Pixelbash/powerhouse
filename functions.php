@@ -17,7 +17,6 @@ define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/opti
 require_once TEMPLATEPATH . '/lib/meta-box/meta-box.php';
 require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
 require_once TEMPLATEPATH . '/lib/SimpleImage/src/abeautifulsite/SimpleImage.php';
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/options-framework-theme/inc/' );
 require_once TEMPLATEPATH . '/lib/options-framework-theme/inc/options-framework.php';
 require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
 
@@ -41,14 +40,27 @@ require_once TEMPLATEPATH . '/php/wordpress.php';
 require_once TEMPLATEPATH . '/php/header.php';
 require_once TEMPLATEPATH . '/php/utils.php';
 
-
-//Add to timber context
-add_filter('timber_context', 'add_to_context');
-function add_to_context($data){
-	$data['options'] = get_option('js_options');
-	$data['year'] = date('Y');
-	return $data;
-}
+// Basic stuff
+add_theme_support( 'post-thumbnails' ); 
 
 // One off functions
+add_filter('timber_context', 'add_to_context');
+function add_to_context($data){
+  $data['options'] = get_option('js_options');
+  $data['year']    = date('Y');
+  $data['is_home'] = is_home();
+  
+  return $data;
+}
 
+//prevent posting a project without a featured image
+add_action( 'pre_post_update', 'req_featured_image' );
+
+function req_featured_image() {
+    global $post;
+
+    //featured image check
+    if( get_post_type($post->ID) == 'project' && get_post_thumbnail_id($post->ID) === '' ) {
+        wp_die( 'This post type requires a featured image. Please click the back button on your browser to set one.' );
+    }
+}

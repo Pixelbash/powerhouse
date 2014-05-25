@@ -1,5 +1,4 @@
  <?php 
-$templates = array('index.twig');
 $context   = Timber::get_context();
 
 $context['options'] = get_option('js_options');
