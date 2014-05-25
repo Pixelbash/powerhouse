@@ -5,20 +5,20 @@ require.config({
     }
 });
 
-require([
-    'include/main',
-    'include/pages',
-    'include/handlers',
-    'include/update',
-    'include/utils',
-    'modernizr/modernizr',
-    'jquery'
-], function(main, pages, handlers, update, utils, modernizr, jQuery) {
+require(['jquery'], function(jQuery) { 
+  // now we have jquery
+  require([
+      'include/main',
+      'include/pages',
+      'include/handlers',
+      'include/update',
+      'include/utils',
+      'lib/modernizr/modernizr',
+  ], function(main, pages, handlers, update, utils, modernizr) {
 
     // much slick
     // very quick
     // wow
-
 
     $.extend(true, js, main);
     $.extend(true, js, pages);
@@ -27,4 +27,5 @@ require([
     $.extend(true, js, utils);
 
     js.setup();
+  });
 });

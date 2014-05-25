@@ -27,18 +27,19 @@ Then you might want to check this out.
 ### Installation
 ----
 1. Install Timber plugin (the one with 5 stars)
-2. cd /wp-content/themes;
+2. cd path/to/wordpress/wp-content/themes;
 3. git clone --recursive https://github.com/Pixelbash/powerhouse.git;
-4. cd /wp-content/themes/powerhouse;bower install; to include the latest javascript libraries
-5. Set powerhouse as your theme
-6. Get to it!
+4. cd powerhouse;
+5. bower install; # To include the latest javascript libraries
+6. Set powerhouse as your theme
+7. Get to it!
 
 
 ### Requirements
 ----
-- Timber Wordpress Plugin (theming)
-- Bower (installing js libraries)
-- Git   (optional)
+- Timber Wordpress Plugin (twig templates)
+- Bower (js dependency management)
+- Git   (repository management)
 
 
 ### Recommended Wordpress plugins
