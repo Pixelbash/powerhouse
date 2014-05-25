@@ -10,7 +10,13 @@
     <title>{{wp_title}}</title>
     <meta name="viewport" content="initial-scale=0.7"> 
     <link rel="shortcut icon" href="{{ template_uri }}/favicon.ico">
+
+    <script type="text/javascript">
+      var require = {
+        priority: ['jquery/jquery.js']
+      };
+    </script>
     <script type="text/javascript">/* <![CDATA[ */var js_opts = {{ function('getOptions') }} /* ]]> */</script>
-    <script type="text/javascript" data-main="{{ template_uri }}/js/init" src="{{ template_uri }}/js/requirejs/require.js"></script>
+    <script type="text/javascript" data-main="{{ template_uri }}/js/init" src="{{ template_uri }}/js/lib/requirejs/require.js"></script>
 
     {{function('wp_head')}}
