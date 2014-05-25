@@ -1,10 +1,24 @@
 define(function() {
     var exports = {
+        utilGetPosts: function(opts) {
+            $.ajax({
+                url: js._opts.burl + "/wp-admin/admin-ajax.php",
+                type: 'POST',
+                data: opts.data,
+                dataType: 'json',
+                success: function(result) {
+                    if (typeof(opts.callback) !== 'undefined') opts.callback(result)
+                }
+            });
+        },
         utilPreloadImages: function(images, callback) {
+            if (typeof(js._preload_images) == 'undefined') js._preload_images = images;
+            if (typeof(callback) == 'undefined') callback = false;
+
             var image = js._preload_images.shift();
             if (typeof(image) != 'undefined') {
                 js.utilPreloadImage(image, function() {
-                    js.utilPreloadImages(js._preload_images);
+                    js.utilPreloadImages(js._preload_images, callback);
                     $image = $('img[data-src="' + image + '"]');
                     $image.removeAttr('data-src').attr('src', image).animate({
                         opacity: 1
@@ -12,17 +26,28 @@ define(function() {
                 });
             } else {
                 js.utilPreloadClear();
-                if (typeof(callback) != 'undefined') callback();
+                if (callback) callback();
             }
         },
         utilPreloadImage: function(src, callback) {
             $preload = $('#preload');
             if ($('#preload').size() < 1) $preload = $('<div id="preload" />').prependTo('body');
-            $preload.append('<img src="' + src + '"  style="display:none" />');
+            src = src.replace(/\"/g, ' ')
+
+            $preload.append('<img src="' + src + '"  style="display:none;" />');
             $preload.find(' img[src="' + src + '"]').load(function(e) {
                 if (typeof(callback) == 'function') callback();
             });
 
+        },
+        utilPreloadClear: function() {
+            js._preload_images = [];
+            $('#preload img').remove();
+        },
+        utilGetBackgroundImage: function($el) {
+            var image = $el.css('background-image');
+
+            return image.slice(4, -1);
         },
         utilObjectSize: function(obj) {
             var size = 0,
@@ -31,6 +56,11 @@ define(function() {
                 if (obj.hasOwnProperty(key)) size++;
             }
             return size;
+        },
+        utilScrollToEl: function($el) {
+            $('html, body').animate({
+                scrollTop: $el.offset().top + 5
+            }, 500);
         },
         utilGetCookie: function(c_name) {
             var i, x, y, ARRcookies = document.cookie.split(";");
@@ -106,8 +136,7 @@ define(function() {
                     border: 'none',
                     background: '#fff'
                 },
-                callback: false,
-                close_callback: false
+                callback: false
             };
 
             $.extend(true, options, new_options);
@@ -129,23 +158,23 @@ define(function() {
 
             $('.lightbox-cell').on('click', function(e) {
                 if (e.target == this) {
-                    js.utilRemoveLightbox(close_callback);
+                    js.utilRemoveLightbox();
                 }
             });
 
             $('body').keyup(function(e) {
                 if (e.which == 27) {
-                    js.utilRemoveLightbox(close_callback);
+                    js.utilRemoveLightbox();
                 }
             });
 
             if (typeof(options.callback) === 'function') options.callback($lightbox_wrap);
         },
-        utilRemoveLightbox: function(callback) {
-            $('.lightbox_wrap').fadeOut(1000, function() {
-                $('.lightbox_wrap').remove();
+        utilRemoveLightbox: function() {
+            $('.lightbox-wrap').fadeOut(1000, function() {
+                $('.lightbox-wrap').remove();
+                js._handle_lightbox_gallery_size = false;
             });
-            if (typeof(options.callback) === 'function') options.callback();
         }
     }
 

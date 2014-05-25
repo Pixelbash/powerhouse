@@ -1,10 +1,11 @@
 define(function() {
     var exports = {
-        handlerPageLoad: function() {
-            js._window.bind('load', function() {
-                console.log('page loaded');
+        handlerScreenSize: function() {
+            js.updateScreenSize();
+            js._window.bind("load resize", function() {
+                js.updateScreenSize();
             });
-        }
+        },
     }
 
     return exports;

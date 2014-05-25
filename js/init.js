@@ -10,12 +10,11 @@ require(['jquery'], function(jQuery) {
   // now we have jquery
   require([
       'include/main',
-      'include/pages',
       'include/handlers',
       'include/update',
       'include/utils',
       'lib/modernizr/modernizr',
-  ], function(main, pages, handlers, update, utils, modernizr) {
+  ], function(main, handlers, update, utils, modernizr) {
 
     // much slick
     // very quick
