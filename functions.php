@@ -1,12 +1,15 @@
 <?php
 
+date_default_timezone_set('Pacific/Auckland');
+
 /*
 Included classes and plugins
-	- Metabox plugin by Rilwis 4.2.4
-	- Multiple featured images 1.0
-	- SimpleImage framework 2.3
-	- Devin Price theme options 1.6
-	- WP-LESS 1.6
+  - Metabox plugin by Rilwis 4.2.4
+  - Multiple featured images 1.0
+  - SimpleImage framework 2.3
+  - Devin Price theme options 1.6
+  - WP-LESS 1.6
+  - Pluralizer from Laravel
 */
 
 //set paths for frameworks
@@ -20,47 +23,29 @@ require_once TEMPLATEPATH . '/lib/SimpleImage/src/abeautifulsite/SimpleImage.php
 require_once TEMPLATEPATH . '/lib/options-framework-theme/inc/options-framework.php';
 require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
 
-/*
-Custom functionality
-	- Image resizer
-	- Image functions
-	- Custom post types
-	- Custom metaboxes
-	- JS scripts
-	- Shortcodes
-	- Wordpress filter / action tweaks
-	- Header JS variables
-*/
-require_once TEMPLATEPATH . '/php/image_resizer.php';
-require_once TEMPLATEPATH . '/php/image_functions.php';
+//utilities
+require_once TEMPLATEPATH . '/php/utils/pluralizer.php';
+require_once TEMPLATEPATH . '/php/utils/post_types.php';
+require_once TEMPLATEPATH . '/php/utils/image_resizer.php';
+require_once TEMPLATEPATH . '/php/utils/image_functions.php';
+require_once TEMPLATEPATH . '/php/utils/header.php';
+require_once TEMPLATEPATH . '/php/utils/general.php';
+require_once TEMPLATEPATH . '/php/utils/form.php';
+
+//forms
+//require_once TEMPLATEPATH . '/php/forms/register.php';
+
+//optional
+//require_once TEMPLATEPATH . '/php/optional/shortcodes.php';
+//require_once TEMPLATEPATH . '/php/optional/comments.php';
+//require_once TEMPLATEPATH . '/php/optional/most_viewed.php';
+
+//post types
+//require_once TEMPLATEPATH . '/php/helpers/testimonial.php';
+
+//site specific
 require_once TEMPLATEPATH . '/php/post_types.php';
 require_once TEMPLATEPATH . '/php/metaboxes.php';
-require_once TEMPLATEPATH . '/php/optional/shortcodes.php';
 require_once TEMPLATEPATH . '/php/wordpress.php';
-require_once TEMPLATEPATH . '/php/header.php';
-require_once TEMPLATEPATH . '/php/utils.php';
-
-// Basic stuff
-add_theme_support( 'post-thumbnails' ); 
-
-// One off functions
-add_filter('timber_context', 'add_to_context');
-function add_to_context($data){
-  $data['options'] = get_option('js_options');
-  $data['year']    = date('Y');
-  $data['is_home'] = is_home();
-  
-  return $data;
-}
-
-//prevent posting a project without a featured image
-add_action( 'pre_post_update', 'req_featured_image' );
-
-function req_featured_image() {
-    global $post;
-
-    //featured image check
-    if( get_post_type($post->ID) == 'project' && get_post_thumbnail_id($post->ID) === '' ) {
-        wp_die( 'This post type requires a featured image. Please click the back button on your browser to set one.' );
-    }
-}
+require_once TEMPLATEPATH . '/php/timber.php';
+require_once TEMPLATEPATH . '/php/menu.php';

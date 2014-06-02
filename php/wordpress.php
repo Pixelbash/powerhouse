@@ -25,6 +25,18 @@ global $post;
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+
+//prevent posting a project without a featured image
+add_action( 'pre_post_update', 'require_featured_image' );
+function require_featured_image() {
+    global $post;
+
+    //featured image check
+    if( get_post_type($post->ID) == 'project' && get_post_thumbnail_id($post->ID) === '' ) {
+        wp_die( 'This post type requires a featured image. Please click the back button on your browser to set one.' );
+    }
+}
+
 //Widgets
 function powerhouse_widgets_init() {
 	/*

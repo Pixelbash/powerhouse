@@ -1,4 +1,4 @@
-{% include 'html-header.twig' %}
+{% include 'common/html-header.twig' %}
 {% block head %}
 {% endblock %}
 </head>
@@ -7,18 +7,8 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <header>
-        {% block header %}
-        {% endblock %}
-        <nav class="nav-menu main-menu" role="main-menu">
-            <ul>
-                {% for item in main_menu.get_items %}
-                    <li class="nav-main-item {{item.class}} {{item.current ? 'current-page'}}">
-                        <a class="nav-main-link" href="{{item.get_path}}">{{item.title}}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
+    <header class="main">
+      <div class="logo"><a href="/"><img src="{{ template_uri }}/img/logo.png" alt=""></a></div>
     </header>
 
     {% block content %}
@@ -27,7 +17,7 @@
     </section>
     {% endblock %}
 
-    {% include 'footer.twig' %}
+    {% include 'common/footer.twig' %}
     {{ function('wp_footer') }}
 </body>
 </html>
