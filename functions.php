@@ -13,15 +13,15 @@ Included classes and plugins
 */
 
 //set paths for frameworks
-define( 'RWMB_URL', get_template_directory_uri() . '/lib/meta-box/' );
-define( 'RWMB_DIR', TEMPLATEPATH . '/lib/meta-box/' );
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/lib/options-framework-theme/inc/' );
+define( 'RWMB_URL', get_template_directory_uri() . '/php/lib/meta-box/' );
+define( 'RWMB_DIR', TEMPLATEPATH . '/php/lib/meta-box/' );
+define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/php/lib/options-framework-theme/inc/' );
 
-require_once TEMPLATEPATH . '/lib/meta-box/meta-box.php';
-require_once TEMPLATEPATH . '/lib/multi-post-thumbnails/multi-post-thumbnails.php';
-require_once TEMPLATEPATH . '/lib/SimpleImage/src/abeautifulsite/SimpleImage.php';
-require_once TEMPLATEPATH . '/lib/options-framework-theme/inc/options-framework.php';
-require_once TEMPLATEPATH . '/lib/wp-less/bootstrap-for-theme.php';
+require_once TEMPLATEPATH . '/php/lib/meta-box/meta-box.php';
+require_once TEMPLATEPATH . '/php/lib/multi-post-thumbnails/multi-post-thumbnails.php';
+require_once TEMPLATEPATH . '/php/lib/SimpleImage/src/abeautifulsite/SimpleImage.php';
+require_once TEMPLATEPATH . '/php/lib/options-framework-theme/inc/options-framework.php';
+require_once TEMPLATEPATH . '/php/lib/wp-less/bootstrap-for-theme.php';
 
 //utilities
 require_once TEMPLATEPATH . '/php/utils/pluralizer.php';
