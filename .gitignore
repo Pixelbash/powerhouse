@@ -1,3 +1,5 @@
-php/lib/*
+js/*
+!js/include
+!js/init.js
+lib/*
 cache/*
-js/lib/*
