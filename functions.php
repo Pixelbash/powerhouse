@@ -19,7 +19,7 @@ define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/php/lib/
 
 require_once TEMPLATEPATH . '/php/lib/meta-box/meta-box.php';
 require_once TEMPLATEPATH . '/php/lib/multi-post-thumbnails/multi-post-thumbnails.php';
-require_once TEMPLATEPATH . '/php/lib/SimpleImage/src/abeautifulsite/SimpleImage.php';
+require_once TEMPLATEPATH . '/php/lib/simple-image/src/abeautifulsite/SimpleImage.php';
 require_once TEMPLATEPATH . '/php/lib/options-framework-theme/inc/options-framework.php';
 require_once TEMPLATEPATH . '/php/lib/wp-less/bootstrap-for-theme.php';
 
