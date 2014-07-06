@@ -19,9 +19,9 @@ Then you might want to check this out.
 - Post view count functions (optional)
 
 
-### Todo
+### Please note
 ----
-- Automatically include bower scripts with RequireJS
+- This is first and foremost a theme for my use, that means I will regularly update large portions of the theme with whatever updates I feel is best for my future projects, I guess you could treat it as an alpha build in that regard. Feel free to fork if you don't want everything to break =)
 
 
 ### Installation
