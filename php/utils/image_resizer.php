@@ -22,8 +22,8 @@ function jsImageResize($new_args = array()) {
 
 	$args = array_merge($default_args, $new_args);
 
-	if(!$args['id'] && !$args['url'])      die('no id or path given');
-	if(!$args['width'] || !$args['width']) die('please provide a width & height');
+	if(!$args['id'] && !$args['url'])      return 'no id or path given';
+	if(!$args['width'] || !$args['width']) return 'please provide a width & height';
 
 	//get our file info
 	$file_paths = false;
