@@ -3,25 +3,14 @@
 {% block body_classes %}page-home{% endblock %}
 
 {% block content %}
-<div class="container-wrap container-wrap-home">
-<section class="container container-home">
-  <section class="testimonials">
-    <div class="inner">
-      <div class="heading">
-        <h2>Testimonials</h2>
+<div class="container-wrap">
+  <div class="container">
+      <div class="header">
+        <h1>{{ title }}</h1>
       </div>
-      <div class="blocks blocks-testimonials">
-        {% for testimonial in testimonials %}
-        <div class="block item">
-          <div class="testimonial">
-            <p><q>{{ testimonial.testimonial }}</q></p>
-            <footer>{{ testimonial.attribution }}</footer>
-          </div>
-        </div>
-        {% endfor %}
+      <div class="content">
+        {{ content }}
       </div>
-    </div>
-  </section>
-</section>
-</section>
+  </div>
+</div>
 {% endblock %}

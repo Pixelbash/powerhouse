@@ -18,6 +18,11 @@ function edit_post_supports() {
 	//register_taxonomy('category', array());
 }
 
+register_nav_menus( array(
+  'primary' => 'Main website menu',
+  'mobile'  => 'Main website menu for mobile',
+) );
+
 //Excerpt modification
 function new_excerpt_more($more) {
 global $post;

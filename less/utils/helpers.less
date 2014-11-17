@@ -8,7 +8,7 @@
 }
 
 
-.hList() {
+.h-list() {
 	list-style:none;
 	margin:0;
 	padding:0;
@@ -18,6 +18,18 @@
 		display:inline-block;
 		*display:inline; 
 	}
+}
+
+.menu-colors(@menu-color: #f00,@menu-hover:#0f0,@menu-active:#00f) {
+  a {
+    color:@menu-color;
+    &:hover {
+      color:@menu-hover;
+    }
+    &:active {
+      color:@menu-active;
+    }
+  }
 }
 
 .absPos(@dSide: 0px, @dVert: 0px, @width:10px, @height: 10px, @side: left, @vert: top, @zIndex: 10) {

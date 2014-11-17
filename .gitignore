@@ -1,5 +1,7 @@
 js/*
 !js/include
 !js/init.js
+
 cache/*
-php/lib/*
+
+vendor/*

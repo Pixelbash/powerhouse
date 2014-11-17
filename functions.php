@@ -4,24 +4,23 @@ date_default_timezone_set('Pacific/Auckland');
 
 /*
 Included classes and plugins
-  - Metabox plugin by Rilwis 4.2.4
-  - Multiple featured images 1.0
-  - SimpleImage framework 2.3
-  - Devin Price theme options 1.6
-  - WP-LESS 1.6
+  - Metabox plugin by Rilwis 
+  - Multiple featured images 
+  - Devin Price theme options 
+  - WP-LESS
+  
+  - SimpleImage framework 
   - Pluralizer from Laravel
 */
 
-//set paths for frameworks
-define( 'RWMB_URL', get_template_directory_uri() . '/php/lib/meta-box/' );
-define( 'RWMB_DIR', TEMPLATEPATH . '/php/lib/meta-box/' );
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/php/lib/options-framework-theme/inc/' );
+//Plugins
+$plugin_dir = ABSPATH . 'wp-content/plugins';
+require_once $plugin_dir . '/meta-box/meta-box.php';
+require_once $plugin_dir . '/multiple-post-thumbnails/multi-post-thumbnails.php';
+require_once $plugin_dir . '/wp-less/bootstrap-for-theme.php';
 
-require_once TEMPLATEPATH . '/php/lib/meta-box/meta-box.php';
-require_once TEMPLATEPATH . '/php/lib/multi-post-thumbnails/multi-post-thumbnails.php';
-require_once TEMPLATEPATH . '/php/lib/simple-image/src/abeautifulsite/SimpleImage.php';
-require_once TEMPLATEPATH . '/php/lib/options-framework-theme/inc/options-framework.php';
-require_once TEMPLATEPATH . '/php/lib/wp-less/bootstrap-for-theme.php';
+//Libraries
+require_once TEMPLATEPATH . '/vendor/abeautifulsite/simpleimage/src/abeautifulsite/SimpleImage.php';
 
 //utilities
 require_once TEMPLATEPATH . '/php/utils/pluralizer.php';

@@ -6,7 +6,7 @@ Then you might want to check this out.
 
 - Twig Templating courtesy of Timber
 - SimpleImage (GD) based image resizer with image caching
-- Automagic php library management using git submodules
+- Automagic required plugins installed using composer.json
 - Automagic Bower Javascript library management
 - RequireJS scripting framework
 - All theme options as json in header (for use with scripts)
@@ -26,20 +26,21 @@ This is first and foremost a theme for my use, that means I will regularly updat
 
 ### Installation
 ----
-1. Install Timber plugin (the one with 5 stars)
-2. cd path/to/wordpress/wp-content/themes;
-3. git clone --recursive https://github.com/Pixelbash/powerhouse.git;
-4. cd powerhouse;
-5. bower install; # To include the latest javascript libraries
-6. Set powerhouse as your theme
-7. Get to it!
+1. cd wp-content/themes;
+2. git clone https://github.com/Pixelbash/powerhouse.git;
+3. cd powerhouse;
+4. bower install;    # To include the latest javascript libraries
+5. composer install; # To install required wordpress plugins
+6. Enable the newly installed plugins
+7. Set powerhouse as your theme
+8. Done!
 
 
 ### Requirements
 ----
-- Timber Wordpress Plugin (twig templates)
-- Bower (js dependency management)
-- Git   (repository management)
+- Composer (php/wordpress dependency management)
+- Bower    (js dependency management)
+- Git      (repository management)
 
 
 ### Recommended Wordpress plugins
@@ -47,6 +48,15 @@ This is first and foremost a theme for my use, that means I will regularly updat
 - SEO by Yoast
 - Total Cache
 - Better WP Security
+
+
+### 17-11-2014
+----
+- Replaced git submodules with composer
+- Updated readme.md
+- Added screenshot and other details for style.css
+- Added example code to demonstrate styling framework
+- Numerous small fixes and tweaks
 
 
 ### 26-05-2014

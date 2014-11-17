@@ -15,11 +15,13 @@ function getMainMenu() {
         'update_post_term_cache' => false )
     );
 
-    foreach($items as $item) {
-      $links[$item->ID] = array(
-        'title' => $item->post_title,
-        'href'  => $item->url
-      );
+    if(!empty($items)) {
+      foreach($items as $item) {
+        $links[$item->ID] = array(
+          'title' => $item->post_title,
+          'href'  => $item->url
+        );
+      }
     }
 
     return $links;

@@ -1,0 +1,29 @@
+{
+    "name": "pixelbash/poewrhouse",
+    "description": "Powerhouse theme",
+    "authors": [
+        {
+            "name": "Joe S",
+            "email": "joe@pixelbash.co.nz"
+        }
+    ],
+    "repositories": [
+      {
+        "type":"composer",
+        "url":"http://wpackagist.org"
+      }
+    ],
+    "require": {
+      "abeautifulsite/simpleimage": "*",
+      "jarednova/timber": "*",
+      "wpackagist-plugin/meta-box": "*",
+      "wpackagist-plugin/multiple-post-thumbnails": "*",
+      "wpackagist-plugin/options-framework": "*",
+      "wpackagist-plugin/wp-less": "*"
+    },
+    "extra": {
+      "installer-paths": {
+        "../../plugins/{$name}/": ["jarednova/timber", "type:wordpress-plugin"]
+      }
+    }
+}
