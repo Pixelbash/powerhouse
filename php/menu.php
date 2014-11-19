@@ -18,7 +18,7 @@ function getMainMenu() {
     if(!empty($items)) {
       foreach($items as $item) {
         $links[$item->ID] = array(
-          'title' => $item->post_title,
+          'title' => $item->title,
           'href'  => $item->url
         );
       }
