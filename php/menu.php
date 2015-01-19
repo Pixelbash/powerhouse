@@ -17,9 +17,17 @@ function getMainMenu() {
 
     if(!empty($items)) {
       foreach($items as $item) {
+        //active class for pages, categories
+        $active = false;
+
+        if( ($item->object == 'page') && (is_page($item->object_id)) ) {
+          $active = 'active';
+        } 
+        
         $links[$item->ID] = array(
           'title' => $item->title,
           'href'  => $item->url
+          'class' => $active
         );
       }
     }
