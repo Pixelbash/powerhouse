@@ -11,8 +11,9 @@
     <div class="logo"><a href="/"><img src="{{ template_uri }}/img/examples/logo.png" alt=""></a></div>
     <nav class="menu">
       <ul>
-        <li><a href="#">Example link</a></li>
-        <li><a href="#">Another link</a></li>
+        {% for link in main_menu %}
+        <li><a href="{{ link.href }}" class="{{ link.class }}">{{ link.title }}</a></li>
+        {% endfor %}
       </ul>
     </nav>
   </header>
