@@ -4,7 +4,13 @@
 function getMainMenu() {
     $links = array();
 
-    $items = wp_get_nav_menu_items( 2, array(
+    //Get nav menu id by name
+    $menu_name = 'primary';
+    $locations = get_nav_menu_locations();
+    $menu_id   = (isset($locations[$menu_name])) ? $locations[$menu_name] : 0;
+
+    //Get nav menu items
+    $items = wp_get_nav_menu_items( $menu_id, array(
         'order'                  => 'ASC',
         'orderby'                => 'menu_order',
         'post_type'              => 'nav_menu_item',
