@@ -26,7 +26,7 @@ function getMainMenu() {
         
         $links[$item->ID] = array(
           'title' => $item->title,
-          'href'  => $item->url
+          'href'  => $item->url,
           'class' => $active
         );
       }
