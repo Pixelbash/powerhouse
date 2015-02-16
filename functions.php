@@ -14,7 +14,7 @@ Included classes and plugins
 */
 
 //Plugins
-$plugin_dir = ABSPATH . 'wp-content/plugins';
+$plugin_dir = WP_CONTENT_DIR . '/plugins';
 require_once $plugin_dir . '/meta-box/meta-box.php';
 require_once $plugin_dir . '/multiple-post-thumbnails/multi-post-thumbnails.php';
 require_once $plugin_dir . '/wp-less/bootstrap-for-theme.php';
