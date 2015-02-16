@@ -9,4 +9,4 @@ $post_types = array(
   )
 );
 
-add_action( 'init', post_types($post_types));
+post_types($post_types);
