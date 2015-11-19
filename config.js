@@ -29,6 +29,11 @@ export default class Config {
         src: `${dirs.src}/img/**/*.{jpg,png}`,
         dest: `${dirs.dest}/img/`
       },
+      fnt : {
+        watch: `${dirs.src}/fnt/**/*`,
+        src: `${dirs.src}/fnt/**/*`,
+        dest: `${dirs.dest}/fnt/`
+      },
       bower : {
         watch: `${dirs.src}/js/lib/**/*`,
         src: [

@@ -27,6 +27,12 @@ gulp.task("img", () => {
     .pipe(gulp.dest(paths.img.dest));
 });
 
+gulp.task("fnt", () => {
+  return gulp.src(paths.fnt.src)
+    .pipe(changed("dist/fnt"))
+    .pipe(gulp.dest(paths.fnt.dest));
+});
+
 gulp.task('scss', () => {
   return gulp.src(paths.scss.src)
     .pipe(sass({indentedSyntax:false}).on('error', sass.logError))
@@ -54,7 +60,15 @@ gulp.task('es6', () => {
     .pipe(gulp.dest(paths.es6.dest));
 });
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', function () {
+  gulp.start('img');
+  gulp.start('fnt');
+  gulp.start('scss');
+  gulp.start('es6');
+  gulp.start('bower');
+});
+
+gulp.task('watch', ['browser-sync'], function () {
   gulp.watch([paths.scss.watch],['scss', browserSync.reload]);
   gulp.watch([paths.img.watch],['img', browserSync.reload]);
   gulp.watch([paths.es6.watch],['es6', browserSync.reload]);
