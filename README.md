@@ -23,11 +23,12 @@ Also at this point the theme more or less needs a full on manual + style guide, 
 3. cd powerhouse;
 4. bower install;    # To include the latest javascript libraries
 5. composer install; # To install required wordpress plugins
-6. npm install; # To install required npm packages
-8. Enable the newly installed plugins
+6. Enable the newly installed plugins
+7. npm install; # To install required npm packages
+8. edit config.js settings for gulp
 9. gulp # to compile the dist folder for the first time
-9. Set powerhouse as your theme
-10. Done!
+10. Set powerhouse as your theme
+11. There is no 11.
 
 
 ### Requirements
