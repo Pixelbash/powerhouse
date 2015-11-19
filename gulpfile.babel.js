@@ -10,15 +10,20 @@ import bower from 'gulp-bower';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 import image from 'gulp-image';
-import imageResize from 'gulp-image-resize';
+import browserSync from 'browser-sync';
 
 import Config from './config';
 var config = new Config();
 var paths  = config.paths;
 
+gulp.task('browser-sync', function () {
+  browserSync(config.browsersync);
+});
+
 gulp.task("img", () => {
   return gulp.src(paths.img.src)
     .pipe(changed("dist/img"))
+    .pipe(image())
     .pipe(gulp.dest(paths.img.dest));
 });
 
@@ -49,11 +54,9 @@ gulp.task('es6', () => {
     .pipe(gulp.dest(paths.es6.dest));
 });
 
-gulp.task('watch', () => {
-  gulp.watch(paths.scss.src,['scss']);
-  gulp.watch(paths.img.src,['img']);
-  gulp.watch(paths.es6.src,['es6']);
-  gulp.watch(paths.bower.src,['bower']);
+gulp.task('default', ['browser-sync'], function () {
+  gulp.watch([paths.scss.watch],['scss', browserSync.reload]);
+  gulp.watch([paths.img.watch],['img', browserSync.reload]);
+  gulp.watch([paths.es6.watch],['es6', browserSync.reload]);
+  gulp.watch([paths.bower.watch],['bower', browserSync.reload]);
 });
-
-gulp.task('default', ['watch']);
