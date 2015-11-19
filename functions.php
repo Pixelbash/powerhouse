@@ -15,9 +15,8 @@ Included classes and plugins
 
 //Plugins
 $plugin_dir = WP_CONTENT_DIR . '/plugins';
-require_once $plugin_dir . '/meta-box/meta-box.php';
+
 require_once $plugin_dir . '/multiple-post-thumbnails/multi-post-thumbnails.php';
-require_once $plugin_dir . '/wp-less/bootstrap-for-theme.php';
 
 //Libraries
 require_once TEMPLATEPATH . '/vendor/abeautifulsite/simpleimage/src/abeautifulsite/SimpleImage.php';
@@ -28,19 +27,17 @@ require_once TEMPLATEPATH . '/php/utils/post_types.php';
 require_once TEMPLATEPATH . '/php/utils/image_resizer.php';
 require_once TEMPLATEPATH . '/php/utils/image_functions.php';
 require_once TEMPLATEPATH . '/php/utils/header.php';
-require_once TEMPLATEPATH . '/php/utils/general.php';
+require_once TEMPLATEPATH . '/php/utils/attachment.php';
 require_once TEMPLATEPATH . '/php/utils/form.php';
 
 //forms
 //require_once TEMPLATEPATH . '/php/forms/register.php';
 
 //optional
-//require_once TEMPLATEPATH . '/php/optional/shortcodes.php';
-//require_once TEMPLATEPATH . '/php/optional/comments.php';
-//require_once TEMPLATEPATH . '/php/optional/most_viewed.php';
+//require_once TEMPLATEPATH . '/php/shortcodes/block.php';
 
 //post types
-//require_once TEMPLATEPATH . '/php/helpers/testimonial.php';
+require_once TEMPLATEPATH . '/php/formatters/posts.php';
 
 //site specific
 require_once TEMPLATEPATH . '/php/post_types.php';

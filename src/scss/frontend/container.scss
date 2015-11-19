@@ -1,0 +1,42 @@
+section.container {
+  @include wrapper();
+  @include clearfix();
+
+  //Global alerts
+  .alert {
+    text-align:center;
+    padding:10px 20px 10px 20px;
+    margin:0 $gutter $space-m;
+    background:#fff;
+    border:1px solid $lightgrey;
+    color:$darkgrey;
+    position:relative;
+    z-index:20;
+    h3 {
+      @include hx-style1();
+      @include bm-xs();
+    }
+    p {
+      @include cx();
+      @include cx-midgrey();
+      @include cx-m();
+      @include bm-xs();
+    }
+    ul {
+      li {
+        @include cx();
+        @include cx-midgrey();
+        @include cx-s();
+        + li {
+          margin-top:$space-xs;
+        }
+      }
+    }
+  }
+
+  //Page
+  &.container-page-home { 
+  } 
+  &.container-page-generic { 
+  } 
+}

@@ -16,10 +16,9 @@
     "require": {
       "abeautifulsite/simpleimage": "*",
       "jarednova/timber": "*",
-      "wpackagist-plugin/meta-box": "*",
+      "wpackagist-plugin/advanced-custom-fields": "*",
       "wpackagist-plugin/multiple-post-thumbnails": "*",
-      "wpackagist-plugin/options-framework": "*",
-      "wpackagist-plugin/wp-less": "*"
+      "wpackagist-plugin/options-framework": "*"
     },
     "extra": {
       "installer-paths": {

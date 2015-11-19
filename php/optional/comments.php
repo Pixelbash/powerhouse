@@ -1,23 +1,20 @@
 <?php
-function js_comment_redirect( $location )
+function jsCommentRedirect( $location )
 {
     if ( isset( $_POST['my_redirect_to'] ) ) // Don't use "redirect_to", internal WP var
         return $_POST['my_redirect_to']; // You *must* sanitize or whitelist this 
     else
     	return $location;
 }
-add_filter( 'comment_post_redirect', 'js_comment_redirect' );
+add_filter( 'comment_post_redirect', 'jsCommentRedirect' );
 
 
 
 function getComments($post_id) {
-
-	$get_comments = get_comments( array(
-		'post_id' => $post_id,
-		'status' => 'approve'
-	) );
-
-	return  $get_comments;
+	return  get_comments( array(
+    'post_id' => $post_id,
+    'status' => 'approve'
+  ) );
 }
 
 function getCommentForm($post_id, $redirect = false) {
@@ -64,8 +61,6 @@ EOT;
 	<div class="comment-form-message">
 		<textarea id="comment" name="comment" aria-required="true"></textarea>
 	</div>
-
-
 EOT;
 
 

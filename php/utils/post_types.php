@@ -1,6 +1,6 @@
 <?php 
 
-function post_types($register_post_types) {
+function jsSetPostTypes($register_post_types) {
   
   foreach($register_post_types as $post_type) { 
   

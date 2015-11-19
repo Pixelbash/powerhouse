@@ -1,7 +1,5 @@
-js/*
-!js/include
-!js/init.js
-
-cache/*
-
-vendor/*
+/dist
+/src/js/lib/*
+/vendor
+/node_modules
+/__*

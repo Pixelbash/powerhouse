@@ -1,0 +1,18 @@
+{% extends "common/base.twig" %}
+
+{% block body_classes %}page-faq{% endblock %}
+
+{% block content %}
+<section class="container-wrap">
+  <section class="container">
+    <div class="heading">
+      <h1>{{ title }}</h1>
+    </div>
+    <div class="content">
+      {{ content }}
+    </div>
+  </section>
+</section>
+
+{% include 'blocks/register.twig' %}
+{% endblock %}

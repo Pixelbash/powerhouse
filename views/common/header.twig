@@ -1,0 +1,10 @@
+<header class="default" data-template="{{ body_classes }}">
+  <div class="logo"><a href="/"><img src="{{ template_uri }}/img/examples/logo.png" alt=""></a></div>
+  <nav class="menu">
+    <ul>
+      {% for link in main_menu %}
+      <li><a href="{{ link.href }}" class="{{ link.class }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

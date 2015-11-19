@@ -1,6 +1,6 @@
 <?php
 
-function register_form() {
+function getExampleForm() {
   //set up our form
   $form = array(
     'r_fname' => array(
@@ -29,7 +29,7 @@ function register_form() {
 
   $message = array(
     'to'       => $to,
-    'subject'  => 'Registration',
+    'subject'  => 'Example',
     'template' => $template,
     'headers'  => array(
       'From: Noreply <noreply@example.com>',

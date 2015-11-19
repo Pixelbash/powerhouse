@@ -1,5 +1,5 @@
  <?php 
-$context   = Timber::get_context();
+$context = Timber::get_context();
 $post    = new TimberPost();
 
 $context['options'] = get_option('js_options');

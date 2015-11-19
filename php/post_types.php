@@ -9,4 +9,4 @@ $post_types = array(
   )
 );
 
-post_types($post_types);
+jsSetPostTypes($post_types);

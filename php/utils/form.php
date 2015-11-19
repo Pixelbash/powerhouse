@@ -1,7 +1,6 @@
 <?php
 
-class JSForm {
-
+class jsForm {
   private $submitted  = false;
   private $success    = false;
   private $has_errors = false;

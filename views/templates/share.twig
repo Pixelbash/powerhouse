@@ -1,0 +1,15 @@
+<script type="text/html" id="lightbox_share_template">
+  <div class="share">
+    <div class="close"></div>
+    <div class="inner">
+      <nav>
+        <h3>Share</h3>
+        <ul>
+          <% _.each(links, function(item) { %>
+            <li><a href="<%= item.link %>" target="_blank"><%= item.text %></a></li>
+          <% }); %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</script>

@@ -5,45 +5,49 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'menus' );
 
 //remove post type stuff we don't need
-add_action( 'init', 'edit_post_supports' );
-function edit_post_supports() {
+add_action( 'init', 'jsSetPostSupports' );
+function jsSetPostSupports() {
+  //Usually needed
 	//remove_post_type_support( 'post', 'editor' );
 	//remove_post_type_support( 'post', 'author' );
-	remove_post_type_support( 'post', 'trackbacks' );
 	//remove_post_type_support( 'post', 'excerpt' );
-	remove_post_type_support( 'post', 'comments' );
 	//remove_post_type_support( 'post', 'revisions' );
+  
+  //Usually not needed
+  remove_post_type_support( 'post', 'trackbacks' );
+  remove_post_type_support( 'post', 'comments' );
 	add_post_type_support( 'post', 'page-attributes' );
+
+  //Clear taxonomy details
 	//register_taxonomy('post_tag', array());
 	//register_taxonomy('category', array());
 }
 
 register_nav_menus( array(
-  'primary' => 'Main website menu',
-  'mobile'  => 'Main website menu for mobile',
+  'primary' => 'Main website menu'
 ) );
 
 //Excerpt modification
-function new_excerpt_more($more) {
-global $post;
+function jsSetExcerpt($more) {
+  global $post;
 	return "&hellip;";
-}
-add_filter('excerpt_more', 'new_excerpt_more');
+} 
+add_filter('excerpt_more', 'jsSetExcerpt');
 
 
-//prevent posting a project without a featured image
-add_action( 'pre_post_update', 'require_featured_image' );
-function require_featured_image() {
-    global $post;
+// prevent publishing a post type without a featured image
+// add_action( 'pre_post_update', 'require_featured_image' );
+// function require_featured_image() {
+//   global $post;
 
-    //featured image check
-    if( get_post_type($post->ID) == 'project' && get_post_thumbnail_id($post->ID) === '' ) {
-        wp_die( 'This post type requires a featured image. Please click the back button on your browser to set one.' );
-    }
-}
+//   //featured image check
+//   if( get_post_type($post->ID) == 'project' && get_post_thumbnail_id($post->ID) === '' ) {
+//       wp_die( 'This post type requires a featured image. Please click the back button on your browser to set one.' );
+//   }
+// }
 
 //Widgets
-function powerhouse_widgets_init() {
+function jsSetWidgets() {
 	/*
 	register_sidebar( array(
 		'name' => __( 'Footer Widgets 1', 'powerhouse' ),
@@ -75,4 +79,4 @@ function powerhouse_widgets_init() {
 	*/
 }
 
-add_action( 'widgets_init', 'powerhouse_widgets_init' );
+add_action( 'widgets_init', 'jsSetWidgets' );

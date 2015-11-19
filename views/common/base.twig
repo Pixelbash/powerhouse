@@ -1,28 +1,26 @@
 {% include 'common/html-header.twig' %}
-{% block head %}
-{% endblock %}
+{% block head %}{% endblock %}
 </head>
-<body class="{{ body_class }} {% block body_classes %}{% endblock %}">
+  {% set body_classes %}{% block body_classes %}{% endblock %}{% endset %}
+<body class="{{ body_class }}">
   <!--[if lt IE 7]>
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
 
-  <header class="main">
-    <div class="logo"><a href="/"><img src="{{ template_uri }}/img/examples/logo.png" alt=""></a></div>
-    <nav class="menu">
-      <ul>
-        {% for link in main_menu %}
-        <li><a href="{{ link.href }}" class="{{ link.class }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
+  {% include 'common/header.twig' %}
 
-  {% block content %}
-      Sorry, no content
-  {% endblock %}
+  <div class="context-wrap" data-template="{{ body_classes }}">
+    <div class="context" data-template="{{ body_classes }}">
+      {% block content %}
+        Sorry, no content
+      {% endblock %}
+    </div>
+  </div>
 
   {% include 'common/footer.twig' %}
+
+  <script src="{{ template_uri }}/dist/js/init.js"></script>
+
   {{ function('wp_footer') }}
 </body>
 </html>

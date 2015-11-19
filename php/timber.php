@@ -1,8 +1,8 @@
 <?php
 
 // Timber context
-add_filter('timber_context', 'add_to_context');
-function add_to_context($data){
+add_filter('timber_context', 'jsAddToContext');
+function jsAddToContext($data){
   $data['options']   = get_option('js_options');
   $data['year']      = date('Y');
   $data['is_home']   = is_home();

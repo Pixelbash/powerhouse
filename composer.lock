@@ -1,26 +1,28 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "24698f69d42a64557450dbce0fc59c7f",
+    "hash": "08e792b105727c9bf1df382bf7f9e92a",
+    "content-hash": "6d0ff7ade336a0dd493b1d9e63711924",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/claviska/SimpleImage.git",
-                "reference": "a56897173e621590ecb59cd93e4bbf5bf46ae186"
+                "reference": "a8fb6f68d12f32e3394a2784c3a8c500bc24cdec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/claviska/SimpleImage/zipball/a56897173e621590ecb59cd93e4bbf5bf46ae186",
-                "reference": "a56897173e621590ecb59cd93e4bbf5bf46ae186",
+                "url": "https://api.github.com/repos/claviska/SimpleImage/zipball/a8fb6f68d12f32e3394a2784c3a8c500bc24cdec",
+                "reference": "a8fb6f68d12f32e3394a2784c3a8c500bc24cdec",
                 "shasum": ""
             },
             "require": {
+                "ext-gd": "*",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -52,21 +54,126 @@
                 }
             ],
             "description": "A PHP class that simplifies working with images",
-            "time": "2014-03-18 06:42:58"
+            "time": "2015-10-22 19:13:41"
         },
         {
-            "name": "composer/installers",
-            "version": "v1.0.18",
+            "name": "altorouter/altorouter",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/composer/installers.git",
-                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067"
+                "url": "https://github.com/dannyvankooten/AltoRouter.git",
+                "reference": "09d9d946c546bae6d22a7654cdb3b825ffda54b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
-                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
+                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/09d9d946c546bae6d22a7654cdb3b825ffda54b4",
+                "reference": "09d9d946c546bae6d22a7654cdb3b825ffda54b4",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "AltoRouter.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Danny van Kooten",
+                    "email": "dannyvankooten@gmail.com",
+                    "homepage": "http://dannyvankooten.com/"
+                },
+                {
+                    "name": "Koen Punt",
+                    "homepage": "https://github.com/koenpunt"
+                },
+                {
+                    "name": "niahoo",
+                    "homepage": "https://github.com/niahoo"
+                }
+            ],
+            "description": "A lightning fast router for PHP",
+            "homepage": "https://github.com/dannyvankooten/AltoRouter",
+            "keywords": [
+                "lightweight",
+                "router",
+                "routing"
+            ],
+            "time": "2014-04-16 09:44:40"
+        },
+        {
+            "name": "asm89/twig-cache-extension",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asm89/twig-cache-extension.git",
+                "reference": "127410728db193a88254c399e3455274fc05fa5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/127410728db193a88254c399e3455274fc05fa5d",
+                "reference": "127410728db193a88254c399e3455274fc05fa5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "twig/twig": "~1.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                }
+            ],
+            "description": "Cache fragments of templates directly within Twig.",
+            "homepage": "https://github.com/asm89/twig-cache-extension",
+            "keywords": [
+                "cache",
+                "extension",
+                "twig"
+            ],
+            "time": "2015-10-17 11:55:02"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.0.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -76,9 +183,9 @@
                 "composer/composer": "1.0.*@dev",
                 "phpunit/phpunit": "4.1.*"
             },
-            "type": "composer-installer",
+            "type": "composer-plugin",
             "extra": {
-                "class": "Composer\\Installers\\Installer",
+                "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
@@ -107,8 +214,11 @@
                 "Hurad",
                 "MODX Evo",
                 "OXID",
+                "SMF",
+                "Thelia",
                 "WolfCMS",
                 "agl",
+                "aimeos",
                 "annotatecms",
                 "bitrix",
                 "cakephp",
@@ -116,9 +226,11 @@
                 "codeigniter",
                 "concrete5",
                 "croogo",
+                "dokuwiki",
                 "drupal",
                 "elgg",
                 "fuelphp",
+                "grav",
                 "installer",
                 "joomla",
                 "kohana",
@@ -142,30 +254,43 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-08-18 20:00:12"
+            "time": "2015-10-29 23:28:48"
         },
         {
             "name": "jarednova/timber",
-            "version": "0.18.1",
+            "version": "0.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jarednova/timber.git",
-                "reference": "978d4b117afe365c536c04c94370a9619ce6402a"
+                "reference": "52a6a717c3b8286ea4d1ccb995636d8b3991bad1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jarednova/timber/zipball/978d4b117afe365c536c04c94370a9619ce6402a",
-                "reference": "978d4b117afe365c536c04c94370a9619ce6402a",
+                "url": "https://api.github.com/repos/jarednova/timber/zipball/52a6a717c3b8286ea4d1ccb995636d8b3991bad1",
+                "reference": "52a6a717c3b8286ea4d1ccb995636d8b3991bad1",
                 "shasum": ""
             },
             "require": {
+                "asm89/twig-cache-extension": "~1.0",
                 "composer/installers": "~1.0",
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "twig/twig": "1.*",
+                "upstatement/routes": "0.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "jarednova/markdowndocs": "dev-master",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "dev-master",
+                "wp-cli/wp-cli": "*",
+                "wpackagist-plugin/advanced-custom-fields": "4.*"
             },
             "type": "wordpress-plugin",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -185,99 +310,179 @@
                 "timber",
                 "twig"
             ],
-            "time": "2014-05-13 12:48:28"
+            "time": "2015-11-12 17:13:38"
         },
         {
-            "name": "wpackagist-plugin/meta-box",
-            "version": "4.3.11",
+            "name": "twig/twig",
+            "version": "v1.23.1",
             "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/meta-box/",
-                "reference": "tags/4.3.11"
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/meta-box.4.3.11.zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "require-dev": {
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.23-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2015-11-05 12:49:06"
+        },
+        {
+            "name": "upstatement/routes",
+            "version": "0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Upstatement/routes.git",
+                "reference": "40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Upstatement/routes/zipball/40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475",
+                "reference": "40d003b69c0f5c52fb4b15e5d1fa4d5c522c9475",
+                "shasum": ""
+            },
+            "require": {
+                "altorouter/altorouter": "1.1.0",
+                "composer/installers": "~1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "dev-master",
+                "wp-cli/wp-cli": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Routes": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jared Novack",
+                    "email": "jared@upstatement.com",
+                    "homepage": "http://upstatement.com"
+                }
+            ],
+            "description": "Manage rewrites and routes in WordPress with this dead-simple plugin",
+            "homepage": "http://routes.upstatement.com",
+            "keywords": [
+                "redirects",
+                "rewrite",
+                "routes",
+                "routing"
+            ],
+            "time": "2015-03-07 13:41:29"
+        },
+        {
+            "name": "wpackagist-plugin/advanced-custom-fields",
+            "version": "4.4.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/advanced-custom-fields/",
+                "reference": "tags/4.4.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.3.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "replace": {
-                "wpackagist/meta-box": "self.version"
-            },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/meta-box/"
+            "homepage": "https://wordpress.org/plugins/advanced-custom-fields/"
         },
         {
             "name": "wpackagist-plugin/multiple-post-thumbnails",
-            "version": "1.6.4",
+            "version": "1.6.6",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/multiple-post-thumbnails/",
-                "reference": "tags/1.6.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/multiple-post-thumbnails.1.6.4.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "replace": {
-                "wpackagist/multiple-post-thumbnails": "self.version"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/multiple-post-thumbnails/"
-        },
-        {
-            "name": "wpackagist-plugin/options-framework",
-            "version": "1.8.2",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/options-framework/",
-                "reference": "tags/1.8.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/options-framework.1.8.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "replace": {
-                "wpackagist/options-framework": "self.version"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/options-framework/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-less",
-            "version": "1.7.5",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-less/",
                 "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/wp-less.zip",
+                "url": "https://downloads.wordpress.org/plugin/multiple-post-thumbnails.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "replace": {
-                "wpackagist/wp-less": "self.version"
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/multiple-post-thumbnails/"
+        },
+        {
+            "name": "wpackagist-plugin/options-framework",
+            "version": "1.8.4",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/options-framework/",
+                "reference": "tags/1.8.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/options-framework.1.8.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "http://wordpress.org/plugins/wp-less/"
+            "homepage": "https://wordpress.org/plugins/options-framework/"
         }
     ],
     "packages-dev": [],
@@ -285,6 +490,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
