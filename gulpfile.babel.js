@@ -19,17 +19,6 @@ var paths  = config.paths;
 gulp.task("img", () => {
   return gulp.src(paths.img.src)
     .pipe(changed("dist/img"))
-    .pipe(image({
-      pngquant: true,
-      optipng: false,
-      zopflipng: true,
-      advpng: true,
-      jpegRecompress: false,
-      jpegoptim: true,
-      mozjpeg: true,
-      gifsicle: true,
-      svgo: true
-    }))
     .pipe(gulp.dest(paths.img.dest));
 });
 

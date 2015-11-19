@@ -1,6 +1,6 @@
 /* MASTER */
-$wrap: 100%; 
-$gutter: 24px;
+$wrap:  980px; 
+$gutter: 16px;
 
 $light:        #fff;
 $lightestgrey: #e6e6e6;
@@ -10,9 +10,8 @@ $darkgrey:     #4d4d4d;
 $darkestgrey:  #333333;
 $dark:         #141414;
 
-$beige:      #f6f2ed;
-$accent:     #f00;
-$background: #fff;
+$accent:     #48e;
+$background: #d0d3d6;
 
 $space-xxl: 80px;
 $space-xl:  60px;
@@ -37,8 +36,8 @@ $font-lh-s:   19px;
 $font-lh-xs:  19px; 
 $font-lh-xxs: 18px; 
 
-$d : '/app/content/themes/powerhouse/dist/';
-$images : '/app/content/themes/powerhouse/dist/img';
+$d : './';
+$images : './img/';
 
 //Base framework
 @import 'utils/reset.scss';
@@ -72,9 +71,6 @@ body {
   min-height:100%;
   position:relative;
   background:$background;
-  >.wrap-all {
-    //margin:0 (40px - $gutter/2);
-  }
   @include sans();
 }
 

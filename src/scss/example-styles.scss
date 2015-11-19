@@ -4,8 +4,9 @@ html body {
 }
 
 header {
-  &.main {
+  &.default {
     @include wrapper();
+    padding:$space-m 0;
     .logo {
       text-align:center;
     }
@@ -43,11 +44,13 @@ header {
 }
 
 footer {
-  &.main {
+  &.default {
     @include wrapper();
+    padding:$space-m 0;
     text-align:center;
     .social {
       @include horizontal-list();
+      @include link-color();
     }
     .newsletter {
       h3 {
