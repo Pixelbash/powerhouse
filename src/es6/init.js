@@ -15,20 +15,14 @@ export default class Init {
 
     this.utils = new Utils();
 
-    this.start();
+    this.init();
   } 
 
-  start() {
+  init() {
     //Jquery ready
     $(() => { 
       this.sub = new Sub(this, this.utils);
       this.pub = new Pub(this, this.utils); 
-
-      //External links in new window
-      $('a[href^="http"]')
-        .not('a[href^="#"]')
-        .not('a[href^="' + window._d.shop_url + '"]')
-        .attr('target', '_blank');
     });
   }
 }

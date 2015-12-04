@@ -38,7 +38,7 @@ export default class Config {
         watch: `${dirs.src}/js/lib/**/*`,
         src: [
           `${dirs.src}/js/lib/jquery/dist/jquery.js`,
-          `${dirs.src}/js/lib/radiojs/radio.js`,
+          `${dirs.src}/js/lib/radio/radio.js`,
           `${dirs.src}/js/lib/underscore/underscore.js`,
         ],
         dest: `${dirs.dest}/js/`

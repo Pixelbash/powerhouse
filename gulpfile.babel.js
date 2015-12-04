@@ -5,12 +5,16 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 import changed from 'gulp-changed';
-import babel from 'gulp-babel';
 import bower from 'gulp-bower';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
-import image from 'gulp-image';
+import image from 'gulp-image-optimization';
 import browserSync from 'browser-sync';
+
+import source from 'vinyl-source-stream';
+import babelify from 'babelify';
+import browserify from 'browserify';
+import rimraf from 'rimraf';
 
 import Config from './config';
 var config = new Config();
@@ -20,10 +24,22 @@ gulp.task('browser-sync', function () {
   browserSync(config.browsersync);
 });
 
+gulp.task('clean', function(){
+  rimraf(config.paths.img.dest);
+  rimraf(config.paths.fnt.dest);
+  rimraf(config.paths.scss.dest);
+  rimraf(config.paths.es6.dest);
+  rimraf(config.paths.bower.dest);
+});
+
 gulp.task("img", () => {
   return gulp.src(paths.img.src)
     .pipe(changed("dist/img"))
-    .pipe(image())
+    .pipe(image({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    }))
     .pipe(gulp.dest(paths.img.dest));
 });
 
@@ -38,7 +54,6 @@ gulp.task('scss', () => {
     .pipe(sass({indentedSyntax:false}).on('error', sass.logError))
     .pipe(sourcemaps.init())
     .pipe(autoprefixer())
-    .pipe(sourcemaps.write('.'))
     .pipe(concat('init.css'))
     .pipe(gulp.dest(paths.scss.dest));
 });
@@ -52,11 +67,10 @@ gulp.task('bower', () => {
 });
 
 gulp.task('es6', () => {
-  return gulp.src(paths.es6.src)
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(concat('init.js'))
+    return browserify({entries: paths.es6.src, extensions: ['.es6'], debug: true})
+    .transform(babelify)
+    .bundle()
+    .pipe(source('init.js'))
     .pipe(gulp.dest(paths.es6.dest));
 });
 

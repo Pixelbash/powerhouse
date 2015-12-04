@@ -12,7 +12,6 @@ export default class Sub {
     this.header   = new Header(main, utils);
     this.footer   = new Footer(main, utils);
     
-    this.landing  = new Landing(main, utils);
     this.page     = new Page(main, utils);
   }
-}
+} 
