@@ -9,13 +9,13 @@
 
   {% include 'common/header.twig' %}
 
-  <div class="container-wrap" data-template="{{ body_classes }}">
-    <div class="container" data-template="{{ body_classes }}">
+  <section class="container-wrap" data-template="{{ body_classes }}">
+    <section class="container" data-template="{{ body_classes }}">
       {% block content %}
         Sorry, no content
       {% endblock %}
-    </div>
-  </div>
+    </section>
+  </section>
 
   {% include 'common/footer.twig' %}
 
