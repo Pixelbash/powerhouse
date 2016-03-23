@@ -80,6 +80,7 @@ gulp.task('default', function () {
   gulp.start('scss');
   gulp.start('es6');
   gulp.start('bower');
+  gulp.start('watch');
 });
 
 gulp.task('watch', ['browser-sync'], function () {
