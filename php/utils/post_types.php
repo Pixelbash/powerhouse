@@ -6,7 +6,7 @@ function jsSetPostTypes($register_post_types) {
   
     $name = $post_type['name'];
 
-    //Now with advacned pluralizing!
+    //Now with advanced pluralizing!
     //eg child -> children
     $single_lcase = Pluralizer::singular($name);
     $plural_lcase = Pluralizer::plural($name);
@@ -16,11 +16,13 @@ function jsSetPostTypes($register_post_types) {
     $plural_ucase = ucfirst($plural_lcase);
 
     //support for custom support arrays
+    $has_archive  = false;
     $supports     = array('title','thumbnail','editor','page-attributes','custom-fields', 'excerpt','trackbacks','comments','revisions','author');
     $slug         = true;
 
-    if(isset($post_type['supports']))   $supports = $post_type['supports'];
-    if(isset($post_type['slug']))       $slug     = $post_type['slug'];
+    if(isset($post_type['has_archive']))   $has_archive = $post_type['has_archive'];
+    if(isset($post_type['supports']))   $supports       = $post_type['supports'];
+    if(isset($post_type['slug']))       $slug           = $post_type['slug'];
 
     //register post type
     register_post_type( $single_lcase,
@@ -35,18 +37,32 @@ function jsSetPostTypes($register_post_types) {
       'hierarchical'    => false,
       'query_var'       => true,
       'supports'        => $supports,
-      'rewrite'         => $slug
+      'rewrite'         => $slug,
+      'has_archive'     => $has_archive
       )
     );
 
     //support for categories
     if(isset($post_type['category']) && $post_type['category'] == true) {
-      register_taxonomy($plural_lcase, $single_lcase, 
+      register_taxonomy($single_lcase.'_categories', $single_lcase, 
         array(
-          'label'        => $plural_ucase, 
+          'label'        => $single_ucase .' Categories', 
           'public'       => true,
           'show_ui'      => true,
           'hierarchical' => true, 
+          'query_var'    => true, 
+          'rewrite'      => true
+        ));
+    }
+
+    //support for categories
+    if(isset($post_type['tag']) && $post_type['tag'] == true) {
+      register_taxonomy($single_lcase.'_tags', $single_lcase, 
+        array(
+          'label'        => $single_ucase.' Tags', 
+          'public'       => true,
+          'show_ui'      => true,
+          'hierarchical' => false, 
           'query_var'    => true, 
           'rewrite'      => true
         ));
