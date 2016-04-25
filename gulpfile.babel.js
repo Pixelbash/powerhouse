@@ -84,8 +84,8 @@ gulp.task('default', function () {
 });
 
 gulp.task('watch', ['browser-sync'], function () {
-  gulp.watch([paths.scss.watch],['scss', browserSync.reload]);
-  gulp.watch([paths.img.watch],['img', browserSync.reload]);
-  gulp.watch([paths.es6.watch],['es6', browserSync.reload]);
-  gulp.watch([paths.bower.watch],['bower', browserSync.reload]);
+  gulp.watch([paths.scss.watch], {interval : 500},['scss', browserSync.reload]);
+  gulp.watch([paths.img.watch], {interval : 500},['img', browserSync.reload]);
+  gulp.watch([paths.es6.watch], {interval : 500},['es6', browserSync.reload]);
+  gulp.watch([paths.bower.watch], {interval : 500},['bower', browserSync.reload]);
 });
