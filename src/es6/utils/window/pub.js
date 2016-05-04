@@ -3,33 +3,44 @@ export default class Pub {
     // this.scroll();
     // this.resize();
     // this.load();
+    this.$window = $(window);
   }
   
   scroll() {
-    var $window = $(window);
+    var $window = this.$window;
 
-    $window.on('load scroll', function() {
-      radio('window/scroll').broadcast({
-        scrollTop : $window.scrollTop()
-      });
+    $window.on('load scroll', () => {
+      this.scrollPub();
     });
   }
 
   resize() {
-    var $window = $(window);
+    var $window = this.$window;
 
-    $window.on('load resize', function() {
-      radio('window/resize').broadcast({
-        width  : $window.width(),
-        height : $window.height()
-      });
+    $window.on('load resize', () => {
+      this.resizePub();
+    });
+  }
+
+  scrollPub() {
+    var $window = this.$window;
+    radio('window/scroll').broadcast({
+      scrollTop : $window.scrollTop()
+    });
+  }
+
+  resizePub() {
+    var $window = this.$window;
+    radio('window/resize').broadcast({
+      width  : $window.width(),
+      height : $window.height()
     });
   }
 
   load() {
-    var $window = $(window);
+    var $window = this.$window;
 
-    $window.on('load', function() {
+    $window.on('load', () => {
       radio('window/load').broadcast({
         width  : $window.width(),
         height : $window.height(),
