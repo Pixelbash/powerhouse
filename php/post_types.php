@@ -1,5 +1,7 @@
 <?php
 
+namespace Pixelbash;
+
 $post_types = array(
   array(
     'name' => 'testimonial',
@@ -9,4 +11,4 @@ $post_types = array(
   )
 );
 
-jsSetPostTypes($post_types);
+//PostType::set($post_types);
