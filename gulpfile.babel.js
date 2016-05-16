@@ -10,6 +10,7 @@ import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 import image from 'gulp-image-optimization';
 import browserSync from 'browser-sync';
+import cssmin from 'gulp-cssmin';
 
 import source from 'vinyl-source-stream';
 import babelify from 'babelify';
@@ -49,11 +50,18 @@ gulp.task("fnt", () => {
     .pipe(gulp.dest(paths.fnt.dest));
 });
 
+gulp.task("file", () => {
+  return gulp.src(paths.file.src)
+    .pipe(changed("dist/file"))
+    .pipe(gulp.dest(paths.file.dest));
+});
+
 gulp.task('scss', () => {
   return gulp.src(paths.scss.src)
     .pipe(sass({indentedSyntax:false}).on('error', sass.logError))
     .pipe(sourcemaps.init())
     .pipe(autoprefixer())
+    .pipe(cssmin())
     .pipe(concat('init.css'))
     .pipe(gulp.dest(paths.scss.dest));
 });
@@ -74,18 +82,21 @@ gulp.task('es6', () => {
     .pipe(gulp.dest(paths.es6.dest));
 });
 
-gulp.task('default', function () {
+gulp.task('default', () => {
   gulp.start('img');
   gulp.start('fnt');
+  gulp.start('file');
   gulp.start('scss');
   gulp.start('es6');
   gulp.start('bower');
   gulp.start('watch');
 });
 
-gulp.task('watch', ['browser-sync'], function () {
-  gulp.watch([paths.scss.watch], {interval : 500},['scss', browserSync.reload]);
+gulp.task('watch', ['browser-sync'], () => {
+  gulp.watch([paths.scss.watch], {interval : 1000},['scss', browserSync.reload]);
   gulp.watch([paths.img.watch], {interval : 500},['img', browserSync.reload]);
   gulp.watch([paths.es6.watch], {interval : 500},['es6', browserSync.reload]);
+  gulp.watch([paths.fnt.watch], {interval : 500},['fnt', browserSync.reload]);
+  gulp.watch([paths.file.watch], {interval : 500},['file', browserSync.reload]);
   gulp.watch([paths.bower.watch], {interval : 500},['bower', browserSync.reload]);
 });
