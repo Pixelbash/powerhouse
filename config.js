@@ -7,7 +7,7 @@ export default class Config {
 
     this.browsersync = {
       proxy: {
-        target: "http://skysolar.wordpress.pxl.nz",
+        target: "http://powerhouse.wordpress.pxl.nz",
         middleware: function (req, res, next) {
           console.log(req.url);
           next();
