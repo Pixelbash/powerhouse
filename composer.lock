@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "08e792b105727c9bf1df382bf7f9e92a",
-    "content-hash": "6d0ff7ade336a0dd493b1d9e63711924",
+    "hash": "2638a5e2596c3540678dcc71efb02999",
+    "content-hash": "7bdbd3fc7a86a54392734fe4d662fa84",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -109,16 +109,16 @@
         },
         {
             "name": "asm89/twig-cache-extension",
-            "version": "1.1.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asm89/twig-cache-extension.git",
-                "reference": "127410728db193a88254c399e3455274fc05fa5d"
+                "reference": "37cfee1f06fe8372cbe714d2d9224db276790936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/127410728db193a88254c399e3455274fc05fa5d",
-                "reference": "127410728db193a88254c399e3455274fc05fa5d",
+                "url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/37cfee1f06fe8372cbe714d2d9224db276790936",
+                "reference": "37cfee1f06fe8372cbe714d2d9224db276790936",
                 "shasum": ""
             },
             "require": {
@@ -128,10 +128,13 @@
             "require-dev": {
                 "doctrine/cache": "~1.0"
             },
+            "suggest": {
+                "psr/cache-implementation": "To make use of PSR-6 cache implementation via PsrCacheAdapter."
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -156,24 +159,24 @@
                 "extension",
                 "twig"
             ],
-            "time": "2015-10-17 11:55:02"
+            "time": "2016-06-14 09:16:57"
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.22",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+                "reference": "a3595c5272a6f247228abb20076ed27321e4aae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "url": "https://api.github.com/repos/composer/installers/zipball/a3595c5272a6f247228abb20076ed27321e4aae9",
+                "reference": "a3595c5272a6f247228abb20076ed27321e4aae9",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -191,8 +194,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -207,13 +210,16 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
+                "RadPHP",
                 "SMF",
                 "Thelia",
                 "WolfCMS",
@@ -229,6 +235,7 @@
                 "dokuwiki",
                 "drupal",
                 "elgg",
+                "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
@@ -254,20 +261,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-10-29 23:28:48"
+            "time": "2016-07-05 06:18:20"
         },
         {
             "name": "jarednova/timber",
-            "version": "0.22.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jarednova/timber.git",
-                "reference": "52a6a717c3b8286ea4d1ccb995636d8b3991bad1"
+                "url": "https://github.com/timber/timber.git",
+                "reference": "ba39c3824b77e3c4b352f71829e4a314e2af8a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jarednova/timber/zipball/52a6a717c3b8286ea4d1ccb995636d8b3991bad1",
-                "reference": "52a6a717c3b8286ea4d1ccb995636d8b3991bad1",
+                "url": "https://api.github.com/repos/timber/timber/zipball/ba39c3824b77e3c4b352f71829e4a314e2af8a43",
+                "reference": "ba39c3824b77e3c4b352f71829e4a314e2af8a43",
                 "shasum": ""
             },
             "require": {
@@ -281,15 +288,14 @@
                 "jarednova/markdowndocs": "dev-master",
                 "phpdocumentor/phpdocumentor": "2.*",
                 "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master",
-                "wp-cli/wp-cli": "*",
+                "satooshi/php-coveralls": "1.0.*",
                 "wpackagist-plugin/advanced-custom-fields": "4.*"
             },
-            "type": "wordpress-plugin",
+            "type": "library",
             "autoload": {
-                "classmap": [
-                    "lib/"
-                ]
+                "psr-4": {
+                    "Timber\\": "lib/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -300,6 +306,11 @@
                     "name": "Jared Novack",
                     "email": "jared@upstatement.com",
                     "homepage": "http://upstatement.com"
+                },
+                {
+                    "name": "Connor J. Burton",
+                    "email": "connorjburton@gmail.com",
+                    "homepage": "http://connorburton.com"
                 }
             ],
             "description": "Plugin to write WordPress themes w Object-Oriented Code and the Twig Template Engine",
@@ -310,20 +321,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2015-11-12 17:13:38"
+            "time": "2016-07-05 23:33:53"
         },
         {
             "name": "twig/twig",
-            "version": "v1.23.1",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
-                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
                 "shasum": ""
             },
             "require": {
@@ -336,7 +347,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.23-dev"
+                    "dev-master": "1.24-dev"
                 }
             },
             "autoload": {
@@ -371,7 +382,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-11-05 12:49:06"
+            "time": "2016-05-30 09:11:59"
         },
         {
             "name": "upstatement/routes",
@@ -426,15 +437,15 @@
         },
         {
             "name": "wpackagist-plugin/advanced-custom-fields",
-            "version": "4.4.3",
+            "version": "4.4.8",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/advanced-custom-fields/",
-                "reference": "tags/4.4.3"
+                "url": "https://plugins.svn.wordpress.org/advanced-custom-fields/",
+                "reference": "tags/4.4.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -449,7 +460,7 @@
             "version": "1.6.6",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/multiple-post-thumbnails/",
+                "url": "https://plugins.svn.wordpress.org/multiple-post-thumbnails/",
                 "reference": "trunk"
             },
             "dist": {
@@ -466,15 +477,15 @@
         },
         {
             "name": "wpackagist-plugin/options-framework",
-            "version": "1.8.4",
+            "version": "1.8.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/options-framework/",
-                "reference": "tags/1.8.4"
+                "url": "https://plugins.svn.wordpress.org/options-framework/",
+                "reference": "tags/1.8.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/options-framework.1.8.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/options-framework.1.8.5.zip",
                 "reference": null,
                 "shasum": null
             },
