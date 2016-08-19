@@ -1,0 +1,23 @@
+@mixin container-search() {
+  .results {
+    .inner {
+      @include clearfix();
+      @include wrapper();
+      .result {
+        @include hx();
+        @include hx-l();
+        @include hx-accent();
+        text-align:center;
+        + .result {
+          margin-top:30px;
+        }
+      }
+      .no-results {
+        @include hx();
+        @include hx-l();
+        @include hx-midgrey();
+        text-align:center;
+      }
+    }
+  }
+}

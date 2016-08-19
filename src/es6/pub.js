@@ -2,6 +2,7 @@ import Layout from './pub/layout';
 import Page from './pub/page';
 import Header from './pub/header';
 import Footer from './pub/footer';
+import Home from './pub/home';
 
 export default class Pub {
   constructor(main,utils) {
@@ -18,8 +19,9 @@ export default class Pub {
     this.layout = new Layout(main, utils);
     this.header = new Header(main, utils);
     this.footer = new Footer(main, utils);
+    this.elements = new Elements(main, utils);
 
     //Template specific tests
-    if(this.m.$body.filter('[data-template=page]').size() > 0) this.page = new Page(main, utils);
+    if(this.m.$body.filter('[data-template="page-index"]').size() > 0) this.home = new Home(main, utils);
   }
 } 

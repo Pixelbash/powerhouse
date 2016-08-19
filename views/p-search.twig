@@ -1,0 +1,26 @@
+{% extends "common/base.twig" %}
+
+{% block body_classes %}page-search{% endblock %}
+
+{% block content %}
+<section class="element element-hero">
+  <div class="title">
+    <h1>Search results</h1>
+  </div>
+</section>
+<section class="results">
+  <div class="inner">
+   {% if posts.length > 0 %}
+     {% for post in posts %}
+      <div class="result">
+        <a href="{{ post.href }}"> {{ post.title }} <span> {{ post.excerpt }}</span></a>
+      </div>
+     {% endfor %}
+     {% else %}
+     <div class="no-results">
+      Sorry, there were no results for that search!
+     </div>  
+   {% endif %}
+  </div>
+</section>
+{% endblock %}

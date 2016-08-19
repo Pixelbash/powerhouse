@@ -2,7 +2,7 @@
 {% block head %}{% endblock %}
 </head>
   {% set body_classes %}{% block body_classes %}{% endblock %}{% endset %}
-<body class="{{ body_class }}">
+<body data-template="{{ body_classes }}">
   <!--[if lt IE 7]>
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
@@ -20,7 +20,7 @@
   {% include 'common/footer.twig' %}
 
   <script src="{{ template_uri }}/dist/js/init.js"></script>
-
+  
   {{ function('wp_footer') }}
 </body>
 </html>

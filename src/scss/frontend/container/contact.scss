@@ -1,0 +1,90 @@
+@mixin container-contact() {
+  section.content {
+    @include bp-xl();
+    padding-top:40px;
+    .inner {
+      @include wrapper();
+      @include clearfix();
+      .details {
+        @include span(5);
+        .contacts {
+          @include cx();
+          @include cx-full($midgrey);
+          @include cx-m();
+          @include link-color($midgrey,$accent,$dark);
+          @include bp-l();
+          font-weight:bold;
+          >div {
+            padding-left:20px;
+            @include helper-line-decorator();
+            + div {
+              margin-top:$space-m;
+            }
+          }
+        }
+        .people {
+          >div {
+            h3 {
+              @include hx();
+              @include hx-l();
+              @include hx-accent();
+              @include bp-xs();
+            }
+            p {
+              @include cx();
+              @include cx-m();
+              @include cx-dark();
+              font-weight:bold;
+              span {
+                @include cx-accent();
+              }
+            }
+            + div {
+              padding-top:$space-m;
+            }
+          }
+        }
+      }
+      .contact {
+        @include span(7);
+
+      }
+    }
+    @include respond-to(m) {
+      .inner {
+        .details {
+          @include span(12,0);
+          .contacts,
+          .people {
+            @include span(6);
+          }
+        }
+        .contact {
+          @include span(12);
+          padding-top:30px;
+        }
+      }
+    }
+    @include respond-to(xs) {
+      .inner {
+        .details {
+          width:100%;
+          float:none;
+          @include wrapper(320px);
+          .contacts,
+          .people {
+            width:100%;
+            float:none;
+          }
+          .people {
+            padding-top:40px;
+          }
+        }
+        .contact {
+          @include span(12);
+          padding-top:80px;
+        }
+      }
+    }
+  }
+}

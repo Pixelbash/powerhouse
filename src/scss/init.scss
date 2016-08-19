@@ -1,45 +1,61 @@
 /* MASTER */
-$wrap:  980px; 
-$gutter: 16px;
+$wrap:  1200px; //reasonable default 
+$gutter: 20px; // reasonable default
 $columns: 12;
 
-$light:        #fff;
-$lightestgrey: #e6e6e6;
-$lightgrey:    #b3b3b3;
-$midgrey:      #6d6d6d;
+$light:        #ffffff;
+$lightestgrey: #e6e6e6; //Not used (yet)
+$lightgrey:    #999999;
+$midgrey:      #6d6d6d; //Not used (yet)
 $darkgrey:     #4d4d4d;
-$darkestgrey:  #333333;
-$dark:         #141414;
+$darkestgrey:  #231F20;
+$dark:         #000000;
 
-$accent:     #48e;
-$background: #d0d3d6;
+$red:        #ff665e;
+$accent:     $red;
+$background: #fff;
 
-$space-xxl: 80px;
-$space-xl:  60px;
-$space-l:   50px;
-$space-m:   30px;
-$space-s:   20px;
-$space-xs:  10px;
+
+$breakpoints: (
+  'xxl'  : ( max-width: 1080px ),
+  'xl' : ( max-width:  960px ),
+  'l' : ( max-width:  840px ),
+  'l+' : ( min-width:  841px ),
+  'm' : ( max-width:  720px ),
+  's'  : ( max-width:  680px ),
+  'xs'  : ( max-width:  600px ),
+  'xxs'  : ( max-width:  500px ),
+);
+
+
+$space-xxxl: 100px;
+$space-xxl: 90px;
+$space-xl:  70px;
+$space-l:   60px;
+$space-m:   40px;
+$space-s:   30px;
+$space-xs:  20px;
+$space-xxs: 10px;
  
 $font-xxl: 40px;
-$font-xl:  38px; 
-$font-l:   30px;
-$font-m:   22px;
-$font-s:   14px;
-$font-xs:  12px; 
-$font-xxs: 11px; 
+$font-xl:  28px; 
+$font-l:   24px;
+$font-m:   16px;
+$font-s:   15px;
+$font-xs:  14px; 
+$font-xxs: 12px; 
 
-$font-lh-xxl: 48px; 
-$font-lh-xl:  42px; 
-$font-lh-l:   38px; 
-$font-lh-m:   24px; 
-$font-lh-s:   19px; 
-$font-lh-xs:  19px; 
-$font-lh-xxs: 18px; 
+$font-lh-xxl: 48px; //Will tweak later
+$font-lh-xl:  36px; //Will tweak later
+$font-lh-l:   32px; //Will tweak later
+$font-lh-m:   24px; //Will tweak later
+$font-lh-s:   24px; //Will tweak later
+$font-lh-xs:  18px; //Will tweak later
+$font-lh-xxs: 18px; //Will tweak later
 
 $d : './';
 $images : './img/';
- 
+
 //Base framework
 @import 'utils/reset.scss';
 @import 'utils/grid.scss'; 
@@ -49,7 +65,7 @@ $images : './img/';
 @import 'utils/typography.scss'; 
 
 //Theme specific functions
-@import 'frontend/fonts/fonts.scss';
+@import 'frontend/fonts.scss';
 @import 'frontend/helpers.scss';
 @import 'frontend/typography.scss';
 @import 'frontend/forms.scss';
@@ -62,7 +78,6 @@ $images : './img/';
 @import 'frontend/footer.scss'; 
 @import 'frontend/lightbox.scss';
 @import 'frontend/blocks.scss'; 
-@import 'frontend/responsive.scss';
 
 // Main 
 html,body { margin:0;padding:0; }
@@ -76,10 +91,19 @@ body {
 }
 
 a {
+  color:$dark;
+  text-decoration:none;
+  cursor:pointer;
   &:hover,
   &:active {
     text-decoration:none;
   }
 }
 
-@import 'example-styles.scss';
+#wpadminbar {
+  display:none;
+}
+
+html {
+  margin-top:0!important;
+}

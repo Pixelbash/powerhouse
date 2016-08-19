@@ -4,7 +4,7 @@
   @include hx-dark();
   margin:0;
   padding:0;
-  font-weight:400;
+  font-weight:bold;
   word-wrap: break-word;
   i,em {
     text-transform:none;
@@ -13,12 +13,12 @@
 }
 
 //size
-@mixin hx-xxl()    {font-size:$font-xxl;line-height:$font-lh-xxl;}
-@mixin hx-xl()     {font-size:$font-xl;line-height:$font-lh-xl;}
-@mixin hx-l()      {font-size:$font-l;line-height:$font-lh-l;}
-@mixin hx-m()      {font-size:$font-m;line-height:$font-lh-m;}
-@mixin hx-s()      {font-size:$font-s;line-height:$font-lh-s;}
-@mixin hx-xs()     {font-size:$font-xs;line-height:$font-lh-xs;}
+@mixin hx-xxl()    {font-size:$font-xxl;line-height:$font-lh-xxl;  @include respond-to(l) {font-size:$font-xl;line-height:$font-lh-xl;}    @include respond-to(m) {font-size:$font-l;line-height:$font-lh-l;}}
+@mixin hx-xl()     {font-size:$font-xl;line-height:$font-lh-xl;    @include respond-to(l) {font-size:$font-l;line-height:$font-lh-l;}      @include respond-to(m) {font-size:$font-m;line-height:$font-lh-m;}}
+@mixin hx-l()      {font-size:$font-l;line-height:$font-lh-l;      @include respond-to(l) {font-size:$font-m;line-height:$font-lh-m;}      @include respond-to(s) {font-size:$font-s;line-height:$font-lh-s;}}
+@mixin hx-m()      {font-size:$font-m;line-height:$font-lh-m;      @include respond-to(l) {font-size:$font-s;line-height:$font-lh-s;}}
+@mixin hx-s()      {font-size:$font-s;line-height:$font-lh-s;      @include respond-to(l) {font-size:$font-xs;line-height:$font-lh-xs;}}
+@mixin hx-xs()     {font-size:$font-xs;line-height:$font-lh-xs;    @include respond-to(l) {font-size:$font-xxs;line-height:$font-lh-xxs;}}
 @mixin hx-xxs()    {font-size:$font-xxs;line-height:$font-lh-xxs;}
 //colour
 @mixin hx-light()        {@include setup-color($light);}
@@ -32,14 +32,14 @@
 @mixin hx-accent() {@include setup-color($accent);}
 //other
 @mixin hx-lc()     {text-transform:none;}
-@mixin hx-uc()     {text-transform:uppercase;letter-spacing:.12em;}
+@mixin hx-uc()     {text-transform:uppercase;letter-spacing:1px;}
 
 @mixin hx-style1 {
   @include hx();
-  @include hx-xs();
+  @include hx-m();
   @include hx-darkestgrey();
-  @include hx-uc();
   @include sans();
+  font-weight:bold;
 }
 
 @mixin hx-style2 {
@@ -62,11 +62,12 @@
 @mixin cx-xxl()    {font-size:$font-xxl;line-height:$font-lh-xxl;}
 @mixin cx-xl()     {font-size:$font-xl;line-height:$font-lh-xl;}
 @mixin cx-l()      {font-size:$font-l;line-height:$font-lh-l;}
-@mixin cx-m()      {font-size:$font-m;line-height:$font-lh-m;}
+@mixin cx-m()      {font-size:$font-m;line-height:$font-lh-m; @include respond-to(l) {font-size:$font-s;line-height:$font-lh-s;}}
 @mixin cx-s()      {font-size:$font-s;line-height:$font-lh-s;}
-@mixin cx-xs()     {font-size:$font-xs;line-height:$font-lh-xs;}
+@mixin cx-xs()     {font-size:$font-xs;line-height:$font-lh-xs;@include respond-to(xs) {font-size:$font-xs*0.9;line-height:$font-lh-xs*0.9;}}
 @mixin cx-xxs()    {font-size:$font-xxs;line-height:$font-lh-xxs;}
 
+@mixin cx-accent() {@include setup-color($accent);}
 @mixin cx-lc()     {text-transform:none;}
 @mixin cx-uc()     {text-transform:uppercase;letter-spacing:1px;}
 
@@ -79,11 +80,12 @@
 @mixin cx-dark()         {@include setup-color($dark);}
 
 
-@mixin cx-full() {
+@mixin cx-full($clr:$dark) {
   @include cx();
   @include cx-xs();
-  @include cx-darkestgrey();
+  @include setup-color($clr);
   @include setup-paragraph();
+  @include link-color($accent,darken($accent,5%),$dark);
   h1,h2,h3,h4,h5,h6 {
     @include hx-style1();
     padding-bottom:0.5em;
@@ -93,12 +95,6 @@
   }
   i,em {
     font-style:italic;
-  }
-  a {
-    text-decoration: underline;
-    &:hover {
-      color:inherit;
-    }
   }
   ul {
     li {
@@ -111,16 +107,4 @@
       }
     }
   }
-}
-
-html body {
-  font-size:16px;
-  line-height:18px;
-  color:#000;
-  @include sans();
-}
-
-a {
-  text-decoration:none;
-  cursor:pointer;
 }

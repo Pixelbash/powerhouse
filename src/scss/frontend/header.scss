@@ -1,2 +1,207 @@
-header.desktop {
+header.default {
+  position:fixed;
+  left:0;right:0;
+  top:0;
+  background:$accent;
+  z-index:100;
+  .search {
+    background:$darkestgrey;
+    max-height:0px;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+    &.active {
+      max-height:200px;
+    }
+    >.inner {
+      @include clearfix();
+      @include wrapper();
+      padding:20px $gutter;
+      position:relative;
+      form {
+        float:right;
+        margin-right:10px;
+        button {
+          color:#fff;
+          margin-right:10px;
+          &:hover {
+            color:$accent;
+          }
+        }
+        input {
+          width:200px;
+          color:$lightgrey;
+        }
+      }
+      .close {
+        float:right;
+        width:24px;
+        height:24px;
+        cursor:pointer;
+        position:relative;
+        i {
+          display:block;
+          position:absolute;
+          top:50%;
+          height:1px;
+          width:100%;
+          background:#fff;
+          transform:rotate(45deg);
+          + i {
+            transform:rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+  >.inner {
+    @include clearfix();
+    @include wrapper();
+    padding:0 $gutter;
+    nav.logo {
+      float:left;
+      padding-top:$space-xs;
+      padding-bottom:$space-xs;
+      position:relative;
+    }
+  }
+  @include respond-to('l+') {
+    >.inner {
+      nav.menu {
+        float:right;
+        >ul {
+          @include horizontal-list();
+          padding-top:30px;
+          >li {
+            position:relative;
+            @include cx();
+            @include cx-s();
+            @include cx-uc();
+            @include link-color($light,$dark,$darkgrey);
+            z-index:5;
+            >ul {
+              opacity:0;
+              transition:opacity 0.2s ease-out;
+              @include cx();
+              @include cx-s();
+              @include link-color($light,$accent,darken($accent,5%));
+              position:absolute;
+              left:0;top:55px;
+              width:auto;
+              background:rgba(0,0,0,0.6);
+              padding:20px 30px;
+              z-index:-1;
+              li {
+                + li {
+                  margin-top:10px;
+                }
+              }
+              //Need something so hover doesn't dissapear before we get to it
+              &:before {
+                content:' ';
+                position:absolute;
+                left:0;bottom:100%;
+                width:100%;
+                height:55px;
+                background:rgba(0,0,0,0);
+                cursor:pointer;
+                display:none;
+              }
+            }
+            &:hover {
+              >ul {
+                opacity:1;
+                &:before {
+                  display:block;
+                }
+              }
+            }
+            + li {
+              margin-left:30px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include respond-to(l) {
+
+    >.inner {
+      position:relative;
+      .bg {
+        position:absolute;
+        left:0;right:0;
+        top:0;height:100%;
+        background:$accent;
+        z-index:10;
+      }
+      .hamburger {
+        position:absolute;
+        right:30px;
+        top:22px;
+        width:28px;
+        height:24px;
+        cursor:pointer;
+        z-index:15;
+        transition:all 0.1s ease-out;
+        i {
+          position:absolute;
+          left:0;right:0;
+          top:0;height:2px;
+          background:$dark;
+          + i {
+            top:50%;
+            transform:translateY(-50%);
+            + i {
+              top:100%;
+            }
+          }
+        }
+        &:hover {
+          top:24px;
+          height:20px;
+        }
+        &.active {
+          opacity:0.6;
+        }
+      }
+      nav.logo {
+        z-index:15;
+        img {
+          height:30px;
+        }
+      }
+      nav.menu {
+        >ul {
+          position:absolute;
+          top:-400px;
+          left:0;
+          right:0;
+          background:#fff; 
+          transition:all 0.2s ease-out;
+          z-index:0;
+          li {
+            text-align:center;
+            a,
+            span.a {
+              display:block;
+              padding:15px 20px;
+            }
+            >ul,
+            + li {
+              border-top:1px solid transparentize($lightgrey, 0.8);
+            }
+            &:hover {
+              background:transparentize($lightgrey, 0.9);;
+            }
+          }
+        }
+        &.active {
+          ul {
+            top:70px;
+            bottom:auto;
+          }
+        }
+      }
+    }
+  }
 }

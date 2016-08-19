@@ -81,5 +81,197 @@ function jsRegisterMeta( $meta_boxes ) {
     ]
   ];
 
+   $meta_boxes[] = [
+    'id'         => 'standard',
+    'title'      => __( 'Information', 'js' ),
+    'post_types' =>  [ 'person' ],
+    'autosave'   => true,
+    'fields'     =>  [
+      [
+        'name'  => __( 'Position', 'js' ),
+        'id'    => "{$prefix}person_position",
+        'type'  => 'text'
+      ],
+      [
+        'name'  => __( 'Phone', 'js' ),
+        'id'    => "{$prefix}person_phone",
+        'type'  => 'text'
+      ],
+      [
+        'name'  => __( 'Email', 'js' ),
+        'id'    => "{$prefix}person_email",
+        'type'  => 'text'
+      ],
+      [
+        'name'  => __( 'CV Upload', 'js' ),
+        'id'    => "{$prefix}person_cv",
+        'type'  => 'file'
+      ],
+    ]
+  ];
+
+   $meta_boxes[] = [
+    'id'         => 'standard',
+    'title'      => __( 'Information', 'js' ),
+    'post_types' =>  [ 'endorsement' ],
+    'autosave'   => true,
+    'fields'     =>  [
+      [
+        'name'  => __( 'Location', 'js' ),
+        'id'    => "{$prefix}endorsement_location",
+        'desc'  => __( 'eg. Tenant at Lighter Quay', 'js' ),
+        'type'  => 'text'
+      ],
+    ]
+  ];
+
+   $meta_boxes[] = [
+    'id'         => 'standard',
+    'title'      => __( 'Information', 'js' ),
+    'post_types' =>  [ 'development' ],
+    'autosave'   => true,
+    'fields'     =>  [
+      [
+        'name'  => __( 'Addresses', 'js' ),
+        'id'    => "{$prefix}development_addresses",        
+        'type'  => 'textarea',
+        'clone' => true
+      ],
+      [
+        'name'  => __( 'Gallery', 'js' ),
+        'id'    => "{$prefix}development_images",
+        'type'  => 'image_advanced',
+        'max_file_uploads' => 12,
+      ],
+
+    ]
+  ];
+
+  $meta_boxes[] = [
+    'id'         => 'standard',
+    'title'      => __( 'Information', 'js' ),
+    'post_types' =>  [ 'building' ],
+    'autosave'   => true,
+    'fields'     =>  [
+      [
+        'name'  => __( 'Password', 'js' ),
+        'id'    => "{$prefix}building_password",
+        'desc'  => __( 'eg. m23F3f#$', 'js' ),
+        'type'  => 'text'
+      ],
+      [
+        'name'  => __( 'Rules (PDF)', 'js' ),
+        'id'    => "{$prefix}building_pdf",
+        'type'  => 'file',
+        'max_file_uploads' => 1,
+      ],
+      [
+        'name'  => __( 'Form names', 'js' ),
+        'id'    => "{$prefix}building_form_names",
+        'desc'  => __( 'eg. Swipe Tag Registration Form. NOTE: Number + order of titles, shortcodes & pdf\'s must match', 'js' ),
+        'type'  => 'text',
+        'clone' => true
+      ],
+      [
+        'name'  => __( 'Form shortcode', 'js' ),
+        'id'    => "{$prefix}building_forms",
+        'desc'  => __( 'eg. [ninja_forms_display_form id="7"]', 'js' ),
+        'type'  => 'text',
+        'clone' => true
+      ],
+      [
+        'name'  => __( 'Form PDF\'s', 'js' ),
+        'id'    => "{$prefix}building_form_pdf",
+        'type'  => 'file',
+      ],
+    ]
+  ];
+
+  //  $meta_boxes[] = [
+  //   'id'         => 'standard',
+  //   'title'      => __( 'Information', 'js' ),
+  //   'post_types' =>  [ 'person' ],
+  //   'autosave'   => true,
+  //   'fields'     =>  [
+  //     [
+  //       'name'  => __( 'Location', 'js' ),
+  //       'id'    => "{$prefix}person_location",
+  //       'desc'  => __( 'This persons location', 'js' ),
+  //       'type'  => 'text'
+  //     ],
+  //     [
+  //       'name'  => __( 'Position', 'js' ),
+  //       'id'    => "{$prefix}person_position",
+  //       'desc'  => __( 'This persons title', 'js' ),
+  //       'type'  => 'text'
+  //     ],
+  //   ]
+  // ];
+
+  if(jsRegisterMetaPageCheck('page-contact.php')) {
+
+     $meta_boxes[] = [
+      'id'         => 'standard',
+      'title'      => __( 'Contact', 'js' ),
+      'post_types' =>  [ 'page' ],
+      'autosave'   => true,
+      'fields'     =>  [
+        [
+          'name'  => __( 'Details', 'js' ),
+          'id'    => "{$prefix}contact_details",
+          'desc'  => __( 'eg. Address', 'js' ),
+          'type'  => 'textarea',
+          'clone' => true
+        ],
+        [
+          'name'  => __( 'Person', 'js' ),
+          'id'    => "{$prefix}contact_person",
+          'desc'  => __( '', 'js' ),
+          'type'  => 'textarea',
+          'clone' => true
+        ],
+      ]
+    ];
+
+  }
+
   return $meta_boxes;
+}
+
+
+function jsRegisterMetaPageCheck($page_templates = false) {
+  // Always include in the frontend to make helper function work
+  if ( ! is_admin() ) return true;
+
+  // Always include for ajax
+  if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) return true;
+
+  // Check for page template
+  $template = get_post_meta( jsGetPostID(), '_wp_page_template', true );
+
+  if($template && $page_templates) {
+    if(is_array($page_templates)) {
+      if ( in_array( $template, $page_templates ) ) {
+        return true;
+      }
+    } else if(is_string($page_templates)) {
+      if($template == $page_templates) {
+        return true;
+      }
+    }
+  }
+
+  // If no condition matched
+  return false;
+}
+
+function jsGetPostID() {
+  if ( isset( $_GET['post'] ) )
+    $post_id = intval( $_GET['post'] );
+  elseif ( isset( $_POST['post_ID'] ) )
+    $post_id = intval( $_POST['post_ID'] );
+  else
+    $post_id = false;
+  $post_id = (int) $post_id;
+  return $post_id;
 }

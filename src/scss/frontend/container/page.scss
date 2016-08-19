@@ -1,0 +1,19 @@
+@mixin container-page() {
+  section.content {
+    @include bp-xl();
+    padding-top:40px;
+    .inner {
+      @include wrapper();
+      @include clearfix();
+      .details {
+        @include span(12);
+        .description {
+          @include cx();
+          @include cx-full($darkgrey);
+          @include cx-s();
+          @include text-columns(2);
+        }
+      }
+    }
+  }
+}

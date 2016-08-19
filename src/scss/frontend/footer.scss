@@ -1,3 +1,104 @@
-footer.desktop {
-  
+footer.default {
+  >.top {
+    background:$darkestgrey;
+    padding:$space-l 0;
+    text-align:center;
+    .logo {
+      display:inline-block;
+    }
+  }
+  .main {
+    background:$darkgrey;
+    padding-top:$space-l;
+    .inner {
+      @include clearfix();
+      @include wrapper();
+      padding:0 $gutter;
+      .top {
+        width:200px;
+        max-width:100%;
+        margin:0 auto;
+        text-align:center;
+        a {
+          @include cx();
+          @include cx-xs();
+          @include cx-lightgrey();
+          img {
+            display:inline-block;
+            padding-bottom:10px;
+          }
+          &:hover {
+            opacity:0.9;
+          }
+        }
+      }
+      .menu {
+        padding-top:$space-l;
+        ul {
+          @include horizontal-list();
+          text-align:center;
+          li {
+            @include cx();
+            @include cx-s();
+            @include link-color($light,$accent,$dark);
+            font-weight:bold;
+            + li {
+              margin-left:30px;
+            }
+          }
+        }
+      }
+      .contact {
+        @include wrapper(520px);
+        @include clearfix();
+        padding-top:$space-m;
+        >div {
+          @include span(6);
+          @include cx();
+          @include cx-xs();
+          @include cx-lightgrey();
+          padding-left:30px;
+          position:relative;
+          font-weight:bold;
+          @include link-color($lightgrey,$accent,$dark);
+          @include helper-line-decorator();
+          + div {
+            @include offset(1);
+            @include span(5);
+          }
+        }
+      }
+      .extra,
+      .copyright {
+        @include cx();
+        @include cx-lightgrey();
+        @include cx-xs();
+        padding-top:$space-l;
+        text-align:center;
+        @include link-color($lightgrey,$accent,$dark);
+      }
+      .extra {
+        font-weight:bold;
+      }
+      .copyright {
+        padding-bottom:$space-m;
+      }
+    }
+  }
+  @include respond-to(s) {
+    .main {
+      .inner {
+        .contact {
+          >div,
+          >div+div {
+            @include offset(1);
+            @include span(10);
+          }
+          >div + div {
+            margin-top:40px;
+          }
+        }
+      }
+    }
+  }
 }

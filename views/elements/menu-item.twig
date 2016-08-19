@@ -1,0 +1,10 @@
+<li>
+  <a href="{{ link.href }}" class="{{ link.class }}">{{ link.title }}</a>
+  {% if link.children %}
+    <ul>
+      {% for child in link.children %}
+        {% include 'elements/menu-item.twig' with {link: child} %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>

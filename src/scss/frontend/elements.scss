@@ -1,9 +1,102 @@
-body>.notification {
-  @include fix-position(0,0,100%,auto,left,bottom);
-  @include cx();
-  @include cx-xs();
-  padding:10px 20px;
-  text-align:center;
-  background:rgba(255,255,255,0.8);
-  z-index:12;
+.element {
+  &.element-hero {
+    text-align:center;
+    padding: $space-xl $gutter $space-s;
+    @include respond-to(m) {
+      padding-top:$space-l;
+      padding-bottom:$space-s;
+    }
+    .title {
+      @include hx();
+      @include hx-uc();
+      @include hx-xl();
+      @include helper-header-decorator();
+    }
+    .subtitle {
+      .inner {
+        @include clearfix();
+        @include wrapper(900px);
+        @include bp-m();
+        h2 {
+          @include hx();
+          @include hx-l();
+          @include hx-midgrey();
+        }
+      }
+    }
+    .controls {
+      p {
+        @include cx-full($midgrey);
+        @include cx-m();
+        @include bp-s();
+      }
+      select {
+        @include input();
+        @include input-border();
+      }
+    }
+  }
+  &.element-carousel {
+    .slideshow {
+      text-align:center;
+      padding-top:20px;
+      padding-bottom:20px;
+      >div {
+        position:relative;
+        width:200px;
+        display:inline-block;
+        @include respond-to(s) {
+          width:100px;
+        }
+        .link {
+          display:block;
+          position:absolute;
+          left:0;top:0;
+          width:100%;height:100%;
+          background:transparent;
+          transition:background-color 0.2s ease-out;
+          a {
+            position:absolute;
+            left:0;top:0;
+            width:100%;height:100%;
+            z-index:10;
+          }
+          h3 {
+            @include cx();
+            @include cx-s();
+            @include cx-light();
+            font-style:italic;
+            position:absolute;
+            top:50%;left:50%;
+            transform:translateX(-50%) translateY(-50%);
+            max-width:100%;
+            z-index:1;
+            opacity:0;
+          }
+        }
+        .image {
+          padding-top:100%;
+          background-position:center;
+          background-size:cover;
+          background-repeat:no-repeat;
+        }
+        &:hover {
+          .link {
+            background-color:rgba(0,0,0,0.2);
+            h3 {
+              opacity:1;
+            }
+          }
+        }
+        &.active {
+          .link {
+            background-color:rgba(255,255,255,0.2);
+          }
+        }
+        + div {
+          margin-left:10px;
+        }
+      }
+    }
+  }
 }

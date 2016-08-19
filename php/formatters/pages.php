@@ -28,12 +28,24 @@ class Page {
   static function get($id = false, $source = false) {
     $post = new \TimberPost($id);
 
+    $thumb_id = get_post_thumbnail_id($post->ID);
+    $image = Image::resize([
+      'id'     => $thumb_id,
+      'width'  => 800,
+      'height' => 800,
+      'resize' => 'best_fit'
+    ]);
+
     $post_data = array(
-     'id'          => $post->ID,
-     'title'       => $post->post_title,
-     'excerpt'     => $post->post_excerpt,
-     'content'     => apply_filters('content',$post->post_content),
-     'href'        => get_permalink()
+     'id'      => $post->ID,
+     'title'   => $post->post_title,
+     'excerpt' => $post->post_excerpt,
+     'content' => apply_filters('the_content',$post->post_content),
+     'href'    => get_permalink(),
+     'image'   => $image,
+     'subtitle' => $post->js_page_subtitle,
+     'people'   => $post->js_contact_person,
+     'contacts'   => $post->js_contact_details,
    );
 
     return $post_data;

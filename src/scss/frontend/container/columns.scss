@@ -1,0 +1,75 @@
+@mixin container-columns() {
+  section.content {
+    @include bp-xl();
+    padding-top:40px;
+    .inner {
+      @include wrapper();
+      @include clearfix();
+      .images,
+      .details {
+      }
+      .images {
+        @include span(5);
+        .image {
+          margin-bottom:1.6em;
+          img {
+            width:100%;
+          }
+          .caption {
+            @include cx();
+            @include cx-xs();
+            @include cx-midgrey();
+            font-style:italic;
+            text-align:center;
+            margin-top:0.5em;
+          }
+        }
+      }
+      .details {
+        @include span(7);
+          padding-left:40px;
+          padding-right:$gutter;
+        .description {
+          @include cx();
+          @include cx-full($darkgrey);
+          @include cx-s();
+          ul.links {
+            @include cx();
+            @include cx-s();
+            @include link-color($accent,darken($accent,5%),$dark); 
+            font-style:italic;
+            @include horizontal-list();
+            li { 
+              + li {
+                margin-left:30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    @include respond-to(m) {
+      .inner {
+        .images {
+          @include span(6);
+        }
+        .details {
+          @include span(6);
+        }
+      }
+    }
+    @include respond-to(s) {
+      .inner {
+        .images {
+          @include wrapper(420px);
+          width:100%;
+          float:none;
+          padding:0 $gutter;
+        }
+        .details {
+          @include span(12);
+        }
+      }
+    }
+  }
+}

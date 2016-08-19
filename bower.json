@@ -1,5 +1,5 @@
 {
-  "name": "marasommer.pxl.nz",
+  "name": "powerhouse.pxl.nz",
   "description": "",
   "main": "index.js",
   "authors": [
@@ -18,10 +18,10 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
-    "packery": "~1.4.3",
+    "jquery": "^3.1.0",
     "radio": "~0.2.0",
-    "underscore": "~1.8.3",
-    "bxslider-4": "bxSlider#~4.2.5"
+    "bxslider-4": "bxSlider#~4.2.5",
+    "font-awesome-sass": "^4.6.2",
+    "lodash": "^4.15.0"
   }
 }

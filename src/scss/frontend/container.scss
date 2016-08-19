@@ -1,42 +1,29 @@
-section.container {
-  @include wrapper();
+@import 'container/home';
+@import 'container/columns';
+@import 'container/contact';
+@import 'container/search';
+@import 'container/page';
+
+section.container {  
   @include clearfix();
 
-  //Global alerts
-  .alert {
-    text-align:center;
-    padding:10px 20px 10px 20px;
-    margin:0 $gutter $space-m;
-    background:#fff;
-    border:1px solid $lightgrey;
-    color:$darkgrey;
-    position:relative;
-    z-index:20;
-    h3 {
-      @include hx-style1();
-      @include bm-xs();
-    }
-    p {
-      @include cx();
-      @include cx-midgrey();
-      @include cx-m();
-      @include bm-xs();
-    }
-    ul {
-      li {
-        @include cx();
-        @include cx-midgrey();
-        @include cx-s();
-        + li {
-          margin-top:$space-xs;
-        }
-      }
-    }
+  &[data-template~="page-index"] {
+    @include container-home();
   }
 
-  //Page
-  &.container-page-home { 
-  } 
-  &.container-page-generic { 
-  } 
+  &[data-template~="page-columns"] {
+    @include container-columns();
+  }
+
+  &[data-template~="page-contact"] {
+    @include container-contact();
+  }
+
+  &[data-template~="page-search"] {
+    @include container-search();
+  }
+
+  &[data-template~="page"] {
+    @include container-page();
+  }
 }

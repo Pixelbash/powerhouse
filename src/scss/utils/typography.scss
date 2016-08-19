@@ -1,5 +1,6 @@
 @mixin link-color($default: $dark,$hover: $dark,$active: $dark) {
-  a {
+  a,
+  span.a {
     color:$default;
     &.active,
     &:hover {

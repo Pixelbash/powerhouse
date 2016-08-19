@@ -37,6 +37,7 @@ function jsSetExcerpt($more) {
 add_filter('excerpt_more', 'jsSetExcerpt');
 
 
+
 // prevent publishing a post type without a featured image
 // add_action( 'pre_post_update', 'require_featured_image' );
 // function require_featured_image() {

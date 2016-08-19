@@ -22,3 +22,97 @@
   outline-style: solid;
   outline-color:$accent;
 }
+span.a {
+  cursor:pointer;
+}
+
+@mixin helper-header-decorator() {
+  :after {
+    display:block;
+    content: ' ';
+    margin:$space-s auto $space-m;
+    width:50px;
+    height:1px;
+    overflow:hidden;
+    background:$red;
+  }
+}
+
+@mixin helper-line-decorator() {
+    position:relative;
+    &:before {
+      content: ' ';
+      position:absolute;
+      display:block;
+      left:0;top:0;
+      width:2px;height:100%;
+      transform:rotate(18deg);
+      background:$accent;
+    }
+}
+
+@mixin helper-bx-arrows() {
+  .bx-next,
+  .bx-prev {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:60px;
+    height:60px;
+    background:rgba(0,0,0,0.8);
+    background-position:center;
+    background-repeat:no-repeat;
+    text-indent:-9999px;
+
+  }
+  .bx-next {
+    right:20px;
+    background-image:url('../img/icons/arrow-right-red.png');
+  }
+  .bx-prev {
+    left:20px;
+    background-image:url('../img/icons/arrow-left-red.png');
+  }
+  @include respond-to(xl) {
+    .bx-next,
+    .bx-prev {
+      width:50px;
+      height:50px;
+    }
+  }
+  @include respond-to(m) {
+    .bx-next,
+    .bx-prev {
+      width:40px;
+      height:40px;
+      background-size:30%;
+    }
+  }
+}
+
+@mixin helper-bx-pager() {
+  .bx-pager {
+    position:absolute;
+    left:0;width:100%;
+    bottom:20px;
+    text-align:center;
+    .bx-pager-item {
+      display:inline-block;
+      @include link-color($light,$accent,$dark  );
+      text-align:left;
+      a {
+        display:inline-block;
+        width:10px;
+        height:10px;
+        border:1px solid #fff;  
+        text-indent:-9999px;
+        &.active {
+          background:$light;
+        }
+      }
+      + .bx-pager-item {
+        margin-left:10px; 
+      }
+    }
+  }
+}

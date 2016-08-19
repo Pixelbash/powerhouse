@@ -1,7 +1,7 @@
 export default class Fixes {
   constructor() {
     this.console();  //Avoid no console errors
-    this.hovertap(); //Fix double tapping on mobile webkit
+    // this.hovertap(); //Fix double tapping on mobile webkit
   }
 
   console() { 

@@ -1,9 +1,5 @@
-//base styles
-input,
-select
-textarea,
-button,
-a.button {
+// Mixins
+@mixin input() {
   padding:0;
   margin:0;
   border:none;
@@ -15,12 +11,90 @@ a.button {
   @include border-radius(0);
 }
 
+@mixin button($bg:$accent) {
+  @include input();
+  @include cx();
+  @include cx-uc();
+  @include cx-light();
+  @include cx-xs();
+  background:$bg;
+  padding:15px 30px;
+  &:hover {
+    background:darken($bg,5%);
+  }
+  &:active {
+    background:$darkestgrey;
+  }
+}
+
+@mixin input-border() {
+  @include cx();
+  @include cx-m();
+  @include cx-darkgrey();
+  padding:10px 20px;
+  border: 1px solid $dark;
+}
+
+//Elements
+@include placeholder($lightgrey);
+input,
+select
+textarea,
+button {
+  @include input();
+}
+
 legend {
   width:100%;
 }
 
-input[type=checkbox] {
-  
+.form {
+  &.form-contact {
+    section.success {
+      text-align:center;
+      h2 {
+        @include hx();
+        @include hx-xl();
+        @include hx-accent();
+        @include bp-xs();
+      }
+      p {
+        @include cx();
+        @include cx-l();
+        @include cx-midgrey();
+      }
+    }
+    form {
+      .group {
+        .control {
+          @include span(6,$space-xs/2);
+          @include bp-xs();
+        }
+      }
+      .control {
+        @include span(12,$space-xs/2);
+        @include bp-xs();
+      }
+      input[type=text],
+      input[type=email],
+      input[type=phone],
+      textarea {
+        width:100%;
+        @include input-border();
+        &[type=text] {
+          
+        }
+      }
+      textarea {
+        min-height:200px;
+      }
+      .submit {
+        text-align:right;
+        padding:0 $space-xs/2;
+        button {
+          @include button();
+        }
+      }
+    }
+  }
 }
-
-@include placeholder($lightgrey);

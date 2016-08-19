@@ -1,11 +1,7 @@
  <?php 
-/*
- * Page template: Generic
- */
-
-$context = Timber::get_context();
 $post    = new TimberPost();
+$context = Timber::get_context();
 
-$context['page'] = Pixelbash\Page::get($post->ID);
+$context['page'] = Pixelbash\Page::get();
 
-Timber::render('pages/generic.twig', $context);
+Timber::render('page.twig', $context);

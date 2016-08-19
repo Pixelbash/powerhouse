@@ -1,16 +1,24 @@
 {% extends "common/base.twig" %}
 
-{% block body_classes %}page-home{% endblock %}
+{% block body_classes %}page-index{% endblock %}
 
 {% block content %}
-<div class="container-wrap">
-  <div class="container">
-      <div class="header">
-        <h1>{{ title }}</h1>
-      </div>
-      <div class="content">
-        {{ content }}
-      </div>
+
+<section class="hero">
+  <div class="intro">
+    <h1>
+      {{ options.home_hero_text }}
+    </h1>
   </div>
-</div>
+  <div class="slider">
+    <div class="slideshow" data-sub="hero-slideshow">
+      {% for slide in home_slides %}
+        <div>
+          <div class="background" style="background-image:url('{{ slide }}')"></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 {% endblock %}

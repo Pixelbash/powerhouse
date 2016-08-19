@@ -2,7 +2,7 @@ export default class Main {
   create(new_options) {
     var options = {
       box_class: '',
-      box_content: '',
+      box_html: '',
       wrap_css: {
         position: 'fixed',
         left: 0,
@@ -65,6 +65,10 @@ export default class Main {
       if (e.which == 27) {
         this.remove();
       }
+    });
+
+    $('.lightbox-cell').on('click', (e) => {
+      if($(e.target).hasClass('lightbox-cell')) this.remove();
     });
 
     if (typeof(options.callback) === 'function') options.callback($lightbox_wrap);

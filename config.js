@@ -7,7 +7,7 @@ export default class Config {
 
     this.browsersync = {
       proxy: {
-        target: "http://powerhouse.wordpress.pxl.nz",
+        target: "http://dymond.wordpress.pxl.nz",
         middleware: function (req, res, next) {
           console.log(req.url);
           next();
@@ -42,7 +42,6 @@ export default class Config {
       bower : {
         watch: `${dirs.src}/js/lib/**/*`,
         src: [
-          `${dirs.src}/js/lib/jquery/dist/jquery.js`,
           `${dirs.src}/js/lib/bxslider-4/dist/jquery.bxslider.js`,
           `${dirs.src}/js/lib/radio/radio.js`,
           `${dirs.src}/js/lib/underscore/underscore.js`,

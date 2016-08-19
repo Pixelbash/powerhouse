@@ -1,10 +1,33 @@
-<header class="default" data-template="{{ body_classes }}">
-  <div class="logo"><a href="/"><img src="{{ template_uri }}/dist/img/examples/logo.png" alt=""></a></div>
-  <nav class="menu">
-    <ul>
-      {% for link in main_menu %}
-      <li><a href="{{ link.href }}" class="{{ link.class }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
+
+<header class="default">
+  <div class="search" data-sub="search">
+    <div class="inner">
+      <div class="close" data-pub="search-hide"><i></i><i></i></div>
+      <form action="/" data-pub="search-form">
+        <button class="fa fa-search"></button>
+        <input type="hidden" value="page" name="post_type" id="post_type" />
+        <input name="s" type="text" placeholder="Search" required>
+      </form>
+    </div>
+  </div>
+  <div class="inner">
+    <nav class="logo">
+      <a href="/"><img src="{{ template_uri }}/dist/img/header/logo.png" alt="{{ site.name }}"></a>
+    </nav>
+    <nav class="menu" data-sub="hamburger">
+      <ul>
+        {% for link in main_menu %}
+          {% include 'elements/menu-item.twig' with {link: link} %}
+        {% endfor %}
+        <li><span class="a fa fa-search" data-pub="search-toggle"></span></li>
+      </ul>
+    </nav>
+    <div class="hamburger" data-pub="hamburger">
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+    <div class="bg"></div>
+  </div>
 </header>
+<div id="top"></div>

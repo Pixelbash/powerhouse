@@ -1,5 +1,8 @@
 section.container-wrap {
   min-height:600px;
-  padding-top:160px;
+  padding-top:80px;
   @include clearfix();
+  @include respond-to(xl) {
+    padding-top:70px;
+  }
 } 

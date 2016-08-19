@@ -1,0 +1,194 @@
+@mixin container-home() {
+  section.hero {
+    position:relative;
+    .spacer {
+      //padding-top:50%;
+    }
+    .intro {
+      @include abs-position(100px,80px,350px,auto);
+      z-index:20;
+      h1 {
+        @include hx();
+        @include hx-xl();
+        @include hx-light();
+        span {
+          @include hx-dark();
+        }
+      }
+      @include respond-to(xl) {
+        left:120px;
+      }
+      @include respond-to(s) {
+        top:40px;
+        width:auto;
+        right:120px;
+      }
+      @include respond-to(xxs) {
+        display:none;
+      }
+    }
+    .slider {
+      .slideshow {
+        >div {
+          .background {
+            background-size:cover;
+            background-position:center;
+            background-repeat: no-repeat;
+            padding-top:50%;
+          }
+        }
+      }
+      .bx-controls {
+        @include helper-bx-arrows();
+        @include helper-bx-pager();
+      }
+    }
+  }
+  section.intro,
+  section.endorsements {
+    .heading {
+      text-align:center;
+      h2 {
+        @include hx();
+        @include hx-uc();
+        @include hx-xl();
+      }
+      @include helper-header-decorator();
+    }
+  }
+  section.intro {
+    .inner {
+      padding:$space-l $gutter;
+      @include wrapper(640px);
+      .details {
+        @include cx-full();
+        @include bp-s();
+      }
+      .controls {
+        text-align:center;
+        a {
+          @include button();
+        }
+      }
+    }
+  }
+  section.buildings {
+    background:$darkgrey;
+    .inner {
+      @include clearfix();
+      @include wrapper();
+      @include bp-l();
+      .heading {
+        text-align:center;
+        padding:$space-l $gutter $space-m;
+        position:relative;
+        margin-bottom:$space-xs;
+        h2 {
+          @include hx();
+          @include hx-uc();
+          @include hx-light();
+          @include hx-l();
+        }
+        .decorator {
+          position:absolute;
+          background:#fff;
+          display:block;
+          &.decorator-1 {
+            left:50%;
+            transform:translateX(-50%);
+            bottom:0;
+            height:$space-m - 10px;
+            width:4px;
+          }
+          &.decorator-2 {
+            height:4px;bottom:0;
+            left:0;right:0;
+          }
+        }
+      }
+    }
+  }
+  section.endorsements {
+    .heading {
+      padding:$space-m 0 0;
+    }
+    .slider {
+      position:relative;
+      .bx-controls {
+        @include helper-bx-arrows();
+        @include helper-bx-pager();
+      }
+      .slideshow {
+        >div {
+          position:relative;
+          .testimonial {
+            position:absolute;
+            width:420px;height:auto;
+            max-width:100%;
+            padding:40px;
+            background:#fff;
+            left:50%;top:50%;
+            transform:translateX(-50%) translateY(-50%);
+            z-index:15;
+            .description,
+            .details {
+              @include cx();
+              @include cx-s();
+              @include cx-darkgrey();
+            }
+            .description {
+              font-style:italic;
+              @include bp-m();
+            }
+            .details {
+              span {
+                color:$accent;
+              }
+            }
+          }
+          .background {
+            padding-top:50%;
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position:center;
+          }
+        }
+      }
+    }
+    @include respond-to(m) {
+      .slider .slideshow {
+        >div {
+          .testimonial {
+
+          }
+          .background {
+            height:400px;
+          }
+        }
+      }
+    }
+    @include respond-to(s) {
+      .slider {
+        .bx-controls {
+          .bx-next,
+          .bx-prev {
+            top:80px;
+          }
+        }
+        .slideshow {
+          >div {
+            .testimonial {
+              width:100%;
+              height:100%;
+              padding:40px 100px;
+              text-align:center;
+            }
+            .background {
+              height:380px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
