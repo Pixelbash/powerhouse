@@ -1,6 +1,8 @@
 @mixin container-home() {
   section.hero {
     position:relative;
+    @include wrapper();
+    @include clearfix();
     .spacer {
       //padding-top:50%;
     }

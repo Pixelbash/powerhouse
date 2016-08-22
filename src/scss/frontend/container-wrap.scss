@@ -5,8 +5,4 @@ section.container-wrap {
   @include respond-to(xl) {
     padding-top:70px;
   }
-
-  &[data-template="page-index"] {
-    padding-top:25px;
-  }
 } 
