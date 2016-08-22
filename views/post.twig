@@ -1,0 +1,23 @@
+{% extends "common/base.twig" %}
+
+{% block body_classes %}post{% endblock %}
+
+{% block content %}
+<section class="element element-hero">
+  <div class="title">
+    <h1>{{ post.title }}</h1>
+  </div>
+  <div class="subtitle">
+    {{ post.date }}
+  </div>
+</section>
+<section class="content">
+  <div class="inner">
+    <div class="details">
+      <div class="description">
+        {{ post.content }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

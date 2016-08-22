@@ -39,14 +39,16 @@ class Post {
       'resize' => 'adaptive_resize'
     ]);
 
+
     $post_data = array(
-     'id'          => $post->ID,
-     'title'       => $post->post_title,
-     'author'      => get_the_author_meta('display_name',$post->post_author),
-     'excerpt'     => get_the_excerpt(),
-     'content'     => apply_filters('the_content', $post->post_content),
-     'href'        => get_permalink(),
-     'image'       => $image
+     'id'      => $post->ID,
+     'title'   => $post->post_title,
+     'date'    => get_the_date( 'd/m/y' ),
+     'author'  => get_the_author_meta('display_name',$post->post_author),
+     'excerpt' => get_the_excerpt(),
+     'content' => apply_filters('the_content', $post->post_content),
+     'href'    => get_permalink(),
+     'image'   => $image
    );
 
     return $post_data;

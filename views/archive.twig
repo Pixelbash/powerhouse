@@ -1,9 +1,30 @@
 {% extends "common/base.twig" %}
 
+{% block body_classes %}posts{% endblock %}
+
 {% block content %}
-<section class="content-wrap ">
-	<section class="content content-archive">
-		<h1>Archive template.</h1>
-	</section>
+<section class="element element-hero">
+  <div class="title">
+    <h1>Archive</h1>
+  </div>
+</section>
+<section class="posts">
+  <div class="inner">
+    <div class="blocks blocks-posts">
+      {% for post in posts %}{% include 'blocks/post.twig' %}{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="pagination">
+  <div class="element element-pagination">
+    <div class="inner">
+      {% if pagination.prev and pagination.prev.link|length %}
+        <a href="{{pagination.prev.link}}" class="direction direction-prev">Prev</a>
+      {% endif %}
+      {% if pagination.next and pagination.next.link|length  %}
+        <a href="{{pagination.next.link}}" class="direction direction-next">Next</a>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endblock %}

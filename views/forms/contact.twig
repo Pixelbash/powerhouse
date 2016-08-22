@@ -1,0 +1,43 @@
+<div class="form form-contact">
+  {% if form.success %}
+    <section class="success" data-sub="contact/form">
+      <h2>Thank you for contacting us!</h2>
+      <p>We'll be in touch shortly</p>
+    </section>
+  {% else %}
+    <form id="contact" method="POST" action="{{ form.action }}" data-pub="contact/form">
+        <div class="group">
+          <div class="control">
+            <input name="c_name" type="text" value="{{ form.holder.c_name }}" placeholder="Name*" required>
+           {% if 1 %}{{ form.errors.c_name }}{% endif %}
+          </div>
+          <div class="control">
+            <input name="c_company" type="text" value="{{ form.holder.c_company }}" placeholder="Company">
+           {% if 1 %}{{ form.errors.c_company }}{% endif %}
+          </div>
+        </div>
+        <div class="group">
+          <div class="control">
+            <input name="c_email" type="email" value="{{ form.holder.c_email }}" placeholder="Email*" required>
+            {% if 1 %}{{ form.errors.c_email }}{% endif %}
+          </div>
+          <div class="control">
+            <input name="c_phone" type="phone" value="{{ form.holder.c_phone }}" placeholder="Phone">
+            {% if 1 %}{{ form.errors.c_phone }}{% endif %}
+          </div>
+        </div>
+        <div class="control">
+          <input name="c_subject" type="text" value="{{ form.holder.c_subject }}" placeholder="Subject*" required>
+          {% if 1 %}{{ form.errors.c_subject }}{% endif %}
+        </div>
+        <div class="control">
+          <textarea name="c_message" type="text" value="{{ form.holder.c_message }}" placeholder="Message*" required></textarea>
+          {% if 1 %}{{ form.errors.c_message }}{% endif %}
+        </div>
+        
+        <div class="submit">
+          <button>Send</button>
+        </div>
+    </form>
+  {% endif %}
+</div>

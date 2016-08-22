@@ -3,6 +3,8 @@
 @import 'container/contact';
 @import 'container/search';
 @import 'container/page';
+@import 'container/posts';
+@import 'container/post';
 
 section.container {  
   @include clearfix();
@@ -25,5 +27,13 @@ section.container {
 
   &[data-template~="page"] {
     @include container-page();
+  }
+
+  &[data-template~="posts"] {
+    @include container-posts();
+  }
+
+  &[data-template~="post"] {
+    @include container-post();
   }
 }

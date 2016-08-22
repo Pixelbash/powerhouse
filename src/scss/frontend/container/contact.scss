@@ -7,42 +7,11 @@
       @include clearfix();
       .details {
         @include span(5);
-        .contacts {
+        .description {
           @include cx();
-          @include cx-full($midgrey);
-          @include cx-m();
-          @include link-color($midgrey,$accent,$dark);
-          @include bp-l();
-          font-weight:bold;
-          >div {
-            padding-left:20px;
-            @include helper-line-decorator();
-            + div {
-              margin-top:$space-m;
-            }
-          }
-        }
-        .people {
-          >div {
-            h3 {
-              @include hx();
-              @include hx-l();
-              @include hx-accent();
-              @include bp-xs();
-            }
-            p {
-              @include cx();
-              @include cx-m();
-              @include cx-dark();
-              font-weight:bold;
-              span {
-                @include cx-accent();
-              }
-            }
-            + div {
-              padding-top:$space-m;
-            }
-          }
+          @include cx-full();
+          @include cx-xs();
+          @include cx-midgrey();
         }
       }
       .contact {

@@ -12,9 +12,9 @@
   </div>
   <div class="slider">
     <div class="slideshow" data-sub="hero-slideshow">
-      {% for slide in home_slides %}
-        <div>
-          <div class="background" style="background-image:url('{{ slide }}')"></div>
+      {% for i in 0..4 %}
+        <div {% if loop.index0 > 0 %}style="display:none;"{% endif %}>
+          <div class="background" style="background-image:url('http://placehold.it/1920x1080')"></div>
         </div>
       {% endfor %}
     </div>

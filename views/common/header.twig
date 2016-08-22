@@ -1,15 +1,5 @@
 
 <header class="default">
-  <div class="search" data-sub="search">
-    <div class="inner">
-      <div class="close" data-pub="search-hide"><i></i><i></i></div>
-      <form action="/" data-pub="search-form">
-        <button class="fa fa-search"></button>
-        <input type="hidden" value="page" name="post_type" id="post_type" />
-        <input name="s" type="text" placeholder="Search" required>
-      </form>
-    </div>
-  </div>
   <div class="inner">
     <nav class="logo">
       <a href="/"><img src="{{ template_uri }}/dist/img/header/logo.png" alt="{{ site.name }}"></a>
@@ -19,7 +9,6 @@
         {% for link in main_menu %}
           {% include 'elements/menu-item.twig' with {link: link} %}
         {% endfor %}
-        <li><span class="a fa fa-search" data-pub="search-toggle"></span></li>
       </ul>
     </nav>
     <div class="hamburger" data-pub="hamburger">

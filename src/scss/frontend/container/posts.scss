@@ -1,0 +1,10 @@
+@mixin container-posts() {
+  section.posts {
+    @include wrapper();
+    @include clearfix();
+    >.inner {
+      padding-top:60px;
+      padding-bottom:100px;
+    }
+  }
+}

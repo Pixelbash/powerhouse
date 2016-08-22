@@ -103,8 +103,31 @@
         color:$darkestgrey;
         content:"—";
         margin-left:-18px;
-        padding-right:6px
+        padding-right:6px;
       }
+    }
+  }
+  ol {
+    counter-reset: section;
+    li {
+      margin-left:18px;
+      &:before {
+        color:$darkestgrey;
+        margin-left:-18px;
+        padding-right:6px;
+        counter-increment: section;
+        content: counters(section,".") " ";
+      }
+    }
+  }
+  hr {
+    @include appearance-none();
+    &:after {
+      content: ' ';
+      display:block;
+      left:0;width:100%;
+      top:0;height:1px;
+      background:$midgrey;
     }
   }
 }

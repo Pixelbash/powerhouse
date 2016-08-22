@@ -1,0 +1,23 @@
+{% extends "common/base.twig" %}
+
+{% block body_classes %}page-contact{% endblock %}
+
+{% block content %}
+<section class="element element-hero">
+  <div class="title">
+    <h1>{{ page.title }}</h1>
+  </div>
+</section>
+<section class="content">
+  <div class="inner">
+    <div class="details">
+      <div class="description">
+        {{ page.content }}
+      </div>
+    </div>
+    <div class="contact">
+      {% include 'forms/contact.twig' with {'form': contact_form} %}
+    </div>
+  </div>
+</section>
+{% endblock %}

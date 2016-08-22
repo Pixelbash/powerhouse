@@ -1,0 +1,42 @@
+@mixin blocks-posts() {
+  .block {
+    .inner {
+      @include clearfix();
+    }
+    + .block {
+      &:before {
+        content:' ';
+        display:block;
+        margin:30px $gutter;
+        height:1px;
+        background:$lightestgrey;
+      }
+    }
+    .heading {
+      @include span(5);
+      .title {
+        @include hx();
+        @include hx-xl();
+        
+      }
+      .date {
+        @include cx();
+        @include cx-xxs();
+        @include cx-midgrey();
+      }
+    }
+    .details {
+      @include span(7);
+      @include cx();
+      .description {
+        @include cx-full();
+        @include cx-xs();
+        @include cx-darkgrey();
+      }
+      .link {
+        @include link-color($pink,$dark,$dark);
+        padding-top:10px;
+      }
+    }
+  }
+}

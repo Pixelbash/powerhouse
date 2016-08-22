@@ -1,4 +1,7 @@
 
-
+@import 'blocks/posts';
 .blocks {
+  &.blocks-posts {
+    @include blocks-posts();
+  }
 }
