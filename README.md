@@ -21,14 +21,14 @@ Also at this point the theme more or less needs a full on manual + style guide, 
 1. cd wp-content/themes;
 2. git clone https://github.com/Pixelbash/powerhouse.git;
 3. cd powerhouse;
-4. bower install;    # To include the latest javascript libraries
-5. composer install; # To install required wordpress plugins
-6. Enable the newly installed plugins
-7. npm install; # To install required npm packages
-8. edit config.js settings for gulp
-9. gulp # to compile the dist folder for the first time
+4. rm -rf .git;git init;
+5. bower install;    # To include javascript libraries
+6. composer install; # To install php libraries
+7. npm install;      # To install required npm packages for gulp
+8. nano config.js;   # settings for gulp
+9. Enable the recommended plugins
 10. Set powerhouse as your theme
-11. There is no 11.
+11. gulp # to compile the dist folder for the first time
 
 
 ### Requirements
@@ -37,6 +37,7 @@ Also at this point the theme more or less needs a full on manual + style guide, 
 - Bower    (js dependency management)
 - Gulp     (Asset precompiling, >= 3.9.0)
 - Git      (repository management)
+- NPM      (installing deps for gulp)
 
 
 ### Recommended Wordpress plugins
@@ -45,6 +46,23 @@ Also at this point the theme more or less needs a full on manual + style guide, 
 - Total Cache
 - Better WP Security
 
+
+### 11/08/2016
+----
+- Redone example styling/templates
+  - Header 
+  - Home (slideshow) template/styling/javascript
+  - Contact page template/styling/functionality
+  - Archive page
+  - Single post page
+- Switched out underscore for lodash
+- New responsive system for scss
+- New body selector in scss
+- Theme plugins are now installed using TGM-Plugin-Activation
+- Timber now *works* on theme install
+- Jquery included in html-header.twig with cdn
+- Cleanup on unused scss
+- Many more minor changes
 
 ### 19-11-2015
 ----
