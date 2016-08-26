@@ -11,7 +11,7 @@ Do you like wordpress but hate coding like it's 2005? Then this might be for you
 
 ### Please note
 ----
-This is a theme that reflects my current workflow, which evolves quite a lot over time. This should be used as the base for a theme and not something to base child themes off.
+This is a theme that reflects my current workflow, which evolves steadily over time. This should be used as the base for a theme and not something to base child themes off.
 
 If you like the theme the way it is and would rather it doesn't spontaneously do something like switch out gulp for webpack or radio for react down the line, forking might be a good idea!
 
