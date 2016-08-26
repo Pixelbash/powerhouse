@@ -11,10 +11,9 @@ Do you like wordpress but hate coding like it's 2005? Then this might be for you
 
 ### Please note
 ----
-This is first and foremost a theme for my use, that means I will regularly update large portions of the theme with whatever updates I feel are best for my future projects, I guess you could treat it as an alpha build in that regard. Feel free to fork if you don't want everything to break =)
+This is a theme that reflects my current workflow, which evolves quite a lot over time. This should be used as the base for a theme and not something to base child themes off.
 
-Also at this point the theme more or less needs a full on manual + style guide, which I will get around to writing at some point.
-
+If you like the theme the way it is and would rather it doesn't spontaneously do something like switch out gulp for webpack or radio for react down the line, forking might be a good idea!
 
 ### Installation
 ----
