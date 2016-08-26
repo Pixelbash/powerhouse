@@ -21,14 +21,15 @@ Also at this point the theme more or less needs a full on manual + style guide, 
 1. cd wp-content/themes;
 2. git clone https://github.com/Pixelbash/powerhouse.git;
 3. cd powerhouse;
-4. rm -rf .git;git init;
-5. bower install;    # To include javascript libraries
+4. rm -rf .git
+5. git init;
 6. composer install; # To install php libraries
 7. npm install;      # To install required npm packages for gulp
-8. nano config.js;   # settings for gulp
-9. Enable the recommended plugins
+8. bower install;    # To include javascript libraries
+9. nano config.js;   # settings for gulp
 10. Set powerhouse as your theme
-11. gulp # to compile the dist folder for the first time
+11. Enable the recommended plugins
+12. gulp # to compile the dist folder for the first time
 
 
 ### Requirements
