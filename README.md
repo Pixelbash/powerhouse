@@ -47,6 +47,16 @@ If you like the theme the way it is and would rather it doesn't spontaneously do
 - Better WP Security
 
 
+### 26/09/2016
+----
+- Page size diet. 
+  - Plugins.js is 584 -> 181kb uncompressed!
+  - Remove Jquery dep from header.
+  - Use lodash core
+  - Use sizzle
+  - Slim down es6/utils
+  - Started removing jQuery deps from init.js
+
 ### 11/08/2016
 ----
 - Redone example styling/templates
