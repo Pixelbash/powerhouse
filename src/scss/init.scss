@@ -83,6 +83,7 @@ $images : './img/';
 @import 'frontend/footer.scss'; 
 @import 'frontend/lightbox.scss';
 @import 'frontend/blocks.scss'; 
+@import 'frontend/scripts/lbox.scss'; 
 
 // Main 
 html,body { margin:0;padding:0; }

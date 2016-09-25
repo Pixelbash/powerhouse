@@ -14,16 +14,12 @@ export default class Init {
     this._data = window._data;
 
     this.utils = new Utils();
-
-    this.init();
   } 
 
   init() {
-    //Jquery ready
-    $(() => { 
-      this.sub = new Sub(this, this.utils);
-      this.pub = new Pub(this, this.utils); 
-    });
+    console.log('initialising');
+    this.sub = new Sub(this, this.utils);
+    this.pub = new Pub(this, this.utils); 
   }
 }
 

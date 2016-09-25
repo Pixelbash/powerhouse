@@ -1,0 +1,30 @@
+.lbox-wrap {
+  position: fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:#fff;
+  z-index:9999;
+  display: flex;
+  padding:30px;
+}
+.lbox-box {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  white-space: nowrap;
+  position:relative;
+  .close {
+    position:fixed;
+    top:40px;
+    right:40px;
+    width:auto;
+    height:auto;
+    cursor:pointer;
+    @include cx();
+    @include cx-xs();
+    @include cx-darkestgrey();
+    @include sans();
+  }
+}

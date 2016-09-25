@@ -40,12 +40,11 @@ export default class Config {
         dest: `${dirs.dest}/file/`
       },
       bower : {
-        watch: `${dirs.src}/js/lib/**/*`,
+        watch: `${dirs.src}/js/bower/**/*`,
         src: [
-          `${dirs.src}/js/lib/bxslider-4/dist/jquery.bxslider.js`,
-          `${dirs.src}/js/lib/radio/radio.js`,
-          `${dirs.src}/js/lib/underscore/underscore.js`,
-          `${dirs.src}/js/lib/lodash/dist/lodash.js`,
+          `${dirs.src}/js/bower/sizzle/dist/sizzle.js`,
+          `${dirs.src}/js/bower/radio/radio.js`,
+          `${dirs.src}/js/lib/lodash/lodash.custom.js`,
         ],
         dest: `${dirs.dest}/js/`
       },

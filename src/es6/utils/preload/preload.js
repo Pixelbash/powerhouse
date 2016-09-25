@@ -91,7 +91,6 @@ export default class Preload {
   }
 
   getFileType(src) {
-    console.log(src);
     var ext = src.substr((src.lastIndexOf('.') +1));
     if(/(js)$/ig.test(ext)) {
       return 'js';

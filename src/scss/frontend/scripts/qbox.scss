@@ -1,0 +1,115 @@
+.qbox-wrap {
+  position: fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:#fff;
+  z-index:9999;
+  display: flex;
+  padding:6% 8%;
+}
+.qbox-box {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  white-space: nowrap;
+  position:relative;
+}
+
+.qbox-gallery {
+  &[data-mode="fade"] {
+    position:absolute;
+    left:0;top:0;
+    width:100%;
+    height:100%;
+    .slide {
+      left:0;top:0;
+      width:100%;
+      height:100%;
+      position:absolute;
+      display:inline-flex;
+      flex-direction:row;
+      flex-wrap:nowrap;
+      justify-content:space-around;
+      align-items:center;
+      background:#fff;
+      text-align:center;
+      .image {
+        position:relative;
+        flex-shrink:1;
+        flex-basis:100%;
+        height:100%;
+        background-size:contain;
+        background-position:center;
+        background-repeat:no-repeat;
+      }
+      &[data-type="group"] {
+        .image {
+          flex-basis:50%;
+          margin-right:$gutter;
+          +.image {
+            margin-left:$gutter;
+            margin-right:0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.qbox-controls {
+  .close {
+    @include cx();
+    @include cx-xs();
+    @include sans();
+    position:absolute;
+    top:30px;bottom:auto;
+    left:auto;right:40px;
+    width:auto;height:auto;
+    cursor:pointer;
+    &:hover {
+      opacity:0.9;
+    }
+  }
+  .next,
+  .prev {
+    position:absolute;
+    left:60px;right:50%;
+    top:60px;bottom:60px;
+    z-index:100;
+    cursor:pointer;
+    text-indent:-9999px;
+  }
+  .next {
+    left:50%;right:60px;
+    cursor:image-url('frontend/icons/gallery/right-arrow.png'), pointer;
+  }
+  .prev {
+    cursor:image-url('frontend/icons/gallery/left-arrow.png'), pointer;
+  }
+  .pager-wrap {
+    position:fixed;
+    top:50%;
+    z-index:99;
+  }
+  .pager-wrap {
+    right:20px;left:auto;
+    .pager {
+      position:absolute;
+      top:-180px;bottom:auto;
+      left:-30px;right:auto;
+      width:300px;
+      text-align:left;
+      .inner {
+        @include cx();
+        @include cx-xs();
+        transform:rotate(90deg);
+        transform-origin:bottom left;
+        position:relative;
+        text-align:center;
+      }
+    }
+  }
+}

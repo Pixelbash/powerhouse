@@ -1,9 +1,9 @@
 export default class Pub {
   constructor() {
+    this.$window = $(window);
     // this.scroll();
     // this.resize();
     // this.load();
-    this.$window = $(window);
   }
   
   scroll() {

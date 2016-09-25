@@ -1,4 +1,4 @@
-/src/js/lib/*
+/src/js/bower/*
 /vendor
 /node_modules
 /__*
