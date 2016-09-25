@@ -11,6 +11,8 @@ import rename from 'gulp-rename';
 import image from 'gulp-image-optimization';
 import browserSync from 'browser-sync';
 import cssmin from 'gulp-cssmin';
+import uglify from 'gulp-uglify';
+import streamify from 'gulp-streamify';
 
 import source from 'vinyl-source-stream';
 import babelify from 'babelify';
@@ -71,6 +73,7 @@ gulp.task('bower', () => {
   , { base: './js/lib' })
   .pipe(concat('plugins.js'))
   .pipe(rename({dirname: ''}))
+  .pipe(streamify(uglify()))
   .pipe(gulp.dest(paths.bower.dest))
 });
 
@@ -79,6 +82,7 @@ gulp.task('es6', () => {
     .transform(babelify)
     .bundle()
     .pipe(source('init.js'))
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest(paths.es6.dest));
 });
 
