@@ -13,6 +13,7 @@ import browserSync from 'browser-sync';
 import cssmin from 'gulp-cssmin';
 import uglify from 'gulp-uglify';
 import streamify from 'gulp-streamify';
+import  gutil from 'gulp-util';
 
 import source from 'vinyl-source-stream';
 import babelify from 'babelify';
@@ -22,6 +23,19 @@ import rimraf from 'rimraf';
 import Config from './config';
 var config = new Config();
 var paths  = config.paths;
+
+//env based uglify
+function isDev() {
+  return (Object.prototype.toString.call( process.env.ENV ) === '[object String]' && process.env.ENV === 'dev');
+}
+
+function jsMinify() {
+  return (isDev) ? gutil.noop() : streamify(uglify()) ;
+}
+
+function cssMinify() {
+  return (isDev) ? gutil.noop() : cssmin() ;
+}
 
 gulp.task('browser-sync', function () {
   browserSync(config.browsersync);
@@ -63,7 +77,7 @@ gulp.task('scss', () => {
     .pipe(sass({indentedSyntax:false}).on('error', sass.logError))
     .pipe(sourcemaps.init())
     .pipe(autoprefixer())
-    .pipe(cssmin())
+    .pipe(cssMinify())
     .pipe(concat('init.css'))
     .pipe(gulp.dest(paths.scss.dest));
 });
@@ -73,7 +87,7 @@ gulp.task('bower', () => {
   , { base: './js/lib' })
   .pipe(concat('plugins.js'))
   .pipe(rename({dirname: ''}))
-  .pipe(streamify(uglify()))
+  .pipe(jsMinify())
   .pipe(gulp.dest(paths.bower.dest))
 });
 
@@ -82,7 +96,7 @@ gulp.task('es6', () => {
     .transform(babelify)
     .bundle()
     .pipe(source('init.js'))
-    .pipe(streamify(uglify()))
+    .pipe(jsMinify())
     .pipe(gulp.dest(paths.es6.dest));
 });
 

@@ -5,6 +5,7 @@ import Sub from './sub';
 
 export default class Init {
   constructor() {
+
     this.$body     = $('body');
     this.$window   = $(window);
     this.$document = $(document);

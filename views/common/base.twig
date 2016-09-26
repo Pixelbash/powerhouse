@@ -19,8 +19,9 @@
 
   {% include 'common/footer.twig' %}
 
-  <script src="{{ template_uri }}/dist/js/init.js"></script>
-  
   {{ function('wp_footer') }}
+  
+  <script src="{{ template_uri }}/dist/js/init.js"></script>
+  <script>(function(){window.app.init();})(); //init</script>
 </body>
 </html>

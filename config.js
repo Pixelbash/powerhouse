@@ -7,7 +7,7 @@ export default class Config {
 
     this.browsersync = {
       proxy: {
-        target: "http://powerhouse.wordpress.pxl.nz",
+        target: "http://ba.wordpress.pxl.nz",
         middleware: function (req, res, next) {
           console.log(req.url);
           next();
@@ -42,7 +42,7 @@ export default class Config {
       bower : {
         watch: `${dirs.src}/js/bower/**/*`,
         src: [
-          `${dirs.src}/js/bower/sizzle/dist/sizzle.js`,
+          `${dirs.src}/js/bower/zepto/zepto.js`,
           `${dirs.src}/js/bower/radio/radio.js`,
           `${dirs.src}/js/lib/lodash/lodash.custom.js`,
         ],
