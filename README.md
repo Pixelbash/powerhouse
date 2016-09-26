@@ -30,6 +30,8 @@ If you like the theme the way it is and would rather it doesn't spontaneously do
 11. Enable the recommended plugins
 12. gulp # to compile the dist folder for the first time
 
+Note: gulp now minifies by default, set env var ENV="dev" to show full source
+
 
 ### Requirements
 ----
@@ -49,6 +51,7 @@ If you like the theme the way it is and would rather it doesn't spontaneously do
 
 ### 26/09/2016
 ----
+- Gulp now minified JS/CSS *unless* an environment variable is set
 - Page size diet. 
   - Plugins.js is 584 -> 181kb uncompressed!
   - Remove Jquery dep from header.
