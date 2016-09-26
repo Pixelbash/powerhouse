@@ -30,11 +30,11 @@ function isDev() {
 }
 
 function jsMinify() {
-  return (isDev) ? gutil.noop() : streamify(uglify()) ;
+  return (isDev()) ? gutil.noop() : streamify(uglify()) ;
 }
 
 function cssMinify() {
-  return (isDev) ? gutil.noop() : cssmin() ;
+  return (isDev()) ? gutil.noop() : cssmin() ;
 }
 
 gulp.task('browser-sync', function () {

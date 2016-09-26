@@ -53,7 +53,8 @@ Note: gulp now minifies by default, set env var ENV="dev" to show full source
 ----
 - Gulp now minified JS/CSS *unless* an environment variable is set
 - Page size diet. 
-  - Plugins.js is 584 -> 181kb uncompressed!
+  - Init.js 103kb -> 24kb (compressed)
+  - Plugins.js 584kb -> 63kb (compressed)
   - Remove Jquery dep from header.
   - Use lodash core
   - Use sizzle
