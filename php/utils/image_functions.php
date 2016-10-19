@@ -44,65 +44,88 @@ class Image {
 
     // check if file exists
     if ( !file_exists($file_paths['base_file']) ) 
-      die('no file found');
+      die('no file found: '.$file_paths['base_file']);
 
     //check if resized file exists
     $return = false;
     $exists = false;
     $real_width  = false;
     $real_height = false;
+
+    //make folder if doesn't exist
+    if (!file_exists($file_paths['final_folder'])) {
+      mkdir($file_paths['final_folder']);
+    }
+
+    //Already done this?
     if(file_exists( $file_paths['final_path'] )) {
       $exists      = true;
       
       //image might have different sizes...
       $img_size    = getimagesize( $file_paths['final_path'] );
-      $real_width  = $img_size[0];
-      $real_height = $img_size[1];
+      $real_width  = (float)$img_size[0];
+      $real_height = (float)$img_size[1];
     }
 
-    //if it doesn't exist, time to resize
+    //Copy function
     if(!$exists) {
-      //make folder if doesn't exist
-      if (!file_exists($file_paths['final_folder'])) {
-        mkdir($file_paths['final_folder']);
+      //Copy functionality
+      if($args['resize'] == 'original') {
+        $exists      = true;
+
+        //Get base image sizes
+        $img_size    = getimagesize( $file_paths['base_file'] );
+        $real_width  = (float)$img_size[0];
+        $real_height = (float)$img_size[1];
+
+        if(!copy($file_paths['base_file'], $file_paths['final_path']))
+          die('copy failed: '.$file_paths['base_file']);
+
+      //Resize function
+      } else {
+        //create our image
+        $img = new \abeautifulsite\SimpleImage($file_paths['base_file']);
+
+        //best fit
+        if($args['resize'] == 'best_fit') {
+          $img->best_fit($args['width'],$args['height']);
+
+        //adaptive resize
+        } elseif($args['resize'] == 'adaptive_resize') {
+          $img->adaptive_resize($args['width'],$args['height']);
+
+        //fit to width
+        } elseif($args['resize'] == 'fit_to_width') {
+          $img->fit_to_width($args['width']);
+
+        //fit to height
+        } elseif($args['resize'] == 'fit_to_height') {
+          $img->fit_to_height($args['height']);
+
+        //fit to height
+        } elseif($args['resize'] == 'resize') {
+          $img->resize($args['height']);
+        } 
+
+        //update our width and height with new
+        $real_width  = (float)$img->get_width();
+        $real_height = (float)$img->get_height();
+
+        $quality = (isset($args['quality'] )) ? $args['quality'] : 90;
+
+        //save our image
+        $img->save($file_paths['final_path'],$quality);
       }
-
-      //create our image
-      $img = new \abeautifulsite\SimpleImage($file_paths['base_file']);
-
-      //best fit
-      if($args['resize'] == 'best_fit') {
-        $img->best_fit($args['width'],$args['height']);
-
-      //adaptive resize
-      } elseif($args['resize'] == 'adaptive_resize') {
-        $img->adaptive_resize($args['width'],$args['height']);
-
-      //fit to width
-      } elseif($args['resize'] == 'fit_to_width') {
-        $img->fit_to_width($args['width']);
-
-      //fit to height
-      } elseif($args['resize'] == 'fit_to_height') {
-        $img->fit_to_height($args['height']);
-
-      //fit to height
-      } elseif($args['resize'] == 'resize') {
-        $img->resize($args['height']);
-      } 
-
-      //update our width and height with new
-      $real_width  = $img->get_width();
-      $real_height = $img->get_height();
-
-      //save our image
-      $img->save($file_paths['final_path']);
     }
+
+    //Create padding for use with css spacers
+    $real_padding = (($real_height/$real_width) * 100) . "%";
 
     return array(
       'url'    => $file_paths['final_url'],
       'width'  => $real_width,
       'height' => $real_height,
+      'padding' => $real_padding
     );
   }
 
